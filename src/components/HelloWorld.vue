@@ -16,7 +16,7 @@
 
 
 
-<div> {{ poslPriem }}</div>
+<div>ПОСЛЕДНИЙ ПРИЕМ {{ poslPriem }}</div>
 
 
 
@@ -34,9 +34,14 @@
     </td>
 
 
-
 </table>
 
+
+
+<br>
+ОБНОВЛЕНО
+
+{{ new Date(now) }}
 </template>
 
 <script setup>
@@ -60,6 +65,9 @@ function addValue() {
             updInfo[0][2].push(name.value)
             axios.patch(`https://dexone.ru/backend_calorie/data/2`, { info: updInfo }) 
         })
+        setTimeout(() => {
+  updateData()
+}, 3000);
 }
 
 
@@ -69,9 +77,10 @@ let spisNames = ref()
 let poslPriem = ref()
 let ostCalories = ref()
 let estCalories = ref()
+let now = ref()
 function updateData(){
   let max = userStore.max / 960
-  let date = Date.now()
+  now.value = Date.now()
   axios.get(`https://dexone.ru/backend_calorie/data/2`).then((res) => {
             let updInfo = res.data.info[0][0]
 
@@ -79,7 +88,7 @@ estCalories.value = 0
             for(let i = 0; i< res.data.info[0][1].length; i++)[
               estCalories.value = estCalories.value + Number(res.data.info[0][1][i])
             ]
-let dolzhCalories = ((date-updInfo)/1000/60) * max
+let dolzhCalories = ((now.value-updInfo)/1000/60) * max
 
 itog.value = (estCalories.value - dolzhCalories).toFixed()
 
@@ -94,5 +103,7 @@ poslPriem.value = new Date(updInfo + 46800000)
 }
 
 
+setInterval(
+  updateData(), 60000)
 
 </script>
