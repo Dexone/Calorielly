@@ -1,47 +1,40 @@
-
-
 <template>
-<input class="bg-blue" v-model="calorie" placeholder="калории"><br>
 
-<input class="bg-blue" v-model="name" placeholder="название">
+  <input class="bg-blue" v-model="calorie" placeholder="калории"><br>
 
-<button @click="addValue()">пуск</button>
-<br>
-<button @click="updateData()">Обновить</button>
+  <input class="bg-blue" v-model="name" placeholder="название">
 
-<div>Текущие калории:{{ itog }}</div>
-<div>Осталось калорий:{{ ostCalories }}</div>
-<div>Есть калорий:{{ estCalories }}</div>
+  <button @click="addValue()">пуск</button>
+  <br>
 
 
 
 
-<div>ПОСЛЕДНИЙ ПРИЕМ {{ poslPriem }}</div>
+
+  <div>Текущие калории:{{ userStore.actualCalories }} <a v-if="userStore.actualCalories > 0">({{ userStore.timeCalories
+      }})</a></div>
+  <div>Осталось калорий: {{ userStore.axiosInfo.max - userStore.estCalories }}</div>
+  <div>Есть калорий:{{ userStore.estCalories }}</div>
+  <div>ПОСЛЕДНИЙ ПРИЕМ {{ Number(userStore.axiosInfo.time) + 13 }}</div>
 
 
 
 
-<table>
-
-
-
-  <td >
-      <tr v-for="calories in spisCalories">{{ calories}}</tr>
+  <table>
+    <td>
+      <tr v-for="date in userStore.axiosInfo.info[0][1]">{{ date }}</tr>
+    </td>
+    <td>
+      <tr v-for="calories in userStore.axiosInfo.info[0][2]">{{ calories }}</tr>
     </td>
 
-    <td >
-      <tr v-for="names in spisNames">{{ names}}</tr>
+    <td>
+      <tr v-for="names in userStore.axiosInfo.info[0][3]">{{ names }}</tr>
     </td>
-
-
-</table>
+  </table>
 
 
 
-<br>
-ОБНОВЛЕНО
-
-{{ new Date(now) }}
 </template>
 
 <script setup>
@@ -54,56 +47,30 @@ defineProps({
 })
 
 
-let calorie = ref()
-let name = ref()
+userStore.downFromServer()
 
+let timerId = setInterval(() => userStore.updateData(), 60000);
+
+
+
+
+let calorie = ref("")
+let name = ref("")
 function addValue() {
-        axios.get(`https://dexone.ru/backend_calorie/data/2`).then((res) => {
-            let updInfo = res.data.info
+  if ((calorie.value != "" && name.value != "")) {
+    userStore.axiosInfo.info[0][1].push((String(new Date(Date.now()))).slice(15).slice(1, 6))
+    userStore.axiosInfo.info[0][2].push(calorie.value)
+    userStore.axiosInfo.info[0][3].push(name.value)
+    calorie.value = ""
+    name.value = ""
+    userStore.updateData()
+  }
 
-            updInfo[0][1].push(calorie.value)
-            updInfo[0][2].push(name.value)
-            axios.patch(`https://dexone.ru/backend_calorie/data/2`, { info: updInfo }) 
-        })
-        setTimeout(() => {
-  updateData()
-}, 3000);
+  else {
+    alert('Ошибка')
+  }
 }
 
 
-let itog = ref()
-let spisCalories = ref()
-let spisNames = ref()
-let poslPriem = ref()
-let ostCalories = ref()
-let estCalories = ref()
-let now = ref()
-function updateData(){
-  let max = userStore.max / 960
-  now.value = Date.now()
-  axios.get(`https://dexone.ru/backend_calorie/data/2`).then((res) => {
-            let updInfo = res.data.info[0][0]
-
-estCalories.value = 0
-            for(let i = 0; i< res.data.info[0][1].length; i++)[
-              estCalories.value = estCalories.value + Number(res.data.info[0][1][i])
-            ]
-let dolzhCalories = ((now.value-updInfo)/1000/60) * max
-
-itog.value = (estCalories.value - dolzhCalories).toFixed()
-
-spisCalories.value = res.data.info[0][1]
-spisNames.value = res.data.info[0][2]
-
-console.log(dolzhCalories)
-
-ostCalories.value = userStore.max - estCalories.value
-poslPriem.value = new Date(updInfo + 46800000)
-        })
-}
-
-
-setInterval(
-  updateData(), 60000)
 
 </script>
