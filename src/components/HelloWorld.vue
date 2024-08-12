@@ -1,37 +1,35 @@
 <template>
 
-  <input class="bg-blue" v-model="calorie" placeholder="калории"><br>
 
-  <input class="bg-blue" v-model="name" placeholder="название">
+<div class="w-full mb-3">
+  <div class="flex items-center justify-between gap-4 mb-2">
+    <h6
+      class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-blue-gray-900">
+      {{ userStore.estCalories }}
+    </h6>
+    <h6
+      class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-blue-gray-900">
+      <a v-if="userStore.actualCalories > 0">+</a>{{ userStore.actualCalories }} <a v-if="userStore.actualCalories > 0">({{ userStore.timeCalories
+      }})</a>
+    </h6>
+    <h6
+      class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-blue-gray-900">
+      {{ userStore.axiosInfo.max - userStore.estCalories }}
+    </h6>
+  </div>
+  <div
+    class="flex-start flex h-2.5 w-full overflow-hidden rounded-full bg-gray-300 font-sans text-xs font-medium">
+    <div 
+      class="flex items-center justify-center h-full overflow-hidden text-white break-all bg-gray-900 rounded-full" :style="{ width: ((userStore.estCalories / userStore.axiosInfo.max) * 100) + '%' }">
+    </div>
+  </div>
+</div>
 
-  <button @click="addValue()">пуск</button>
-  <br>
 
 
+  <!-- <div>ПОСЛЕДНИЙ ПРИЕМ {{ Number(userStore.axiosInfo.time) + 13 }}</div> -->
 
 
-
-  <div>Текущие калории:{{ userStore.actualCalories }} <a v-if="userStore.actualCalories > 0">({{ userStore.timeCalories
-      }})</a></div>
-  <div>Осталось калорий: {{ userStore.axiosInfo.max - userStore.estCalories }}</div>
-  <div>Есть калорий:{{ userStore.estCalories }}</div>
-  <div>ПОСЛЕДНИЙ ПРИЕМ {{ Number(userStore.axiosInfo.time) + 13 }}</div>
-
-
-
-
-  <table>
-    <td>
-      <tr v-for="date in userStore.axiosInfo.info[0][1]">{{ date }}</tr>
-    </td>
-    <td>
-      <tr v-for="calories in userStore.axiosInfo.info[0][2]">{{ calories }}</tr>
-    </td>
-
-    <td>
-      <tr v-for="names in userStore.axiosInfo.info[0][3]">{{ names }}</tr>
-    </td>
-  </table>
 
 
 
@@ -54,22 +52,6 @@ let timerId = setInterval(() => userStore.updateData(), 60000);
 
 
 
-let calorie = ref("")
-let name = ref("")
-function addValue() {
-  if ((calorie.value != "" && name.value != "")) {
-    userStore.axiosInfo.info[0][1].push((String(new Date(Date.now()))).slice(15).slice(1, 6))
-    userStore.axiosInfo.info[0][2].push(calorie.value)
-    userStore.axiosInfo.info[0][3].push(name.value)
-    calorie.value = ""
-    name.value = ""
-    userStore.updateData()
-  }
-
-  else {
-    alert('Ошибка')
-  }
-}
 
 
 
