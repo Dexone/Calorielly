@@ -18,8 +18,8 @@ export const useUser = defineStore('userStore', {
         },
 
         upToServer() {
-            // axios.patch(`https://dexone.ru/backend_calorie/data/${this.axiosInfo.id}`, { max: this.axiosInfo.max, time: this.axiosInfo.time, info: this.axiosInfo.info })
-            // console.log('загружено на сервер') 
+            axios.patch(`https://dexone.ru/backend_calorie/data/${this.axiosInfo.id}`, { max: this.axiosInfo.max, time: this.axiosInfo.time, info: this.axiosInfo.info })
+            console.log('загружено на сервер') 
         },
 
         updateData() {

@@ -11,23 +11,23 @@
   <table class="w-full text-left table-auto min-w-max">
     <thead>
       <tr>
-        <th class="p-4 border-b border-blue-gray-100 bg-gray-200">
-          <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+        <th class="p-4 border-b border-gray-100 bg-gray-200">
+          <p class="block font-sans text-sm antialiased font-normal leading-none text-gray-900 opacity-70">
             Время
           </p>
         </th>
-        <th class="p-4 border-b border-blue-gray-100 bg-gray-200">
-          <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+        <th class="p-4 border-b border-gray-100 bg-gray-200">
+          <p class="block font-sans text-sm antialiased font-normal leading-none text-gray-900 opacity-70">
             Ккал
           </p>
         </th>
-        <th class="p-4 border-b border-blue-gray-100 bg-gray-200">
-          <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+        <th class="p-4 border-b border-gray-100 bg-gray-200">
+          <p class="block font-sans text-sm antialiased font-normal leading-none text-gray-900 opacity-70">
             Описание
           </p>
         </th>
-        <th class="p-4 border-b border-blue-gray-100 bg-gray-200">
-          <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"></p>
+        <th class="p-4 border-b border-gray-100 bg-gray-200">
+          <p class="block font-sans text-sm antialiased font-normal leading-none text-gray-900 opacity-70"></p>
         </th>
       </tr>
     </thead>
@@ -40,23 +40,23 @@
 
 
       <tr  v-for="date, index in userStore.axiosInfo.info[0][1]">
-        <td class="p-4 border-b border-blue-gray-50">
-          <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+        <td class="p-4 border-b border-gray-50">
+          <p class="block font-sans text-sm antialiased font-normal leading-normal text-gray-900">
             {{ date }}
           </p>
         </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+        <td class="p-4 border-b border-gray-50">
+          <p class="block font-sans text-sm antialiased font-normal leading-normal text-gray-900">
             {{userStore.axiosInfo.info[0][2][index]}}
           </p>
         </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+        <td class="p-4 border-b border-gray-50">
+          <p class="block font-sans text-sm antialiased font-normal leading-normal text-gray-900">
            {{   userStore.axiosInfo.info[0][3][index] }}
           </p>
         </td>
-        <td class="p-4 border-b border-blue-gray-50" @click=deleteValue(index)>
-          <a  class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+        <td class="p-4 border-b border-gray-50" @click=deleteValue(index)>
+          <a  class="block font-sans text-sm antialiased font-medium leading-normal text-gray-900">
             Удалить
           </a>
         </td>

@@ -14,10 +14,6 @@ import Tablitsa from './components/Tablitsa.vue'
 
 </template>
 
-<style>
-template{
-  background-color: aqua;
-}
-</style>
+
 
 

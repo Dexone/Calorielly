@@ -6,7 +6,7 @@
       <nav>
         <ul role="tablist" class="relative flex flex-row p-1 rounded-lg bg-gray-200 ">
           <li role="tab" @click="hiddenSelector = true"
-            class="relative flex items-center justify-center w-full h-full px-2 py-1 font-sans text-base antialiased font-normal leading-relaxed text-center  cursor-pointer  text-blue-gray-900"
+            class="relative flex items-center justify-center w-full h-full px-2 py-1 font-sans text-base antialiased font-normal leading-relaxed text-center  cursor-pointer  text-gray-900"
             data-value="card">
             <div class="z-20 text-inherit">Ввод</div>
             <div v-if="hiddenSelector === true" class="absolute inset-0 z-10 h-full bg-white rounded-md shadow" data-projection-id="4"></div>
@@ -27,23 +27,23 @@
 
           <form class="flex flex-col gap-4 mt-12" v-if="hiddenSelector === true">
             <div>
-              <p class="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+              <p class="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-gray-900">
                 Калорийность
               </p>
               <div class="relative h-10 w-full min-w-[200px]">
                 <input type="email" placeholder="123" v-model="calorie"
-                  class="peer h-full w-full rounded-[7px] border border-blue-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0" />
+                  class="peer h-full w-full rounded-[7px] border border-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-gray-700 outline outline-0" />
       
               </div>
             </div>
 
             <div>
-              <p class="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+              <p class="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-gray-900">
                 Описание
               </p>
               <div class="relative h-10 w-full min-w-[200px]">
                 <input type="email" placeholder="Яичница с сыром" v-model="name"
-                  class="peer h-full w-full rounded-[7px] border border-blue-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0" />
+                  class="peer h-full w-full rounded-[7px] border border-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-gray-700 outline outline-0" />
       
               </div>
             </div>
@@ -64,23 +64,23 @@
 
           <form class="flex flex-col gap-4 mt-12" v-if="hiddenSelector === false">
             <div>
-              <p class="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+              <p class="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-gray-900">
                 Ккал/100гр
               </p>
               <div class="relative h-10 w-full min-w-[200px]">
                 <input type="email" placeholder="350" v-model="sto" @input="chet()"
-                  class="peer h-full w-full rounded-[7px] border border-blue-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0" />
+                  class="peer h-full w-full rounded-[7px] border border-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-gray-700 outline outline-0" />
       
               </div>
             </div>
 
             <div>
-              <p class="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+              <p class="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-gray-900">
                 Нужно калорий
               </p>
               <div class="relative h-10 w-full min-w-[200px]">
                 <input type="email" placeholder="600" v-model="ccal" @input="chet()"
-                  class="peer h-full w-full rounded-[7px] border border-blue-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0" />
+                  class="peer h-full w-full rounded-[7px] border border-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-gray-700 outline outline-0" />
       
               </div>
             </div>

@@ -4,16 +4,16 @@
 <div class="w-full mb-3">
   <div class="flex items-center justify-between gap-4 mb-2">
     <h6
-      class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-blue-gray-900">
+      class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-gray-900">
       {{ userStore.estCalories }}
     </h6>
     <h6
-      class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-blue-gray-900">
+      class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-gray-900">
       <a v-if="userStore.actualCalories > 0">+</a>{{ userStore.actualCalories }} <a v-if="userStore.actualCalories > 0">({{ userStore.timeCalories
       }})</a>
     </h6>
     <h6
-      class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-blue-gray-900">
+      class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-gray-900">
       {{ userStore.axiosInfo.max - userStore.estCalories }}
     </h6>
   </div>
