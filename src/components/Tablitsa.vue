@@ -1,13 +1,6 @@
 <template>
-
-
-    
-
-    
-
-
-      <div
-  class="relative flex flex-col w-full h-full overflow-scroll text-gray-700 bg-white shadow-md rounded-xl bg-clip-border">
+ <div
+  class="relative flex flex-col  h-full overflow-scroll text-gray-700 bg-white shadow-md rounded-xl bg-clip-border mx-3">
   <table class="w-full text-left table-auto min-w-max">
     <thead>
       <tr>
@@ -80,11 +73,9 @@
     
     
     function deleteValue(index) {
-
       userStore.axiosInfo.info[0][1].splice(index, 1)
       userStore.axiosInfo.info[0][2].splice(index, 1)
       userStore.axiosInfo.info[0][3].splice(index, 1)
-      userStore.updateData()
     }
   
   

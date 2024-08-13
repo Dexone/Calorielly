@@ -1,6 +1,6 @@
 <template>
 
-<div class="relative flex w-full   flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md mb-3">
+<div class="relative flex   flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md mb-3 mx-3">
   <div class="p-6">
     <div class="block overflow-visible">
       <nav>
@@ -157,7 +157,7 @@ let itog = ref(0)
       userStore.axiosInfo.info[0][3].push(name.value)
       calorie.value = ""
       name.value = ""
-      userStore.updateData()
+      // userStore.updateData()
     }
   
     else {
