@@ -25,13 +25,13 @@
           data-value="card">
 
 
-          <form class="flex flex-col gap-4 mt-12" v-if="hiddenSelector === true">
+          <form class="flex flex-col gap-4 mt-6" v-if="hiddenSelector === true">
             <div>
               <p class="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-gray-900">
                 Калорийность
               </p>
               <div class="relative h-10 w-full min-w-[200px]">
-                <input type="email" placeholder="123" v-model="calorie"
+                <input placeholder="123" v-model="calorie"
                   class="peer h-full w-full rounded-[7px] border border-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-gray-700 outline outline-0" />
       
               </div>
@@ -42,7 +42,7 @@
                 Описание
               </p>
               <div class="relative h-10 w-full min-w-[200px]">
-                <input type="email" placeholder="Яичница с сыром" v-model="name"
+                <input  placeholder="Яичница с сыром" v-model="name"
                   class="peer h-full w-full rounded-[7px] border border-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-gray-700 outline outline-0" />
       
               </div>
@@ -62,13 +62,13 @@
 
 
 
-          <form class="flex flex-col gap-4 mt-12" v-if="hiddenSelector === false">
+          <form class="flex flex-col gap-4 mt-6" v-if="hiddenSelector === false">
             <div>
               <p class="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-gray-900">
                 Ккал/100гр
               </p>
               <div class="relative h-10 w-full min-w-[200px]">
-                <input type="email" placeholder="350" v-model="sto" @input="chet()"
+                <input placeholder="350" v-model="sto" @input="chet()"
                   class="peer h-full w-full rounded-[7px] border border-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-gray-700 outline outline-0" />
       
               </div>
@@ -79,7 +79,7 @@
                 Нужно калорий
               </p>
               <div class="relative h-10 w-full min-w-[200px]">
-                <input type="email" placeholder="600" v-model="ccal" @input="chet()"
+                <input placeholder="600" v-model="ccal" @input="chet()"
                   class="peer h-full w-full rounded-[7px] border border-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-gray-700 outline outline-0" />
       
               </div>
