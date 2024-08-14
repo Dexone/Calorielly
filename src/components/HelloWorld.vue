@@ -73,7 +73,12 @@ defineProps({
 })
 
 
-userStore.downFromServer()
+
+axios.get(`https://dexone.ru/backend_calorie/data/${userStore.axiosInfo.id}`).then((res) => {
+userStore.axiosInfo = res.data
+})
+
+
 let timerId = setInterval(() => userStore.updateData(), 300000);
 
 const estCalories = ref(0)
@@ -82,7 +87,7 @@ const timeCalories = ref(0)
 const lastUpdateTime = ref(0)
 function  updateData() {
             let dateToday = (new Date()).getDate() + "." + ((new Date()).getMonth() + 1) + "." + (new Date()).getFullYear()
-            if (userStore.axiosInfo.info[0][0] != dateToday) {
+            if (userStore.axiosInfo.info[0][0] != dateToday && userStore.axiosInfo.id != 1) {
                 userStore.axiosInfo.info.unshift([dateToday, [], [], []])
             } //создание нового дня, если в последнем массиве остался вчерашний день
 
@@ -99,8 +104,11 @@ function  updateData() {
 
             lastUpdateTime.value = (String(new Date())).slice(16).slice(0, 5)
         }
+
+
         watch(userStore, () => {
   updateData()
-  userStore.upToServer()
+axios.patch(`https://dexone.ru/backend_calorie/data/${userStore.axiosInfo.id}`, { max: userStore.axiosInfo.max, time: userStore.axiosInfo.time, info: userStore.axiosInfo.info })
+ console.log('загружено на сервер') 
 })
 </script>
