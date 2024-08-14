@@ -3,6 +3,7 @@
 import HelloWorld from './components/HelloWorld.vue'
 import AddValue from './components/AddValue.vue'
 import Tablitsa from './components/Tablitsa.vue'
+import Auth from './components/Auth.vue'
 import { useUser } from '../store/User';
 const userStore = useUser();
 
@@ -15,6 +16,7 @@ const userStore = useUser();
   <HelloWorld  />
   <AddValue  />
   <Tablitsa  />
+  <Auth  />
 
 </main>
 
