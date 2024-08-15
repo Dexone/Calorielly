@@ -223,9 +223,9 @@ function registration() {
         console.log(logins)
         if (logins.includes(regLogin.value) == false) { //если логин не найден в бд допускается регистрация
             axios.post(`https://dexone.ru/backend_calorie/users`, { id: lastId + 1, login: regLogin.value, password: regPassword.value }) //создание пользователя
-            axios.post(`https://dexone.ru/backend_calorie/data`, { id: lastId + 1, name: regLogin.value[0].toUpperCase() + regLogin.value.slice(1), max: "0", time: "0", info:  ["0",[],[],[]]}) //создание data
+            axios.post(`https://dexone.ru/backend_calorie/data`, { id: lastId + 1, name: regLogin.value[0].toUpperCase() + regLogin.value.slice(1), max: "0", timeStart: "0", timeEnd: "0", info:  ["0",[],[],[]]}) //создание data
 
-            userStore.axiosInfo = { id: lastId + 1, name: regLogin.value[0].toUpperCase() + regLogin.value.slice(1), max: "0", time: "0", info:  ["0",[],[],[]]} //обновляет стор
+            userStore.axiosInfo = { id: lastId + 1, name: regLogin.value[0].toUpperCase() + regLogin.value.slice(1), max: 0, timeStart: 0, timeEnd: 0, info:  ["0",[],[],[]]} //обновляет стор
         }
         else {
             alert("Такой пользователь существует")
