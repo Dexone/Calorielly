@@ -5,6 +5,7 @@ import AddValue from './components/AddValue.vue'
 import Tablitsa from './components/Tablitsa.vue'
 import Auth from './components/Auth.vue'
 import Settings from './components/Settings.vue'
+
 import { useUser } from '../store/User';
 const userStore = useUser();
 
@@ -51,6 +52,7 @@ watch(hiddenAuth, () => {
   <div :class="{ 'blur-md': blur }">
   <HelloWorld  />
   <AddValue  />
+
   <Tablitsa  />
 
   </div>
