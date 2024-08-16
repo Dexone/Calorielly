@@ -3,9 +3,9 @@
 
 
 
-
-
-
+<button @click="hiddenSettings = false">Настройки</button>
+<button @click="hiddenAuth = false">Аккаунт</button>
+{{ raznitsa.length - 1 }}
 
 
 
@@ -60,14 +60,15 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, inject } from 'vue'
 import { useUser } from '../../store/User';
 import axios from 'axios'
 const userStore = useUser();
 defineProps({
   msg: String,
 })
-
+const hiddenSettings = inject("hiddenSettings")
+const hiddenAuth = inject("hiddenAuth")
 
 
 axios.get(`https://dexone.ru/backend_calorie/data/${userStore.axiosInfo.id}`).then((res) => {
@@ -83,32 +84,24 @@ const estCalories = ref(0)
 const actualCalories = ref(0)
 const timeCalories = ref(0)
 const lastUpdateTime = ref(0)
+const raznitsa = ref([]) //разница в часах между началом дня и концом
 function updateData() {
   let dateToday = (new Date()).getDate() + "." + ((new Date()).getMonth() + 1) + "." + (new Date()).getFullYear()
   if (userStore.axiosInfo.info[0][0] != dateToday && userStore.axiosInfo.id != 1) {
     userStore.axiosInfo.info.unshift([dateToday, [], [], []])
-  } //создание нового дня, если в последнем массиве остался вчерашний день
+  } //создание нового дня, если в последнем массиве остался вчерашний день и пользователь не гость (id != 1)
 
 
-  // const sutki = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
-  // let raznitsa = 0
-  // let chet = userStore.axiosInfo.timeStart
-  //   for (let i = 0; i < 30; i++) {
-  //     raznitsa++
-
-  //     if (chet === 23 && chet != userStore.axiosInfo.timeEnd) {
-  //       chet = 0
-  //     }
-
-
-  //     if (chet === userStore.axiosInfo.timeEnd) {
-  //       break
-
-  //     }
-  //     chet++
-  //   } //расчет разницы в минутах между началом дня и концом
-  //   raznitsa = raznitsa
-  //   console.log(raznitsa)
+  raznitsa.value = []
+  for (let i = userStore.axiosInfo.timeStart; i < 50; i++) {
+    if (i === 24) {
+      i = 0
+    }
+    raznitsa.value.push(i)
+    if (i === userStore.axiosInfo.timeEnd) {
+      break
+    }
+  } //расчет разницы в минутах между началом дня и концом
 
 
   estCalories.value = 0
@@ -116,7 +109,7 @@ function updateData() {
     estCalories.value = estCalories.value + Number(userStore.axiosInfo.info[0][2][i])
   ] //сумма всех калорий из массива
 
-  actualCalories.value = (estCalories.value - (((Date.now() - (new Date).setHours(Number(userStore.axiosInfo.timeStart), 0, 0, 0)) / 1000 / 60) * (Number(userStore.axiosInfo.max) / 960))).toFixed() //актуальные калории = съедено калорий - ((время сейчас - время начала дня в минутах) * (максимально калорий / количество минут в дне)
+  actualCalories.value = (estCalories.value - (((Date.now() - (new Date).setHours(Number(userStore.axiosInfo.timeStart), 0, 0, 0)) / 1000 / 60) * (Number(userStore.axiosInfo.max) / ((raznitsa.value.length - 1) * 60)))).toFixed() //актуальные калории = съедено калорий - ((время сейчас - время начала дня в минутах) * (максимально калорий / количество минут в дне)
 
 
   timeCalories.value = String(new Date((Date.now()) + Number(((actualCalories.value / (Number(userStore.axiosInfo.max) / 960)) * 60 * 1000).toFixed()))).slice(15).slice(1, 6)//время, когда будет 0 калорий = (время сейчас + (актальные калории / кол-во калорий в минуту >> преобразованное в милисекунды))
