@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^11.0.0",
     "axios": "^1.7.3",
     "pinia": "^2.2.1",
     "pinia-plugin-persistedstate": "^3.2.1",

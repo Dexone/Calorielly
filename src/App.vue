@@ -5,6 +5,7 @@ import AddValue from './components/AddValue.vue'
 import Tablitsa from './components/Tablitsa.vue'
 import Auth from './components/Auth.vue'
 import Settings from './components/Settings.vue'
+import History from './components/History.vue'
 
 import { useUser } from '../store/User';
 const userStore = useUser();
@@ -53,8 +54,8 @@ watch(hiddenAuth, () => {
   <HelloWorld  />
   <AddValue  />
 
-  <Tablitsa  />
-
+  <!-- <Tablitsa  /> -->
+  <History  />
   </div>
   <Auth  />
   <Settings  />

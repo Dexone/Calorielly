@@ -151,6 +151,10 @@ let itog = ref(0)
   let calorie = ref("")
   let name = ref("")
   function addValue() {
+    if(userStore.axiosInfo.id === 1){
+    alert("Необходимо зарегистрироваться")
+  }
+  else{
     if ((calorie.value != "" && name.value != "")) {
       userStore.axiosInfo.info[0][1].push((String(new Date(Date.now()))).slice(15).slice(1, 6))
       userStore.axiosInfo.info[0][2].push(calorie.value)
@@ -159,10 +163,9 @@ let itog = ref(0)
       name.value = ""
       // userStore.updateData()
     }
-  
     else {
       alert('Ошибка')
-    }
+    }}
   }
   
   

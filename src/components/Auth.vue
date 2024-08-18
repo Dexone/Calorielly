@@ -305,6 +305,7 @@ function exit() {
 
 
 function deleteAccount() {
+
     axios.delete(`https://dexone.ru/backend_calorie/users/${userStore.axiosInfo.id}`) //удаление user
     axios.delete(`https://dexone.ru/backend_calorie/data/${userStore.axiosInfo.id}`) //удаление data
 
