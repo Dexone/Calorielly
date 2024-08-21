@@ -84,7 +84,7 @@
                     </div>
                     <h6
                         class="block font-sans text-base font-semibold leading-relaxed tracking-normal text-blue-gray-900 antialiased">
-                        {{ userStore.axiosInfo.info[daySelector][2][index] }} ккал <button class="text-xm text-gray-400"
+                        {{ userStore.axiosInfo.info[daySelector][2][index] }} ккал <button v-if="daySelector === 0" class="text-xm text-gray-400"
                             @click=deleteValue(index)>×</button>
                     </h6>
                 </div>

@@ -258,11 +258,6 @@ function registration() {
 
 }
 
-
-
-
-
-
 const enterLogin = ref("")
 const enterPassword = ref("")
 function enter() {
@@ -280,8 +275,6 @@ function enter() {
                 userStore.axiosInfo = res.data
                 console.log('вход по паролю')
             })
-
-
             // userStore.axiosInfo.id = res.data[search].id //задается id пользователя в сторе
         }
         else {
@@ -289,11 +282,6 @@ function enter() {
         }
     })
 }
-
-
-
-
-
 
 function exit() {
   axios.get(`https://dexone.ru/backend_calorie/data/1`).then((res) => {
