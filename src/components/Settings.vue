@@ -33,7 +33,23 @@
 
 
             <form class="flex flex-col gap-4">
-              <div>
+
+
+
+        
+
+    <div class="relative">
+
+        <input v-model="inputMax" class="block w-full py-2.5 ps-3 text-sm text-gray-900 hover:border-gray-200 border border-gray-200 rounded-lg" >
+        <button @click="editMax()" class="text-white absolute end-2.5 bottom-2 bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-1" type="button">Изменить</button>
+    </div>
+
+
+
+{{ inputMax }}
+
+
+<!-- <div>
                 <p class="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-gray-900">
                   Максимальное количество калорий
                 </p>
@@ -43,6 +59,13 @@
 
                 </div>
               </div>
+
+              <button @click="editMax()"
+                class="select-none rounded-lg bg-gray-900 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mt-2"
+                type="button">
+                Изменить
+              </button> -->
+
 
 
 
@@ -105,11 +128,7 @@
 
 
 
-              <button @click="editMax()"
-                class="select-none rounded-lg bg-gray-900 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mt-2"
-                type="button">
-                Изменить
-              </button>
+
 
             </form>
 
