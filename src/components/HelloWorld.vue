@@ -125,7 +125,6 @@ axios.get(`https://dexone.ru/backend_calorie/data/${userStore.axiosInfo.id}`).th
 })
 
 
-let timerId = setInterval(() => userStore.updateData(), 300000);
 
 
 
