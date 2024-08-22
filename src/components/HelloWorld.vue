@@ -85,15 +85,11 @@
 <div class="mx-2">
     <div class="flex items-center justify-between gap-4 mt-3">
       <h6 class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-gray-900">
-        <!-- {{userStore.axiosInfo.info[0][2].reduce((acc, num) => acc + Number(num), 0)}} -->
         {{ estCalories }} ккал
       </h6>
-      <!-- <h6 class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-gray-900">
-        <a v-if="actualCalories > 0">+</a>{{ actualCalories }} <a v-if="actualCalories > 0">({{ timeCalories
-          }})</a>
-      </h6> -->
+
       <h6 class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-gray-900">
-        {{ userStore.axiosInfo.max }} ({{ userStore.axiosInfo.timeEnd - 3 }}:00)
+        {{ userStore.axiosInfo.max }} ({{ poslPriem }}:00)
       </h6>
     </div>
     <div class="flex-start flex h-2.5 w-full overflow-hidden rounded-full bg-gray-300 font-sans text-xs font-medium mb-6">
@@ -104,27 +100,7 @@
   </div>
 </div>
 
-  <!-- <div class="mx-3 mt-1">
-    <div class="flex items-center justify-between gap-4 mb-3">
-      <h6 class="block  antialiased text-xs leading-relaxed tracking-normal text-gray-400">
-        <svg class="w-4 h-4 text-gray-400 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-          width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-            d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-        </svg>
-
-
-
-      </h6>
-
-      <h6 class="block  antialiased text-xs leading-relaxed tracking-normal text-gray-400">
-        обн. {{ lastUpdateTime }}
-      </h6>
-    </div>
-  </div> -->
-
-
-  <!-- <div>ПОСЛЕДНИЙ ПРИЕМ {{ Number(userStore.axiosInfo.timeStart) + 13 }}</div> -->
+  
 
 
 
@@ -157,12 +133,26 @@ const estCalories = ref(0)
 const actualCalories = ref(0)
 const timeCalories = ref(0)
 const lastUpdateTime = ref(0)
+const poslPriem = ref(0)
 const raznitsa = ref([]) //разница в часах между началом дня и концом
 function updateData() {
   let dateToday = (new Date()).getDate() + "." + ((new Date()).getMonth() + 1) + "." + (new Date()).getFullYear()
   if (userStore.axiosInfo.info[0][0] != dateToday && userStore.axiosInfo.id != 1) {
     userStore.axiosInfo.info.unshift([dateToday, [], [], []])
   } //создание нового дня, если в последнем массиве остался вчерашний день и пользователь не гость (id != 1)
+
+
+
+  let chet = userStore.axiosInfo.timeEnd
+  for (let i = 0; i < 3; i++) {
+    if (chet === 0) {
+      chet = 24
+    }
+    chet--
+  } //8 часов назад от начала дня
+  console.log(chet)
+  poslPriem.value = chet
+
 
 
   raznitsa.value = []
