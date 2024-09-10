@@ -30,7 +30,7 @@
                     Ккал/100гр
                   </p>
                   <div class="relative h-10 w-full min-w-[200px]">
-                    <input placeholder="350" v-model="stoCCAL" @input="chetCCAL(), calorie = itogCCAL"
+                    <input placeholder="350" v-model="stoCCAL" @input="chetCCAL(), calorie = itogCCAL, ", type="number"
                       class="peer h-full w-full rounded-[7px] border border-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-gray-700 outline outline-0" />
           
                   </div>
@@ -41,7 +41,7 @@
                     Кол-во грамм
                   </p>
                   <div class="relative h-10 w-full min-w-[200px]">
-                    <input placeholder="600" v-model="grammCCAL" @input="chetCCAL(), calorie = itogCCAL"
+                    <input placeholder="600" v-model="grammCCAL" @input="chetCCAL(), calorie = itogCCAL", type="number"
                       class="peer h-full w-full rounded-[7px] border border-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-gray-700 outline outline-0" />
           
                   </div>
@@ -69,7 +69,7 @@
                     Ккал/100гр
                   </p>
                   <div class="relative h-10 w-full min-w-[200px]">
-                    <input placeholder="350" v-model="stoGR" @input="chetGR()"
+                    <input placeholder="350" v-model="stoGR" @input="chetGR()" type="number"
                       class="peer h-full w-full rounded-[7px] border border-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-gray-700 outline outline-0" />
           
                   </div>
@@ -80,7 +80,7 @@
                     Нужно калорий
                   </p>
                   <div class="relative h-10 w-full min-w-[200px]">
-                    <input placeholder="600" v-model="ccalGR" @input="chetGR(), calorie = ccalGR"
+                    <input placeholder="600" v-model="ccalGR" @input="chetGR(), calorie = ccalGR", type="number"
                       class="peer h-full w-full rounded-[7px] border border-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-gray-700 outline outline-0" />
           
                   </div>
