@@ -16,7 +16,7 @@
                 Калорийность
               </p>
               <div class="relative h-10 w-full min-w-[200px]">
-                <input placeholder="123" v-model="calorie"
+                <input placeholder="123" v-model="calorie" type="number"
                   class="peer h-full w-full rounded-[7px] border border-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-gray-700 outline outline-0" />
       
               </div>
