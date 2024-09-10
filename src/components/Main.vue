@@ -56,20 +56,13 @@
   class="relative flex flex-col rounded-xl  from-gray-900 to-gray-800 text-gray-900  w-full max-w-[20rem] mb-3 mx-auto">
 
     <h1 class="flex justify-center gap-1 mt-6 font-sans antialiased font-normal tracking-normal text-gray-900 text-7xl">
-      <span v-if="actualCalories > 0" class="mt-3 text-4xl">+</span>{{ actualCalories }} 
+      {{ estCalories }} 
       <span class="mt-1 text-4xl">ccal</span>
     </h1>
   </div>
 
 
-  <div
-  class="relative flex flex-col rounded-xl  from-gray-900 to-gray-800 text-gray-900  w-full max-w-[20rem] mx-auto">
-    <a class="flex justify-center gap-1 font-sans antialiased font-normal tracking-normal text-gray-900 ">
-    Перекус: <a class="text-red-500" v-if="actualCalories < 0">{{ timeCalories
-          }}</a>  <a class v-else >{{ timeCalories
-          }}</a>
-    </a>
-  </div>
+
 
   <div
   class="relative flex flex-col rounded-xl  from-gray-900 to-gray-800 text-gray-900  w-full max-w-[20rem] mx-auto">
@@ -85,11 +78,11 @@
 <div class="mx-2">
     <div class="flex items-center justify-between gap-4 mt-3">
       <h6 class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-gray-900">
-        {{ estCalories }} ккал
+        0 ккал
       </h6>
 
       <h6 class="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-gray-900">
-        {{ userStore.axiosInfo.max }} ({{ poslPriem }}:00)
+        {{ userStore.axiosInfo.max }} ккал
       </h6>
     </div>
     <div class="flex-start flex h-2.5 w-full overflow-hidden rounded-full bg-gray-300 font-sans text-xs font-medium mb-6">
@@ -129,11 +122,9 @@ axios.get(`https://dexone.ru/backend_calorie/data/${userStore.axiosInfo.id}`).th
 
 
 const estCalories = ref(0)
-const actualCalories = ref(0)
-const timeCalories = ref(0)
+
 const lastUpdateTime = ref(0)
-const poslPriem = ref(0)
-const raznitsa = ref([]) //разница в часах между началом дня и концом
+
 function updateData() {
   let dateToday = (new Date()).getDate() + "." + ((new Date()).getMonth() + 1) + "." + (new Date()).getFullYear()
   if (userStore.axiosInfo.info[0][0] != dateToday && userStore.axiosInfo.id != 1) {
@@ -142,28 +133,10 @@ function updateData() {
 
 
 
-  let chet = userStore.axiosInfo.timeEnd
-  for (let i = 0; i < 3; i++) {
-    if (chet === 0) {
-      chet = 24
-    }
-    chet--
-  } //8 часов назад от начала дня
-  console.log(chet)
-  poslPriem.value = chet
 
 
 
-  raznitsa.value = []
-  for (let i = userStore.axiosInfo.timeStart; i < 50; i++) {
-    if (i === 24) {
-      i = 0
-    }
-    raznitsa.value.push(i)
-    if (i === userStore.axiosInfo.timeEnd) {
-      break
-    }
-  } //расчет разницы в минутах между началом дня и концом
+
 
 
   estCalories.value = 0
@@ -171,11 +144,8 @@ function updateData() {
     estCalories.value = estCalories.value + Number(userStore.axiosInfo.info[0][2][i])
   ] //сумма всех калорий из массива
 
-  actualCalories.value = (estCalories.value - (((Date.now() - (new Date).setHours(Number(userStore.axiosInfo.timeStart), 0, 0, 0)) / 1000 / 60) * (Number(userStore.axiosInfo.max) / ((raznitsa.value.length - 1) * 60)))).toFixed() //актуальные калории = съедено калорий - ((время сейчас - время начала дня в минутах) * (максимально калорий / количество минут в дне)
 
 
-  timeCalories.value = String(new Date((Date.now()) + Number(((actualCalories.value / (Number(userStore.axiosInfo.max) / 960)) * 60 * 1000).toFixed()))).slice(15).slice(1, 6)//время, когда будет 0 калорий = (время сейчас + (актальные калории / кол-во калорий в минуту >> преобразованное в милисекунды))
-  console.log('отработала аптейтдата')
 
   lastUpdateTime.value = (String(new Date())).slice(16).slice(0, 5)
 }
@@ -183,7 +153,7 @@ function updateData() {
 
 watch(userStore, () => {
   updateData()
-  axios.patch(`https://dexone.ru/backend_calorie/data/${userStore.axiosInfo.id}`, { max: userStore.axiosInfo.max, timeStart: userStore.axiosInfo.timeStart, timeEnd: userStore.axiosInfo.timeEnd, info: userStore.axiosInfo.info })
+  axios.patch(`https://dexone.ru/backend_calorie/data/${userStore.axiosInfo.id}`, { max: userStore.axiosInfo.max, info: userStore.axiosInfo.info })
   console.log('загружено на сервер')
 })
 </script>

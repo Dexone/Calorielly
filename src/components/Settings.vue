@@ -47,62 +47,6 @@
 
 
 
-              <div>
-                <p class="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-gray-900">
-                  Начало дня
-                </p>
-                <div class="relative h-10 w-full min-w-[200px]">
-                  <select placeholder="123" v-model="selectTimeStart"
-                    class="peer h-full w-full rounded-[7px] border border-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-gray-700 outline outline-0">
-
-                    <option v-for="day in sutki">{{ day }}</option>
-                  </select>
-                </div>
-              </div>
-
-
-
-
-
-              <div>
-                <div class="flex items-start  text-sm font-medium text-gray-900   ">
-                  <div class="flex  h-5">
-                    8-часовой сон
-                  </div>
-                  <a class="ms-auto text-gray-400 text-xs">
-
-                    <label class="inline-flex items-center cursor-pointer mr-1">
-                      <input type="checkbox" value="" class="sr-only peer" v-model="hour8">
-                      <div
-                        class="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-gray-300  rounded-full peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all  peer-checked:bg-gray-600">
-                      </div>
-                    </label>
-                  </a>
-                </div>
-              </div>
-
-
-
-
-
-              <div>
-                <p class="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-gray-900">
-                  Конец дня
-                </p>
-                <div class="relative h-10 w-full min-w-[200px]">
-                  <select :disabled="hour8" :value="selectTimeEnd" v-model="selectTimeEnd"
-                    class="peer h-full w-full rounded-[7px] border border-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-gray-700 outline outline-0">
-
-                    <option v-for="day in sutki" :selected=userStore.axiosInfo.timeEnd>{{ day }}</option>
-                  </select>
-
-                </div>
-              </div>
-
-
-
-
-
 
 
 
@@ -138,40 +82,8 @@ const userStore = useUser();
 defineProps({
   msg: String,
 })
-
 const hiddenSettings = inject("hiddenSettings")
 const inputMax = ref(userStore.axiosInfo.max)
-const selectTimeStart = ref(userStore.axiosInfo.timeStart)
-const selectTimeEnd = ref(userStore.axiosInfo.timeEnd)
-
-
-
-
-
-
-
-
-
-
-const hour8 = ref(true)
-const state = useStorage('vue-use-local-storage', hour8)
-watch([selectTimeStart, hour8], () => {
-if(hour8.value === true){
-  let chet = selectTimeStart.value
-  for (let i = 0; i < 8; i++) {
-    if (chet === 0) {
-      chet = 24
-    }
-    chet--
-  } //8 часов назад от начала дня
-  console.log(chet)
-  selectTimeEnd.value = chet}
-})
-
-
-const sutki = ref([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23])
-
-
 function editMax() {
   if(userStore.axiosInfo.id === 1){
     alert("Необходимо зарегистрироваться")
@@ -182,20 +94,7 @@ function editMax() {
 
 
 
-watch(selectTimeStart, () => {
-  if(userStore.axiosInfo.id === 1){
-    alert("Необходимо зарегистрироваться")
-  }
-  else{
-  userStore.axiosInfo.timeStart = Number(selectTimeStart.value)}
-})
-watch(selectTimeEnd, () => {
-  if(userStore.axiosInfo.id === 1){
-    alert("Необходимо зарегистрироваться")
-  }
-  else{
-  userStore.axiosInfo.timeEnd = Number(selectTimeEnd.value)}
-})
+
 
 
 </script>
