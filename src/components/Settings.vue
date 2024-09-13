@@ -46,7 +46,21 @@
 
 
 
-
+    <div>
+                <p class="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-gray-900">
+                  Количество приемов пищи
+                </p>
+                <div class="relative h-10 w-full min-w-[200px]">
+                  <select v-model="inputPriems" @change="editPriems()"
+                    class="peer h-full w-full rounded-[7px] border border-gray-200  px-3 py-2.5 font-sans text-sm font-normal text-gray-700 outline outline-0">
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                  </select>
+                </div>
+              </div>
 
 
 
@@ -92,6 +106,15 @@ function editMax() {
   userStore.axiosInfo.max = Number(inputMax.value)}
 }
 
+const inputPriems = ref(userStore.axiosInfo.priems)
+function editPriems() {
+  if(userStore.axiosInfo.id === 1){
+    alert("Необходимо зарегистрироваться")
+  }
+  else{
+  userStore.axiosInfo.priems = Number(inputPriems.value)
+}
+}
 
 
 
