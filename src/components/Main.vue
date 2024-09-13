@@ -149,7 +149,7 @@ function updateData() {
     raspred.value.unshift(estCalories.value / (userStore.axiosInfo.priems - ostPriems.value))
   }
   for (let i = 0; i < ostPriems.value; i++) { //пуш оставшихся приемов в массив
-    raspred.value.push(itogccal)
+    raspred.value.push(itogccal.toFixed())
   }
   //////////////////////
 }
