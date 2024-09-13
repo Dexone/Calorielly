@@ -161,32 +161,38 @@
 
   <div class="p-6" v-if="userStore.axiosInfo.id != 1">
     <div class="block overflow-visible">
-      <nav>
+      <!-- <nav>
         Аккаунт
-      </nav>
+      </nav> -->
       <div class="relative block w-full overflow-hidden !overflow-x-hidden !overflow-y-visible bg-transparent">
         <div role="tabpanel"
           class="w-full p-0 font-sans text-base antialiased font-light leading-relaxed text-gray-700 h-max"
           data-value="card">
 
 
-          <form class="flex flex-col gap-4 mt-6" >
+          <form class="flex flex-col gap-4" >
+
+
+            <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full mx-auto">
+    <span class="font-medium text-gray-600">{{ userStore.axiosInfo.name[0]}}</span>
+</div>
+
+
             <div>
-              <p class="block w-full mb-2 font-sans text-sm antialiased font-medium leading-normal text-gray-900 text-center">
+              <p class="block w-full font-sans text-sm antialiased font-medium leading-normal text-gray-900 text-center">
                 {{ userStore.axiosInfo.name}}
               </p>
-
             </div>
 
             <div>
               <p class="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-gray-900 text-center">
-                ID: {{ userStore.axiosInfo.id }}
+                Номер аккаунта: {{ userStore.axiosInfo.id }}
               </p>
 
             </div>
             
             <div>
-              <p class="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-gray-900" @click="deleteAccount()">
+              <p class="block mb-2 font-sans text-sm antialiased font-medium leading-normal text-gray-900 text-center" @click="deleteAccount()">
                 Удалить аккаунт
               </p>
 
