@@ -98,9 +98,12 @@ defineProps({
 })
 const hiddenSettings = inject("hiddenSettings")
 const inputMax = ref(userStore.axiosInfo.max)
+
+const hiddenAuth = inject("hiddenAuth")
 function editMax() {
   if(userStore.axiosInfo.id === 1){
-    alert("Необходимо зарегистрироваться")
+    hiddenSettings.value = true
+    hiddenAuth.value = false
   }
   else{
   userStore.axiosInfo.max = Number(inputMax.value)}
@@ -109,7 +112,9 @@ function editMax() {
 const inputPriems = ref(userStore.axiosInfo.priems)
 function editPriems() {
   if(userStore.axiosInfo.id === 1){
-    alert("Необходимо зарегистрироваться")
+    hiddenSettings.value = true
+    hiddenAuth.value = false
+
   }
   else{
   userStore.axiosInfo.priems = Number(inputPriems.value)

@@ -84,13 +84,13 @@
 
 
 
-
-
+  const hiddenAuth = inject("hiddenAuth")
+  
   const calorie = inject("calorie")
   let name = ref("")
   function addValue() {
     if(userStore.axiosInfo.id === 1){
-    alert("Необходимо зарегистрироваться")
+    hiddenAuth.value = false
   }
   else{
     if ((calorie.value != "" && name.value != "")) {

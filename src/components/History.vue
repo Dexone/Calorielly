@@ -117,7 +117,7 @@ const daySelector = ref(0)
 
 function deleteValue(index) {
     if (userStore.axiosInfo.id === 1) {
-        alert("Необходимо зарегистрироваться")
+        hiddenAuth.value = false
     }
     else {
         userStore.axiosInfo.info[daySelector.value][1].splice(index, 1)
