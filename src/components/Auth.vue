@@ -8,7 +8,7 @@
 
       <div class="flex items-center justify-between p-3 p-4 border-b rounded-t">
                     <h4 class="ml-2 text-center align-middle font-sans text-sm font-bold ">
-                        Аккаунт1
+                        Аккаунт
                     </h4>
                     <button @click="hiddenAuth = true"
                         class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center ">
