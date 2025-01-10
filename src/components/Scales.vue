@@ -1,25 +1,21 @@
 <template>
 
-    <div v-if="hiddenStore.add" class="mainBlockAdd">
+    <div v-if="hiddenStore.scales" class="mainBlockScales">
 
-<div class="x" @click="hiddenStore.add = !hiddenStore.add"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
+<div class="x" @click="hiddenStore.scales = !hiddenStore.scales"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
 </svg>
 </div>
 
 
 <div class="login" >
-    <div class="nameLogin">Добавить прием пищи</div>
-    <div> <input v-model="ccalValue" placeholder="Калорийность"></div>
-    <div><input v-model="ccalName" placeholder="Описание"></div>
-    <div> <button @click="loginStore.addCcal(ccalValue, ccalName)" class="buttonGo">Добавить</button></div>
+    <div class="nameLogin">Калькулятор граммов</div>
+    <div> <input v-model="stoGR" @input="chetGR()" placeholder="Ккал/100гр"></div>
+    <div><input v-model="ccalGR" @input="chetGR()" placeholder="Нужно калорий"></div>
+    <div> <button  class="buttonGo">{{ itogGR }} грамм</button></div>
 </div>
 
-<div class="login" >
-    <div class="nameLogin">Обновить вес</div>
-    <div> <input v-model="weightValue" placeholder="Вес кг"></div>
-    <div> <button @click="loginStore.addWeight(weightValue)" class="buttonGo">Обновить</button></div>
-</div>
+
 
 </div>
 </template>
@@ -35,10 +31,12 @@ import { useLogin } from '../store/Login';
 const loginStore = useLogin();
 
 
-const ccalValue = ref('')
-const ccalName = ref('')
-
-const weightValue = ref('')
+let stoGR = ref("")
+let ccalGR = ref("")
+let itogGR = ref(0)
+function chetGR() {
+  itogGR.value = Math.round(ccalGR.value / (stoGR.value / 100))
+}
 
 
 
@@ -63,7 +61,7 @@ const regOrLogin = ref('register')
 
 <style scoped>
 
-.mainBlockAdd {
+.mainBlockScales {
     background-color: white;
     border-radius: 5px;
     max-width: 400px;
@@ -113,8 +111,8 @@ margin-top: 20px;
 height: 40px;
 border-radius: 7px;
 border: none;
-background-color: #007aff;
-color: white;
+background-color: #f3f2f8;
+color: #74408b;
 font-size: 15px;
 font-weight: 500;
 }

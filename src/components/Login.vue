@@ -1,5 +1,5 @@
 <template>
-    <div v-if="hiddenStore.login" class="mainBlock">
+    <div v-if="hiddenStore.login" class="mainBlockLogin">
 
         <div class="x" @click="hiddenStore.login = !hiddenStore.login">X</div>
 
@@ -69,16 +69,15 @@ const regOrLogin = ref('register')
 
 
 <style scoped>
-.mainBlock {
+.mainBlockLogin {
     background-color: white;
     border-radius: 5px;
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-
     position: fixed; /* фиксированное положение */
-    top: 20;
+    top: 0;
     right: 0;
     left: 0;
     z-index: 1050;

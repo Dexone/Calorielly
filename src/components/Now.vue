@@ -1,5 +1,5 @@
 <template>
-  <div class="block">
+  <div class="blockNow">
     <a class="now">Калорий сегодня</a>
     <a class="update">обновлено 10 минут назад</a>
     <div class="ccal">{{ loginStore.getSumCcalToday }} <svg
@@ -33,7 +33,7 @@ defineProps({
 
 
 <style scoped>
-.block {
+.blockNow {
   background-color: white;
   border-radius: 8px;
   width: 100%;

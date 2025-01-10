@@ -7,12 +7,39 @@ export const useLogin = defineStore('loginStore', {
 
 
     getters: {
-        getSumCcalToday: (state) => {
+        getSumCcalToday: (state) => { //сумма калорий за сегодня
             if (state.eatingList !== 'loading') {
                 return state.eatingList[0][2].reduce(function (accumulator, item) {
                     accumulator = accumulator + Number(item)
                     return accumulator
                 }, 0)
+            }
+        },
+
+        getStoreWeights: (state) => { //массив из всех весов
+            if (state.weightList !== 'loading') {
+
+  return state.weightList.reduce(function (accumulator, item) {
+                    accumulator.push(Number(item[2]))
+                    return accumulator
+                }, [])
+
+
+                itog.push(state.weightList.reduce(function (accumulator, item) {
+                    accumulator.push(item[0])
+                    return accumulator
+                }, []))
+                return itog
+            }
+        },
+
+        getStoreDates: (state) => { //массив из всех дат из весов
+            if (state.weightList !== 'loading') {
+                return state.weightList.reduce(function (accumulator, item) {
+                    accumulator.push(item[0])
+                    return accumulator
+                }, [])
+        
             }
         }
     },

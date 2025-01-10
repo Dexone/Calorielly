@@ -9,6 +9,10 @@ import Login from './components/Login.vue'
 import Now from './components/Now.vue'
 import Add from './components/Add.vue'
 import Target from './components/Target.vue'
+import Footer from './components/Footer.vue'
+import Scales from './components/Scales.vue'
+import TimeLine from './components/TimeLine.vue'
+import LineChart from './components/LineChart.vue'
 import { ref, watch } from 'vue';
 
 loginStore.getInfo()
@@ -23,7 +27,7 @@ watch(hiddenStore, () => {
 
 
 function blurEdit() {
-  if (hiddenStore.login === true || hiddenStore.add === true) {
+  if (hiddenStore.login === true || hiddenStore.add === true || hiddenStore.scales === true) {
     blur.value = true
   }
   else {
@@ -34,63 +38,73 @@ function blurEdit() {
 
 <template>
 
-<div class="main">
-    
+  <div class="main">
 
 
-</div>
-
-
-
-
-<div class="all" :class="{ active: blur }">
-
-    <div class="leftbar">
-    <LeftBar />
-</div>
-
-
-
-      <div class="main">
-          <Name />
-            <Now />
-            <Target />
-
-    </div>
 
   </div>
 
+
+
+
+  <div class="all" :class="{ active: blur }">
+
+    <div class="leftbar">
+      <LeftBar />
+    </div>
+
+
+
+    <div class="main">
+      <Name />
+      <Now />
+      <Target />
+      <LineChart/>
+      <TimeLine />
+
+      <Footer class="footer" />
+    </div>
+
+  </div>
+  <Scales />
   <Login />
   <Add />
 </template>
 
 <style scoped>
-
-
-.active{
-    filter: blur(12px);
+.active {
+  filter: blur(12px);
 }
 
 
-.all{
+.all {
 
-display: flex;
-max-width: 900px;
-margin-left: auto;
-margin-right: auto;
-position: relative;
-width: 100%;
+  display: flex;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  width: 100%;
 }
 
-.main{
-width: 100%;
+.main {
+  width: 100%;
 }
 
 
-@media(max-width: 1000px){
-    /* mobile: width < 1000px */
-    .leftbar{
-        display: none;
-} 
+@media(max-width: 1000px) {
+
+  /* mobile: width < 1000px */
+  .leftbar {
+    display: none;
+  }
+}
+
+@media(min-width: 1000px) {
+
+  /* mobile: width < 1000px */
+  .footer {
+    display: none;
+  }
 }
 </style>
