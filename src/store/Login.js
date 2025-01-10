@@ -92,37 +92,49 @@ export const useLogin = defineStore('loginStore', {
                 this.desiredWeight = res.data.desiredWeight
                 this.eatingList = res.data.eatingList
                 this.weightList = res.data.weightList
-                this.newDay()
             })
         },
 
 
-        newDay() { //создание нового дня, если в последнем массиве остался вчерашний день и пользователь не гость 
-            let dateToday = (new Date()).getDate() + "." + ((new Date()).getMonth() + 1) + "." + (new Date()).getFullYear()
-            if (this.eatingList[0][0] !== dateToday && this.weightList[0][0] !== dateToday && this.id !== 1) {
-                axios.get(`https://dexone.ru/backend_new/data/${this.id}`).then((res) => {
-                    let eatingList = res.data.eatingList
-                    let weightList = res.data.weightList
-                    eatingList.unshift([dateToday, [], [], []])
-                    weightList.unshift([dateToday, [], []])
-                    axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { eatingList: eatingList, weightList: weightList })
-                        .then(response => {
-                            this.getInfo()
-                        })
-                })
-            }
-        },
-
         addCcal(ccalValue, ccalName) {
             axios.get(`https://dexone.ru/backend_new/data/${this.id}`).then((res) => {
-
                 let eatingList = res.data.eatingList
-                console.log(eatingList)
+
+                let dateToday = (new Date()).getDate() + "." + ((new Date()).getMonth() + 1) + "." + (new Date()).getFullYear() //создание нового дня если последний вчерашний
+                if (this.eatingList[0][0] !== dateToday && this.id !== 1) {
+                        eatingList.unshift([dateToday, [], [], []])
+                }
+
+
                 eatingList[0][1].push((String(new Date(Date.now()))).slice(15).slice(1, 6))
                 eatingList[0][2].push(ccalValue)
                 eatingList[0][3].push(ccalName)
 
                 axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { eatingList: eatingList })
+                    .then(response => {
+                        this.getInfo()
+                    })
+            })
+        },
+
+
+       async addWeight(weightValue) {
+
+
+            axios.get(`https://dexone.ru/backend_new/data/${this.id}`).then((res) => {
+                let weightList = res.data.weightList
+
+
+                let dateToday = (new Date()).getDate() + "." + ((new Date()).getMonth() + 1) + "." + (new Date()).getFullYear() //создание нового дня если последний вчерашний
+                if (this.weightList[0][0] !== dateToday && this.id !== 1) {
+                        weightList.unshift([dateToday, [], []])
+                }
+
+
+                weightList[0][1].push((String(new Date(Date.now()))).slice(15).slice(1, 6))
+                weightList[0][2].push(weightValue)
+
+                axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { weightList: weightList })
                     .then(response => {
                         this.getInfo()
                     })

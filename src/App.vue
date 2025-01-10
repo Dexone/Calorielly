@@ -8,6 +8,7 @@ import LeftBar from './components/LeftBar.vue'
 import Login from './components/Login.vue'
 import Now from './components/Now.vue'
 import Add from './components/Add.vue'
+import Target from './components/Target.vue'
 import { ref, watch } from 'vue';
 
 loginStore.getInfo()
@@ -53,6 +54,7 @@ function blurEdit() {
       <div class="main">
           <Name />
             <Now />
+            <Target />
 
     </div>
 

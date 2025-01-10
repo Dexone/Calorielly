@@ -16,7 +16,12 @@
 <script setup>
 import { useLogin } from '../store/Login';
 const loginStore = useLogin();
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+
+
+watch(loginStore.eatingList, () => {
+  console.log('test')
+})
 
 defineProps({
   msg: String,
@@ -35,7 +40,8 @@ defineProps({
   margin-top: 10px;
   padding-top: 10px;
   padding-bottom: 15px;
-  box-shadow: 0px 4px 5px 0px #dedee0
+  box-shadow: 0px 4px 5px 0px #dedee0;
+  margin-bottom: 20px;
 }
 
 .now {
