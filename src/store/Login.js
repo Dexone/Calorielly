@@ -76,6 +76,7 @@ export const useLogin = defineStore('loginStore', {
 
 
         deleteAccount() {
+
             axios.delete(`https://dexone.ru/backend_new/users/${this.id}`) //удаление user
             axios.delete(`https://dexone.ru/backend_new/data/${this.id}`) //удаление data
             this.id = 1 //задается id пользователя в сторе
@@ -97,30 +98,35 @@ export const useLogin = defineStore('loginStore', {
 
 
         addCcal(ccalValue, ccalName) {
-            axios.get(`https://dexone.ru/backend_new/data/${this.id}`).then((res) => {
-                let eatingList = res.data.eatingList
-
-                let dateToday = (new Date()).getDate() + "." + ((new Date()).getMonth() + 1) + "." + (new Date()).getFullYear() //создание нового дня если последний вчерашний
-                if (this.eatingList[0][0] !== dateToday && this.id !== 1) {
-                        eatingList.unshift([dateToday, [], [], []])
-                }
-
-
-                eatingList[0][1].push((String(new Date(Date.now()))).slice(15).slice(1, 6))
-                eatingList[0][2].push(ccalValue)
-                eatingList[0][3].push(ccalName)
-
-                axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { eatingList: eatingList })
-                    .then(response => {
-                        this.getInfo()
-                    })
-            })
+            if(this.id !== 1){
+                axios.get(`https://dexone.ru/backend_new/data/${this.id}`).then((res) => {
+                    let eatingList = res.data.eatingList
+    
+                    let dateToday = (new Date()).getDate() + "." + ((new Date()).getMonth() + 1) + "." + (new Date()).getFullYear() //создание нового дня если последний вчерашний
+                    if (this.eatingList[0][0] !== dateToday && this.id !== 1) {
+                            eatingList.unshift([dateToday, [], [], []])
+                    }
+    
+    
+                    eatingList[0][1].push((String(new Date(Date.now()))).slice(15).slice(1, 6))
+                    eatingList[0][2].push(ccalValue)
+                    eatingList[0][3].push(ccalName)
+    
+                    axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { eatingList: eatingList })
+                        .then(response => {
+                            this.getInfo()
+                        })
+                })
+            }
+            else{
+                alert('Вам необходимо создать аккаунт')
+            }
+         
         },
 
 
        async addWeight(weightValue) {
-
-
+        if(this.id !== 1){
             axios.get(`https://dexone.ru/backend_new/data/${this.id}`).then((res) => {
                 let weightList = res.data.weightList
 
@@ -139,21 +145,39 @@ export const useLogin = defineStore('loginStore', {
                         this.getInfo()
                     })
             })
+        }
+        else{
+            alert('Вам необходимо создать аккаунт')
+        }
+
+        
         },
 
         editDesiredWeight(value){
-            axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { desiredWeight: Number(value) })
-            .then(response => {
-                this.getInfo()
-            })
+            if(this.id !== 1){
+                axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { desiredWeight: Number(value) })
+                .then(response => {
+                    this.getInfo()
+                })
+            }
+            else{
+                alert('Вам необходимо создать аккаунт')
+            }
+          
         },
 
 
         editLimitCcal(value){
-            axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { limitCcal: Number(value) })
-            .then(response => {
-                this.getInfo()
-            })
+            if(this.id !== 1){
+                axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { limitCcal: Number(value) })
+                .then(response => {
+                    this.getInfo()
+                })
+            }
+            else{
+                alert('Вам необходимо создать аккаунт')
+            }
+         
         },
 
     },
