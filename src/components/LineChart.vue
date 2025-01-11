@@ -1,15 +1,14 @@
 <template>
 
-            <div class="mainBlockLineChart">
 
-                <LineChart class="lineChart" :chartData="lineData" :options="options" />
-            </div>
 
-{{ loginStore.weightList }}
 
-{{ loginStore.getStoreWeights }}
+    <div class="mainBlockLineChart">
 
-<button @click="console.log(loginStore.getStoreWeights)">11</button>
+        <LineChart class="lineChart" :chartData="lineData" :options="options" />
+    </div>
+
+
 
 </template>
 <script setup>
@@ -29,12 +28,48 @@ defineProps({
 
 const page = ref([true, false, false])
 
-const info = ref([1, 2 ,3]) //значения в графике
-const date = ref([3, 4, 5]) //даты в графике
+const info = ref([]) //значения в графике
+const date = ref([]) //даты в графике
 const total = ref('загрузка...') //среднее значение
-const label = ref('загрузка...') //название графика
 
 const selectedRange = ref(false)
+
+
+
+
+
+function updateData() {
+
+    if (loginStore.weightList !== 'loading') {
+        info.value = loginStore.weightList.reduce(function (accumulator, item) {
+            accumulator.unshift(Number(item[2]))
+            return accumulator
+        }, [])
+
+
+
+        date.value = loginStore.weightList.reduce(function (accumulator, item) {
+            accumulator.unshift(item[0])
+            return accumulator
+        }, [])
+        if(info.value[0] === 0){
+            info.value.splice(0,1)
+            date.value.splice(0, 1)
+        }
+
+        total.value = 'Текущий вес: ' + info.value[info.value.length -1] + ' кг'
+
+    }
+}
+
+
+watch(loginStore, () => {
+    updateData()
+})
+
+
+
+
 
 
 
@@ -71,7 +106,7 @@ const options = reactive({
             align: 'end',
             display: true,
             text: total,
-            color: 'rgb(199, 206, 223)',
+            color: 'rgb(199, 220, 223)',
             font: {
                 size: 16,
                 weight: 'bold',
@@ -87,10 +122,8 @@ const lineData = computed(() => ({
     boxWidth: 0,
     datasets: [
         {
-            // data: info.value,
-            data: loginStore.getStoreWeights,
-            label: loginStore.getStoreDates,
-
+            data: info.value,
+            label: 'Вес, кг',
             borderColor: 'rgb(255, 255, 255)', //цвет линии
             borderWidth: 2, // толщина линии
             backgroundColor: 'rgba(255, 255, 255)', //точки
@@ -104,17 +137,19 @@ console.log(loginStore.getStoreWeights)
 
 <style scope>
 
-.mainBlockLineChart{
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
+
+
+
+
+.mainBlockLineChart {
+
     background-color: #007aff;
     height: 120px;
     border-radius: 15px;
-    padding: 20px;
+    padding: 10px 20px 20px 20px;
 }
 
-.lineChart{
+.lineChart {
     height: 120px;
 }
 </style>

@@ -13,6 +13,7 @@ import Footer from './components/Footer.vue'
 import Scales from './components/Scales.vue'
 import TimeLine from './components/TimeLine.vue'
 import LineChart from './components/LineChart.vue'
+import Settings from './components/Settings.vue'
 import { ref, watch } from 'vue';
 
 loginStore.getInfo()
@@ -27,7 +28,7 @@ watch(hiddenStore, () => {
 
 
 function blurEdit() {
-  if (hiddenStore.login === true || hiddenStore.add === true || hiddenStore.scales === true) {
+  if (hiddenStore.login === true || hiddenStore.add === true || hiddenStore.scales === true || hiddenStore.settings === true) {
     blur.value = true
   }
   else {
@@ -69,6 +70,7 @@ function blurEdit() {
   <Scales />
   <Login />
   <Add />
+  <Settings />
 </template>
 
 <style scoped>

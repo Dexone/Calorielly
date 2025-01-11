@@ -15,33 +15,6 @@ export const useLogin = defineStore('loginStore', {
                 }, 0)
             }
         },
-
-        getStoreWeights: (state) => { //массив из всех весов
-            if (state.weightList !== 'loading') {
-
-  return state.weightList.reduce(function (accumulator, item) {
-                    accumulator.push(Number(item[2]))
-                    return accumulator
-                }, [])
-
-
-                itog.push(state.weightList.reduce(function (accumulator, item) {
-                    accumulator.push(item[0])
-                    return accumulator
-                }, []))
-                return itog
-            }
-        },
-
-        getStoreDates: (state) => { //массив из всех дат из весов
-            if (state.weightList !== 'loading') {
-                return state.weightList.reduce(function (accumulator, item) {
-                    accumulator.push(item[0])
-                    return accumulator
-                }, [])
-        
-            }
-        }
     },
 
 
@@ -166,7 +139,22 @@ export const useLogin = defineStore('loginStore', {
                         this.getInfo()
                     })
             })
-        }
+        },
+
+        editDesiredWeight(value){
+            axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { desiredWeight: Number(value) })
+            .then(response => {
+                this.getInfo()
+            })
+        },
+
+
+        editLimitCcal(value){
+            axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { limitCcal: Number(value) })
+            .then(response => {
+                this.getInfo()
+            })
+        },
 
     },
     persist: {

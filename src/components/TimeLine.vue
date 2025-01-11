@@ -82,7 +82,6 @@ defineProps({
     width: 100%;
     margin-top: 10px;
     padding-top: 30px;
-    padding-bottom: 100px;
     box-shadow: 0px 4px 5px 0px #dedee0;
 }
 
@@ -104,7 +103,7 @@ defineProps({
 }
 
 .circle {
-    background-color: #8d44ad;
+    background-color: #1e9a82;
     width: 45px;
     height: 45px;
     border-radius: 100%;

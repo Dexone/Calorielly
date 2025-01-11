@@ -1,24 +1,24 @@
 <template>
 
-    <div v-if="hiddenStore.add" class="mainBlockAdd">
+    <div v-if="hiddenStore.settings" class="mainBlockSettings">
 
-<div class="x" @click="hiddenStore.add = !hiddenStore.add"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
+<div class="close" @click="hiddenStore.settings = !hiddenStore.settings"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
 </svg>
 </div>
 
 
+
 <div class="login" >
-    <div class="nameLogin">Добавить прием пищи</div>
-    <div> <input v-model="ccalValue" placeholder="Калорийность"></div>
-    <div><input v-model="ccalName" placeholder="Описание"></div>
-    <div> <button @click="loginStore.addCcal(ccalValue, ccalName)" class="buttonGo">Добавить</button></div>
+    <div class="nameLogin">Желаемый вес</div>
+    <div> <input v-model="weight" placeholder="Вес кг"></div>
+    <div> <button @click="loginStore.editDesiredWeight(weight)" class="buttonGo">Изменить</button></div>
 </div>
 
 <div class="login" >
-    <div class="nameLogin">Обновить вес</div>
-    <div> <input v-model="weightValue" placeholder="Вес кг"></div>
-    <div> <button @click="loginStore.addWeight(weightValue)" class="buttonGo">Обновить</button></div>
+    <div class="nameLogin">Лимит калорий</div>
+    <div> <input v-model="ccal" placeholder="Ккал"></div>
+    <div> <button @click="loginStore.editLimitCcal(ccal)" class="buttonGo">Изменить</button></div>
 </div>
 
 </div>
@@ -35,10 +35,8 @@ import { useLogin } from '../store/Login';
 const loginStore = useLogin();
 
 
-const ccalValue = ref('')
-const ccalName = ref('')
-
-const weightValue = ref('')
+const weight = ref('')
+const ccal = ref('')
 
 
 
@@ -63,7 +61,7 @@ const regOrLogin = ref('register')
 
 <style scoped>
 
-.mainBlockAdd {
+.mainBlockSettings {
     background-color: white;
     border-radius: 5px;
     max-width: 400px;
@@ -75,16 +73,14 @@ const regOrLogin = ref('register')
     right: 0;
     left: 0;
     z-index: 1050;
-
 }
-.x{
+.close{
     float: right;
     margin: 10px;
     color: #666666;
 }
 .nameLogin {
     margin-bottom: 10px;
-    
 }
 
 .login {
