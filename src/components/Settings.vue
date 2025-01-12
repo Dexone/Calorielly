@@ -12,13 +12,13 @@
 <div class="login" >
     <div class="nameLogin">Желаемый вес</div>
     <div> <input v-model="weight" type="number" placeholder="Вес кг"></div>
-    <div> <button @click="loginStore.editDesiredWeight(weight)" class="buttonGo">Изменить</button></div>
+    <div> <button @click="loginStore.editDesiredWeight(weight), weight = ''" class="buttonGo">Изменить</button></div>
 </div>
 
 <div class="login" >
     <div class="nameLogin">Лимит калорий</div>
     <div> <input v-model="ccal" type="number" placeholder="Ккал"></div>
-    <div> <button @click="loginStore.editLimitCcal(ccal)" class="buttonGo">Изменить</button></div>
+    <div> <button @click="loginStore.editLimitCcal(ccal), ccal = ''" class="buttonGo">Изменить</button></div>
 </div>
 
 </div>

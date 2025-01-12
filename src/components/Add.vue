@@ -12,13 +12,13 @@
     <div class="nameLogin">Добавить прием пищи</div>
     <div> <input v-model="ccalValue" type="number" placeholder="Калорийность"></div>
     <div><input v-model="ccalName" placeholder="Описание"></div>
-    <div> <button @click="loginStore.addCcal(ccalValue, ccalName)" class="buttonGo">Добавить</button></div>
+    <div> <button @click="loginStore.addCcal(ccalValue, ccalName), ccalValue = '', ccalName = ''" class="buttonGo">Добавить</button></div>
 </div>
 
 <div class="login" >
     <div class="nameLogin">Обновить вес</div>
     <div> <input v-model="weightValue" type="number" placeholder="Вес кг"></div>
-    <div> <button @click="loginStore.addWeight(weightValue)" class="buttonGo">Обновить</button></div>
+    <div> <button @click="loginStore.addWeight(weightValue), weightValue = ''" class="buttonGo">Обновить</button></div>
 </div>
 
 </div>
