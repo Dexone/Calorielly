@@ -1,7 +1,8 @@
 <template>
   <div class="blockNow">
     <a class="now">Калорий сегодня</a>
-    <a class="update">обновлено 10 минут назад</a>
+    <a class="update" v-if="backTime > 0">обновлено {{ backTime }} минут назад</a>
+    <a class="update" v-else>обновлено только что</a>
     <div class="ccal">{{ loginStore.getSumCcalToday }} ккал<svg
         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"
@@ -9,6 +10,7 @@
       </svg>
     </div>
   </div>
+
 </template>
 
 
@@ -17,6 +19,21 @@
 import { useLogin } from '../store/Login';
 const loginStore = useLogin();
 import { ref, watch } from 'vue'
+
+
+
+
+const backTime = ref(0)
+const upTime = ref(0)
+setInterval(() => updateTime(), 60000); //обновлено ... мин назад
+function updateTime() {
+    backTime.value = ((Date.now() - upTime.value) / 1000 / 60).toFixed()
+}
+watch(loginStore, () => { 
+    upTime.value = Date.now()
+    updateTime()
+
+})
 
 
 watch(loginStore.eatingList, () => {
