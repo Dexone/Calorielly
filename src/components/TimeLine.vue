@@ -1,4 +1,5 @@
 <template>
+    <a class="title">Лента событий</a>
     <div class="mainBlockTimeLine">
 
 
@@ -34,6 +35,7 @@
 <script setup>
 import { useLogin } from '../store/Login';
 const loginStore = useLogin();
+
 import { ref, watch } from 'vue'
 
 
@@ -60,7 +62,9 @@ defineProps({
     padding-top: 30px;
     box-shadow: 0px 4px 5px 0px #dedee0;
 }
-
+.title{
+    font-weight: 600;
+}
 
 .blockTimeLine {
     height: 100px;

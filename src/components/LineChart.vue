@@ -139,14 +139,12 @@ console.log(loginStore.getStoreWeights)
 
 
 
-
-
 .mainBlockLineChart {
-
     background-color: #007aff;
     height: 120px;
     border-radius: 15px;
     padding: 10px 20px 20px 20px;
+    margin-bottom: 20px;
 }
 
 .lineChart {
