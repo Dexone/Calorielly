@@ -28,6 +28,8 @@
         <div class="nameLogin">Аккаунт</div>
             <div class="txt">Номер аккаунта: {{ loginStore.id }}</div>
             <div class="txt">Имя: {{ loginStore.login }}</div>
+            <div class="txt">Лимит калорий: {{ loginStore.limitCcal }}</div>
+            <div class="txt">Желаемый вес {{ loginStore.desiredWeight }}</div>
             <div><button @click="loginStore.exit()" class="buttonGo">Выход</button></div>
             <div class="regLogin">Хотите прекратить использование? <a class="buttonDeleteAcc" @click="loginStore.deleteAccount()">Удалить аккаунт</a></div>
         </div>
