@@ -15,6 +15,7 @@
         </div>
 
         <div class="register" v-if="regOrLogin === 'register'">
+            <div class="nameLogin">Регистрация</div>
             <div> <input v-model="regLogin" placeholder="Логин"></div>
             <div><input v-model="regPassword" placeholder="Пароль"></div>
             <div><button @click="loginStore.registration(regLogin, regPassword)" class="buttonGo">Создать аккаунт</button></div>
@@ -23,8 +24,14 @@
     </div>
 
     <div v-if="loginStore.id > 1">
-        <button @click="loginStore.exit()">Выход</button>
-        <button @click="loginStore.deleteAccount()">Удалить аккаунт</button>
+
+<div class="account">
+        <div class="nameLogin">Аккаунт</div>
+            <div class="txt">Номер аккаунта: {{ loginStore.id }}</div>
+            <div class="txt">Имя: {{ loginStore.login }}</div>
+            <div><button @click="loginStore.exit()" class="buttonGo">Выход</button></div>
+            <div class="regLogin">Хотите прекратить использование? <a class="buttonDeleteAcc" @click="loginStore.deleteAccount()">Удалить аккаунт</a></div>
+        </div>
     </div>
 
     </div>
@@ -105,6 +112,11 @@ const regOrLogin = ref('register')
 .register {
     margin: 30px
 }
+.account{
+    margin: 30px
+}
+
+
 input{
 width: 100%;
 margin-top: 20px;
@@ -149,5 +161,20 @@ transition: 0.3s
     color: #439eff;
     cursor: pointer;
     transition: 0.3s
+}
+
+
+.buttonDeleteAcc{
+color: #df0000;
+transition: 0.3s
+}
+.buttonDeleteAcc:hover{
+    color: #ca5858;
+    cursor: pointer;
+    transition: 0.3s
+}
+
+.txt{
+    margin-top: 10px;
 }
 </style>
