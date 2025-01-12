@@ -180,6 +180,30 @@ export const useLogin = defineStore('loginStore', {
          
         },
 
+        deleteCcalValue(index) {
+
+            if(this.id !== 1){
+                axios.get(`https://dexone.ru/backend_new/data/${this.id}`).then((res) => {
+                    let eatingList = res.data.eatingList
+    
+    
+                    eatingList[0][1].splice(index, 1)
+                    eatingList[0][2].splice(index, 1)
+                    eatingList[0][3].splice(index, 1)
+    
+                    axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { eatingList: eatingList })
+                        .then(response => {
+                            this.getInfo()
+                        })
+                })
+            }
+            else{
+                alert('Вам необходимо создать аккаунт')
+            }
+
+
+        }
+
     },
     persist: {
         pick: ['id'], //в localstorage только id

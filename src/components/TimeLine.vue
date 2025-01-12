@@ -2,10 +2,12 @@
     <a class="title">Лента событий</a>
     <div class="mainBlockTimeLine">
 
+<div class="daySelector"><a @click="() => {    if(loginStore.eatingList.length > daySelector+1) { daySelector++ }}" class="selectorArrow"><</a>
+    <a class="selectorTxt">{{ loginStore.eatingList[daySelector][0] }}</a>
+    <a @click="() => {    if(daySelector > 0) { daySelector-- }}" class="selectorArrow">></a>
+</div>
+        <div class="blockTimeLine" v-for="hist, index in loginStore.eatingList[daySelector][1]">
 
-
-
-        <div class="blockTimeLine" v-for="hist, index in loginStore.eatingList[0][1]">
             <div class="line">
                 <div class="circle">
                     <svg class="img1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -17,13 +19,14 @@
             </div>
 
             <div class="txt">
-                <div class="txt1">{{ loginStore.eatingList[0][3][index] }}</div>
+                <div class="txt1">{{ loginStore.eatingList[daySelector][3][loginStore.eatingList[daySelector][3].length - 1 - index] }}</div>
                 <div class="txt2">
-                    {{ loginStore.eatingList[0][1][index] }}
+                    {{ loginStore.eatingList[daySelector][1][loginStore.eatingList[daySelector][1].length - 1 - index] }}
                 </div>
 
             </div>
-            <a class="update">{{ loginStore.eatingList[0][2][index] }} ккал</a>
+            <div class="update"><div >{{ loginStore.eatingList[daySelector][2][loginStore.eatingList[daySelector][2].length - 1 - index] }} ккал</div>
+            <div class="txt3" @click="loginStore.deleteCcalValue(loginStore.eatingList[daySelector][2].length - 1 - index)">Удалить</div></div>
 
         </div>
     </div>
@@ -38,7 +41,7 @@ const loginStore = useLogin();
 
 import { ref, watch } from 'vue'
 
-
+const daySelector = ref(0)
 
 watch(loginStore.eatingList, () => {
     console.log('test')
@@ -59,10 +62,33 @@ defineProps({
     border-radius: 8px;
     width: 100%;
     margin-top: 10px;
-    padding-top: 30px;
+    padding-top: 20px;
     box-shadow: 0px 4px 5px 0px #dedee0;
 }
-.title{
+.daySelector{
+    text-align: right;
+    height: 20px;
+    color: #8a898e;
+    font-size: 12px;
+    font-weight: 400;
+    margin-right: 15px;
+    margin-bottom: 2px;
+}
+
+
+.selectorArrow{
+    font-size: 14px;
+    padding-right: 3px;
+    padding-left: 3px;
+    transition: 0.3s
+}
+.selectorArrow:hover{
+    color: #a9a8ac;
+    cursor: pointer;
+    transition: 0.3s
+}
+
+.title {
     font-weight: 600;
 }
 
@@ -123,6 +149,18 @@ defineProps({
     font-size: 17px;
     font-weight: 600;
     float: right;
-    margin-top: 12px;
+}
+.txt3 {
+    color: #8a898e;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 4px;
+    float: right;
+    transition: 0.3s
+}
+.txt3:hover{
+    color: #a9a8ac;
+    cursor: pointer;
+    transition: 0.3s
 }
 </style>
