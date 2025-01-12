@@ -126,9 +126,9 @@ border-width: 1px;
 border-color: #c7c7c7;
 background-color: #f9fafb;
 display: block;
+padding-left: 7px;
 }
 ::placeholder{
-    padding-left: 7px;
     font-size: 14px;
 }
 .buttonGo{

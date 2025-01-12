@@ -77,13 +77,13 @@ export const useLogin = defineStore('loginStore', {
 
 
         deleteAccount() {
-
-            axios.delete(`https://dexone.ru/backend_new/users/${this.id}`) //удаление user
-            axios.delete(`https://dexone.ru/backend_new/data/${this.id}`) //удаление data
+            if(this.id !== 2){ //чтобы свой акк случайно не удалить)0))
+            axios.delete(`https://dexone.ru/backend_new/users/${this.id}`)
+            axios.delete(`https://dexone.ru/backend_new/data/${this.id}`)
             this.id = 1 //задается id пользователя в сторе
             this.getInfo()
+        }
         },
-
 
         async getInfo() {
             axios.get(`https://dexone.ru/backend_new/users/${this.id}`).then((res) => {
