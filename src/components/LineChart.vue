@@ -42,7 +42,7 @@ function updateData() {
 
     if (loginStore.weightList !== 'loading') {
         info.value = loginStore.weightList.reduce(function (accumulator, item) {
-            accumulator.unshift(Number(item[2]))
+            accumulator.unshift(Number(item[1]))
             return accumulator
         }, [])
 
@@ -57,7 +57,7 @@ function updateData() {
             date.value.splice(0, 1)
         }
 
-        total.value = 'Текущий вес: ' + info.value[info.value.length -1] + ' кг'
+        total.value = 'Текущий вес: ' + Number(info.value[info.value.length -1]) + ' кг'
 
     }
 }

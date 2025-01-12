@@ -31,7 +31,7 @@ export const useLogin = defineStore('loginStore', {
 
                 if (logins.includes(log) == false) { //если логин не найден в бд допускается регистрация
                     axios.post(`https://dexone.ru/backend_new/users`, { id: lastId + 1, login: log, password: pass }) //создание пользователя
-                    axios.post('https://dexone.ru/backend_new/data', { id: lastId + 1, limitCcal: 0, desiredWeight: 0, eatingList: [["0", [], [], []]], weightList: [["0", [], []]] })
+                    axios.post('https://dexone.ru/backend_new/data', { id: lastId + 1, limitCcal: 0, desiredWeight: 0, eatingList: [["0", [], [], []]], weightList: [["0", 0]] })
                         .then(response => {
                             this.getInfo()
                         })
@@ -134,12 +134,11 @@ export const useLogin = defineStore('loginStore', {
 
                 let dateToday = (new Date()).getDate() + "." + ((new Date()).getMonth() + 1) + "." + (new Date()).getFullYear() //создание нового дня если последний вчерашний
                 if (this.weightList[0][0] !== dateToday && this.id !== 1) {
-                        weightList.unshift([dateToday, [], []])
+                        weightList.unshift([dateToday, 0])
                 }
 
 
-                weightList[0][1].push((String(new Date(Date.now()))).slice(15).slice(1, 6))
-                weightList[0][2].push(weightValue)
+                weightList[0][1] = Number(weightValue)
 
                 axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { weightList: weightList })
                     .then(response => {
