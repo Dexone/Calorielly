@@ -35,13 +35,23 @@
             </svg>
 
             <a class="text1">Вес</a>
-            <a class="text2">осталось {{ loginStore.desiredWeight - loginStore.weightList[0][2][0] }} кг</a>
+            <a v-if="loginStore.weightList[0][2][0] - loginStore.desiredWeight >=0">
+                         <a class="text2">осталось {{loginStore.weightList[0][2][0] - loginStore.desiredWeight  }} кг</a> 
 
+            <div class="line">
+                <div class="lineBlue"
+                    :style="{ width:  loginStore.desiredWeight / loginStore.weightList[0][2][0] * 100 + '%' }"></div>
+            </div>
+        </a>
+        <a v-else>
+            <a class="text2">осталось {{ loginStore.desiredWeight - loginStore.weightList[0][2][0] }} кг</a>
 
             <div class="line">
                 <div class="lineBlue"
                     :style="{ width: loginStore.weightList[0][2][0] / loginStore.desiredWeight * 100 + '%' }"></div>
             </div>
+        </a>
+
 
         </div>
 
