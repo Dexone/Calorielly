@@ -78,6 +78,13 @@ defineProps({
 .imageMain {
     color: #007aff;
     float: right;
+    transition: 0.3s
+}
+.imageMain:hover{
+    color: #439eff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s
 }
 
 .blockTarget {

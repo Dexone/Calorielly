@@ -70,5 +70,13 @@ svg {
   color: #007aff;
   margin-top: 3px;
   margin-right: 11px;
+  transition: 0.3s
+}
+
+svg:hover{
+    color: #439eff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s
 }
 </style>

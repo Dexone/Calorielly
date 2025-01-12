@@ -79,6 +79,11 @@ const regOrLogin = ref('register')
     margin: 10px;
     color: #666666;
 }
+.close:hover{
+    color: #9b9b9b;
+    cursor: pointer;
+    transition: 0.3s
+}
 .nameLogin {
     margin-bottom: 10px;
 }
@@ -115,6 +120,13 @@ background-color: #007aff;
 color: white;
 font-size: 15px;
 font-weight: 500;
+transition: 0.3s
+}
+
+.buttonGo:hover{
+    background-color: #439eff;
+    cursor: pointer;
+    transition: 0.3s
 }
 
 

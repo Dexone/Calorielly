@@ -1,7 +1,9 @@
 <template>
     <div v-if="hiddenStore.login" class="mainBlockLogin">
 
-        <div class="x" @click="hiddenStore.login = !hiddenStore.login">X</div>
+        <div class="x" @click="hiddenStore.login = !hiddenStore.login"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
+</svg></div>
 
         <div v-if="loginStore.id === 1">
         <div class="login" v-if="regOrLogin === 'enter'">
@@ -87,6 +89,11 @@ const regOrLogin = ref('register')
     float: right;
     margin: 10px;
 }
+.x:hover{
+    color: #9b9b9b;
+    cursor: pointer;
+    transition: 0.3s
+}
 .nameLogin {
     margin-bottom: 10px;
 }
@@ -124,6 +131,11 @@ color: white;
 font-size: 15px;
 font-weight: 500;
 }
+.buttonGo:hover{
+    background-color: #439eff;
+    cursor: pointer;
+    transition: 0.3s
+}
 
 .regLogin{
     margin-top: 15px;
@@ -131,5 +143,11 @@ font-weight: 500;
 }
 .buttonRegLogin{
 color: #007aff;
+transition: 0.3s
+}
+.buttonRegLogin:hover{
+    color: #439eff;
+    cursor: pointer;
+    transition: 0.3s
 }
 </style>

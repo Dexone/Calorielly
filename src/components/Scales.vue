@@ -79,6 +79,11 @@ const regOrLogin = ref('register')
     margin: 10px;
     color: #666666;
 }
+.x:hover{
+    color: #9b9b9b;
+    cursor: pointer;
+    transition: 0.3s
+}
 .nameLogin {
     margin-bottom: 10px;
 }

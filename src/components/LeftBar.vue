@@ -77,8 +77,16 @@ defineProps({
 
 .section {
     padding-left: 10px;
-    padding-bottom: 10px;
-    padding-top: 10px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    transition: 0.3s
+}
+
+.section:hover{
+    background-color: rgb(224, 223, 229);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s
 }
 
 svg {
