@@ -8,7 +8,7 @@
         <div class="login" v-if="regOrLogin === 'enter'">
             <div class="nameLogin">Вход</div>
             <div> <input v-model="enterLogin" placeholder="Логин"></div>
-            <div><input v-model="enterPassword" placeholder="Пароль"></div>
+            <div><input v-model="enterPassword" type="password" placeholder="Пароль"></div>
             <div> <button @click="loginStore.enter(enterLogin, enterPassword)" class="buttonGo">Войти</button></div>
             <div class="regLogin">Не зарегистрированы? <a class="buttonRegLogin" @click="regOrLogin = 'register'">Создать аккаунт</a></div>
         </div>
@@ -16,7 +16,7 @@
         <div class="register" v-if="regOrLogin === 'register'">
             <div class="nameLogin">Регистрация</div>
             <div> <input v-model="regLogin" placeholder="Логин"></div>
-            <div><input v-model="regPassword" placeholder="Пароль"></div>
+            <div><input v-model="regPassword" type="password" placeholder="Пароль"></div>
             <div><button @click="loginStore.registration(regLogin, regPassword)" class="buttonGo">Создать аккаунт</button></div>
             <div class="regLogin">Уже есть аккаунт? <a class="buttonRegLogin" @click="regOrLogin = 'enter'">Войти</a></div>
         </div>
