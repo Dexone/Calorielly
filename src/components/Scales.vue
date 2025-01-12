@@ -12,7 +12,7 @@
     <div class="nameLogin">Калькулятор граммов</div>
     <div> <input v-model="stoGR" @input="chetGR()" placeholder="Ккал/100гр"></div>
     <div><input v-model="ccalGR" @input="chetGR()" placeholder="Нужно калорий"></div>
-    <div> <button  class="buttonGo">{{ itogGR }} грамм</button></div>
+    <div> <button  class="buttonGo" disabled>{{ itogGR }} грамм</button></div>
 </div>
 
 
