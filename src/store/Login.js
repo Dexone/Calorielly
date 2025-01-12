@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import axios from 'axios';
 import { ref, watch } from 'vue'
 
+
 export const useLogin = defineStore('loginStore', {
     state: () => ({ id: 1, login: "guest", limitCcal: 'loading', desiredWeight: 'loading', eatingList: 'loading', weightList: 'loading' }),
 
@@ -30,7 +31,7 @@ export const useLogin = defineStore('loginStore', {
 
                 if (logins.includes(log) == false) { //если логин не найден в бд допускается регистрация
                     axios.post(`https://dexone.ru/backend_new/users`, { id: lastId + 1, login: log, password: pass }) //создание пользователя
-                    axios.post('https://dexone.ru/backend_new/data', { id: lastId + 1, limitCcal: 3000, desiredWeight: 80, eatingList: [["0", [], [], []]], weightList: [["0", [], []]] })
+                    axios.post('https://dexone.ru/backend_new/data', { id: lastId + 1, limitCcal: 0, desiredWeight: 0, eatingList: [["0", [], [], []]], weightList: [["0", [], []]] })
                         .then(response => {
                             this.getInfo()
                         })

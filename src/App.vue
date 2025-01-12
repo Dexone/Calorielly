@@ -14,6 +14,7 @@ import Scales from './components/Scales.vue'
 import TimeLine from './components/TimeLine.vue'
 import LineChart from './components/LineChart.vue'
 import Settings from './components/Settings.vue'
+import RegistrationSteps from './components/RegistrationSteps.vue'
 import { ref, watch } from 'vue';
 
 loginStore.getInfo()
@@ -26,9 +27,20 @@ watch(hiddenStore, () => {
   blurEdit()
 })
 
+watch(loginStore, () => {
+  if(loginStore.limitCcal === 0 || loginStore.desiredWeight === 0 || loginStore.weightList.length === 1){
+    hiddenStore.login = false
+    hiddenStore.registrationSteps = true
+    blur.value = true
+  }
+  else{
+    hiddenStore.registrationSteps = false
+    blur.value = false
+  }
+})
 
 function blurEdit() {
-  if (hiddenStore.login === true || hiddenStore.add === true || hiddenStore.scales === true || hiddenStore.settings === true) {
+  if (hiddenStore.login === true || hiddenStore.add === true || hiddenStore.scales === true || hiddenStore.settings === true || hiddenStore.registrationSteps === true) {
     blur.value = true
   }
   else {
@@ -71,6 +83,7 @@ function blurEdit() {
   <Login />
   <Add />
   <Settings />
+  <RegistrationSteps />
 </template>
 
 <style scoped>

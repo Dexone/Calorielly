@@ -3,7 +3,7 @@ import axios from 'axios';
 import { ref, watch } from 'vue'
 
 export const useComponents = defineStore('hiddenStore', {
-    state: () => ({ login: false, add: false, scales: false, settings: false }),
+    state: () => ({ login: false, add: false, scales: false, settings: false, registrationSteps: false }),
     actions: {
         showLogin() {
             this.login = !this.login
