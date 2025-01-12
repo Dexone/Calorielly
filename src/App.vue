@@ -35,7 +35,6 @@ watch(loginStore, () => {
   }
   else{
     hiddenStore.registrationSteps = false
-    blur.value = false
   }
 })
 
