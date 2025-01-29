@@ -8,19 +8,9 @@
 <p align="center">Счетчик калорий, дневник питания</p>
 
 
-
-<h3 align="center">Технологический стэк</h3>
-<div align="center">
-
-### ![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Pinia](https://img.shields.io/badge/Pinia-0d121b?style=for-the-badge) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)  ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)  ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)  ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)  ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Axios](https://img.shields.io/badge/AXIOS-0d121b?style=for-the-badge) ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
-</div>
-
-
-
-
 <p align="center">
   <a href="https://calorielly.ru" alt="demo" >
-  Приложение
+  Веб-приложение
   </a>
   |
   <a href="https://github.com/Dexone/Calorielly/releases" alt="releases" >
@@ -32,16 +22,6 @@
   </a>
 </p>
 
-
-
-
-
-## ✨ Особенности
-
-- Взаимодействие с управляемой БД на Linux Server
-- Использование библиотеки управления состояниями Pinia
-- Резиновая верстка
-- Построение графиков на Chart.js
 
 
 ## 🚀 Возможности
