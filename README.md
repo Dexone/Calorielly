@@ -13,7 +13,7 @@
 
 
 
- <p align="center">
+ <a align="center">
 <a href="https://calorielly.ru/">
   <img height="300"  src="./mockups/iphone.png"/>
   </a> 
@@ -21,7 +21,7 @@
    <a  href="https://calorielly.ru">
   <img height="300"  src="./mockups/mac.png"/>
   </a> 
-</p> 
+</a> 
 
 <p align="center">
   <i>Веб-приложение <a href="https://calorielly.ru">calorielly.ru</a> </i>
