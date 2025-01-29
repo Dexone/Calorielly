@@ -15,8 +15,6 @@
   <i>Веб-приложение <a href="https://calorielly.ru">calorielly.ru</a> </i>
 </p>
 
-<h1 align="center">Calorielly</h1>
-
  <p align="center">
 <a href="https://calorielly.ru/">
   <img height="300"  src="./mockups/iphone.png"/>
@@ -27,7 +25,7 @@
   </a> 
 </p> 
 
-
+<h1 align="center">Calorielly</h1>
 <p align="center">Счетчик калорий, дневник питания.</p>
 
 <p align="center">
