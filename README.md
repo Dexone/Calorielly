@@ -31,11 +31,11 @@
 
  <p align="center">
 <a href="https://dexone.github.io/mweather/">
-  <img height="400"  src="./mockups/iphone.png"/>
+  <img height="300"  src="./mockups/iphone.png"/>
   </a> 
 
    <a  href="https://dexone.github.io/mweather/">
-  <img height="400"  src="./mockups/mac.png"/>
+  <img height="300"  src="./mockups/mac.png"/>
   </a> 
 </p>
 
