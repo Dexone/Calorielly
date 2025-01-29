@@ -5,7 +5,7 @@
 
 
 <h1 align="center">Calorielly</h1>
-<p align="center">Демонстрационный образец дилерского центра</p>
+<p align="center">Счетчик калорий, дневник питания</p>
 
 
 
