@@ -23,18 +23,12 @@
 </p>
 
 
-
  <p align="center">
-  <img src="./mockups/iphone.png">
-    <img src="./mockups/mac.png">
-</p>
-
- <p align="center">
-<a href="https://dexone.github.io/mweather/">
+<a href="https://calorielly.ru/">
   <img height="300"  src="./mockups/iphone.png"/>
   </a> 
 
-   <a  href="https://dexone.github.io/mweather/">
+   <a  href="https://calorielly.ru">
   <img height="300"  src="./mockups/mac.png"/>
   </a> 
 </p>
