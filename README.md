@@ -4,9 +4,13 @@
 
 
 
-<p align="center">
+<!-- <p align="center">
   <img alt="" src="./public/logo.png">
-</p>
+</p> -->
+
+ <p href="https://calorielly.ru/" align="center">
+  <img height="300"  src="./mockups/iphone.png">
+</p> 
 
 <p align="center">
   <i>Веб-приложение <a href="https://calorielly.ru">calorielly.ru</a> </i>
@@ -59,7 +63,7 @@
 
 <a href="https://t.me/mrtynnvv"><img src="https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white" /></a>
 
-## 📸 Скриншоты
+<!-- ## 📸 Скриншоты
 
  <p align="center">
 <a href="https://calorielly.ru/">
@@ -69,9 +73,10 @@
    <a  href="https://calorielly.ru">
   <img height="300"  src="./mockups/mac.png"/>
   </a> 
-</p>
-<!-- ## 📝 Licence
+</p> -->
+
+ ## 📝 Licence
 
 Copyright © 2025 [Dima Martynov](https://github.com/dexone).<br />
 Этот проект находится под лицензией [MIT](https://github.com/Dexone/Calorielly/blob/main/LICENSE).<br />
-_Использованные изображения принадлежат [icons8](https://icons8.ru/)._ -->
+_Использованные изображения принадлежат [icons8](https://icons8.ru/)._ 
