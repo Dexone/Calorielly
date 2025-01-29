@@ -14,13 +14,12 @@
 
 
  <p align="center">
-<a href="https://calorielly.ru/">
-  <img height="300"  src="./mockups/iphone.png"/>
-  </a> 
 
-   <a  href="https://calorielly.ru">
+  <img height="300"  src="./mockups/iphone.png"/>
+
+
   <img height="300"  src="./mockups/mac.png"/>
-  </a> 
+
 </p> 
 
 <p align="center">
