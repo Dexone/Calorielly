@@ -4,7 +4,7 @@
 </p>
 
 
-<h1 align="center">Nuxt-Dealership</h1>
+<h1 align="center">Calorielly</h1>
 <p align="center">Демонстрационный образец дилерского центра</p>
 
 
@@ -19,8 +19,8 @@
 
 
 <p align="center">
-  <a href="http://79.174.95.150" alt="demo" >
-    Демо
+  <a href="https://calorielly.ru" alt="demo" >
+  Приложение
   </a>
   |
   <a href="https://github.com/Dexone/Nuxt-Dealership/releases" alt="releases" >
