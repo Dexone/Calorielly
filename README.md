@@ -9,7 +9,7 @@
 </p> -->
 
  <p href="https://calorielly.ru/" align="center">
-  <img height="300"  src="./mockups/iphone.png">
+  <img height="200"  src="./mockups/iphone.png">
 </p> 
 
 <p align="center">
