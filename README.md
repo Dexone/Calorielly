@@ -29,15 +29,15 @@
     <img src="./mockups/mac.png">
 </p>
 
-
-<a  href="https://dexone.github.io/mweather/">
-  <img height="170"  src="./mockups/iphone.png"/>
+ <p align="center">
+<a href="https://dexone.github.io/mweather/">
+  <img height="400"  src="./mockups/iphone.png"/>
   </a> 
 
    <a  href="https://dexone.github.io/mweather/">
-  <img height="170"  src="./mockups/mac.png"/>
+  <img height="400"  src="./mockups/mac.png"/>
   </a> 
-
+</p>
 
 ## Описание
 
