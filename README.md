@@ -97,14 +97,12 @@
 
 ## 👤 Об авторе
 
-Не стесняйтесь обращаться ко мне::
+Не стесняйтесь обращаться ко мне:
 
-- <a href="https://t.me/mrtynnvv"><img src="https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white" /></a>
+<a href="https://t.me/mrtynnvv"><img src="https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white" /></a>
   
 
-
-
-  ## 📝 Licence
+## 📝 Licence
 
 Copyright © 2025 [Dima Martynov](https://github.com/dexone).<br />
 Этот проект находится под лицензией [MIT](https://github.com/Dexone/Calorielly/blob/main/LICENSE).<br />
