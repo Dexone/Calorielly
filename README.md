@@ -3,17 +3,15 @@
 
 
 
-<p align="center">
+ <!-- <p align="center">
   <img alt="" src="./public/logo.png">
-</p> 
+</p>  -->
 
  <!-- <p href="https://calorielly.ru/" align="center">
   <img height="200"  src="./mockups/iphone.png">
 </p>  -->
 
-<p align="center">
-  <i>Веб-приложение <a href="https://calorielly.ru">calorielly.ru</a> </i>
-</p>
+
 
  <p align="center">
 <a href="https://calorielly.ru/">
@@ -25,6 +23,9 @@
   </a> 
 </p> 
 
+<p align="center">
+  <i>Веб-приложение <a href="https://calorielly.ru">calorielly.ru</a> </i>
+</p>
 <h1 align="center">Calorielly</h1>
 <p align="center">Счетчик калорий, дневник питания.</p>
 
