@@ -30,6 +30,15 @@
 </p>
 
 
+<a  href="https://dexone.github.io/mweather/">
+  <img height="170"  src="./mockups/iphone.png"/>
+  </a> 
+
+   <a  href="https://dexone.github.io/mweather/">
+  <img height="170"  src="./mockups/mac.png"/>
+  </a> 
+
+
 ## Описание
 
  - Calorielly — классный, удобный, отзывчивый и легко настраиваемый счетчик калорий
