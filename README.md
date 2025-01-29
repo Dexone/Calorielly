@@ -107,5 +107,5 @@
   ## 📝 Licence
 
 Copyright © 2025 [Dima Martynov](https://github.com/dexone).<br />
-This project is under [MIT](https://github.com/Dexone/Calorielly/blob/main/LICENSE) license.<br />
+Этот проект находится под лицензией [MIT](https://github.com/Dexone/Calorielly/blob/main/LICENSE).<br />
 _Использованные изображения принадлежат [icons8](https://icons8.ru/)._
