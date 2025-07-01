@@ -21,7 +21,7 @@ export const useLogin = defineStore('loginStore', {
 
     actions: {
         async registration(log, pass) {
-            axios.get(`https://dexone.ru/backend_new/users`).then((res) => {
+            axios.get(`https://dexone.pw/backend_new/users`).then((res) => {
                 let lastId = Number(res.data[res.data.length - 1].id) //последний зарегистрированный id
                 console.log(lastId)
                 let logins = [] //массив логинов на бд
@@ -30,8 +30,8 @@ export const useLogin = defineStore('loginStore', {
                 }
 
                 if (logins.includes(log) == false) { //если логин не найден в бд допускается регистрация
-                    axios.post(`https://dexone.ru/backend_new/users`, { id: lastId + 1, login: log, password: pass }) //создание пользователя
-                    axios.post('https://dexone.ru/backend_new/data', { id: lastId + 1, limitCcal: 0, desiredWeight: 0, eatingList: [["0", [], [], []]], weightList: [["0", 0]] })
+                    axios.post(`https://dexone.pw/backend_new/users`, { id: lastId + 1, login: log, password: pass }) //создание пользователя
+                    axios.post('https://dexone.pw/backend_new/data', { id: lastId + 1, limitCcal: 0, desiredWeight: 0, eatingList: [["0", [], [], []]], weightList: [["0", 0]] })
                         .then(response => {
                             this.getInfo()
                         })
@@ -51,7 +51,7 @@ export const useLogin = defineStore('loginStore', {
 
         },
         async enter(log, pass) {
-            axios.get(`https://dexone.ru/backend_new/users`).then((res) => {
+            axios.get(`https://dexone.pw/backend_new/users`).then((res) => {
                 let logins = []
                 let passwords = []
                 for (let i = 0; i < res.data.length; i++) {
@@ -78,18 +78,18 @@ export const useLogin = defineStore('loginStore', {
 
         deleteAccount() {
             if(this.id !== 2){ //чтобы свой акк случайно не удалить)0))
-            axios.delete(`https://dexone.ru/backend_new/users/${this.id}`)
-            axios.delete(`https://dexone.ru/backend_new/data/${this.id}`)
+            axios.delete(`https://dexone.pw/backend_new/users/${this.id}`)
+            axios.delete(`https://dexone.pw/backend_new/data/${this.id}`)
             this.id = 1 //задается id пользователя в сторе
             this.getInfo()
         }
         },
 
         async getInfo() {
-            axios.get(`https://dexone.ru/backend_new/users/${this.id}`).then((res) => {
+            axios.get(`https://dexone.pw/backend_new/users/${this.id}`).then((res) => {
                 this.login = res.data.login
             })
-            axios.get(`https://dexone.ru/backend_new/data/${this.id}`).then((res) => {
+            axios.get(`https://dexone.pw/backend_new/data/${this.id}`).then((res) => {
                 this.limitCcal = res.data.limitCcal
                 this.desiredWeight = res.data.desiredWeight
                 this.eatingList = res.data.eatingList
@@ -100,7 +100,7 @@ export const useLogin = defineStore('loginStore', {
 
         addCcal(ccalValue, ccalName) {
             if(this.id !== 1){
-                axios.get(`https://dexone.ru/backend_new/data/${this.id}`).then((res) => {
+                axios.get(`https://dexone.pw/backend_new/data/${this.id}`).then((res) => {
                     let eatingList = res.data.eatingList
     
                     let dateToday = (new Date()).getDate() + "." + ((new Date()).getMonth() + 1) + "." + (new Date()).getFullYear() //создание нового дня если последний вчерашний
@@ -113,7 +113,7 @@ export const useLogin = defineStore('loginStore', {
                     eatingList[0][2].push(ccalValue)
                     eatingList[0][3].push(ccalName)
     
-                    axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { eatingList: eatingList })
+                    axios.patch(`https://dexone.pw/backend_new/data/${this.id}`, { eatingList: eatingList })
                         .then(response => {
                             this.getInfo()
                         })
@@ -128,7 +128,7 @@ export const useLogin = defineStore('loginStore', {
 
        async addWeight(weightValue) {
         if(this.id !== 1){
-            axios.get(`https://dexone.ru/backend_new/data/${this.id}`).then((res) => {
+            axios.get(`https://dexone.pw/backend_new/data/${this.id}`).then((res) => {
                 let weightList = res.data.weightList
 
 
@@ -140,7 +140,7 @@ export const useLogin = defineStore('loginStore', {
 
                 weightList[0][1] = Number(weightValue)
 
-                axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { weightList: weightList })
+                axios.patch(`https://dexone.pw/backend_new/data/${this.id}`, { weightList: weightList })
                     .then(response => {
                         this.getInfo()
                     })
@@ -155,7 +155,7 @@ export const useLogin = defineStore('loginStore', {
 
         editDesiredWeight(value){
             if(this.id !== 1){
-                axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { desiredWeight: Number(value) })
+                axios.patch(`https://dexone.pw/backend_new/data/${this.id}`, { desiredWeight: Number(value) })
                 .then(response => {
                     this.getInfo()
                 })
@@ -169,7 +169,7 @@ export const useLogin = defineStore('loginStore', {
 
         editLimitCcal(value){
             if(this.id !== 1){
-                axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { limitCcal: Number(value) })
+                axios.patch(`https://dexone.pw/backend_new/data/${this.id}`, { limitCcal: Number(value) })
                 .then(response => {
                     this.getInfo()
                 })
@@ -183,7 +183,7 @@ export const useLogin = defineStore('loginStore', {
         deleteCcalValue(index) {
 
             if(this.id !== 1){
-                axios.get(`https://dexone.ru/backend_new/data/${this.id}`).then((res) => {
+                axios.get(`https://dexone.pw/backend_new/data/${this.id}`).then((res) => {
                     let eatingList = res.data.eatingList
     
     
@@ -191,7 +191,7 @@ export const useLogin = defineStore('loginStore', {
                     eatingList[0][2].splice(index, 1)
                     eatingList[0][3].splice(index, 1)
     
-                    axios.patch(`https://dexone.ru/backend_new/data/${this.id}`, { eatingList: eatingList })
+                    axios.patch(`https://dexone.pw/backend_new/data/${this.id}`, { eatingList: eatingList })
                         .then(response => {
                             this.getInfo()
                         })
