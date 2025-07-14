@@ -35,7 +35,7 @@ let stoGR = ref("")
 let ccalGR = ref("")
 let itogGR = ref(0)
 function chetGR() {
-  itogGR.value = Math.round(ccalGR.value / (stoGR.value / 100))
+  itogGR.value = Math.floor(ccalGR.value / (stoGR.value / 100))
 }
 
 
