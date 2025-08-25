@@ -81,31 +81,53 @@
             )
           "
         >
-          Удалить
+
+
+          Удалить  
         </div>
+
+
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { useLogin } from '../store/Login'
-const loginStore = useLogin()
 
+
+
+
+
+import { useLogin } from '../store/Login'
+
+const loginStore = useLogin()
+const a = 1
 import { ref, watch } from 'vue'
 
 const daySelector = ref(0)
 
 watch(loginStore.eatingList, () => {
-  console.log('test')
+  console.log(    'test')
 })
 
-defineProps({
+
+
+
+
+defineProps({   
   msg: String,
 })
 </script>
 
 <style scoped>
+
+
+
+
+
+
+
+
 .mainBlockTimeLine {
   background-color: white;
   border-radius: 8px;
@@ -113,6 +135,13 @@ defineProps({
   margin-top: 10px;
   padding-top: 20px;
   width: 100%;
+
+
+
+
+
+
+
 }
 
 .daySelector {
