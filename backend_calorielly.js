@@ -1,15 +1,15 @@
-import pkg from 'json-server';
-const { create, router: _router, defaults } = pkg;
+import pkg from 'json-server'
+const { create, router: _router, defaults } = pkg
 
-const server = create();
-const router = _router('./db.json');
-const middlewares = defaults();
+const server = create()
+const router = _router('./db.json')
+const middlewares = defaults()
 
-server.use(middlewares);
-server.use(router);
+server.use(middlewares)
+server.use(router)
 
-const PORT = 6000; // Change the port if needed
+const PORT = 6000 // Change the port if needed
 
 server.listen(PORT, () => {
-  console.log(`JSON Server is running on port ${PORT}`);
-});
+  console.log(`JSON Server is running on port ${PORT}`)
+})
