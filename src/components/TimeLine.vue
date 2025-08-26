@@ -193,12 +193,14 @@ defineProps({
   margin-left: -22px;
   margin-top: 20px;
   width: 45px;
+    display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .img1 {
   color: #fff;
-  margin-left: 10px;
-  margin-top: 9px;
+  margin: 0;
 }
 
 .txt {

@@ -121,47 +121,64 @@ defineProps({
 
 <style scoped>
 .mainBlockFooter {
-  background-color: #f7f7f7;
-  border: solid;
-  border-color: #b2b2b4;
-  border-width: 1px 0 0;
+  position: fixed;
   bottom: 0;
-  display: flex;
-  height: 50px;
-  justify-content: space-between; /* распределение */
   left: 0;
-  padding-bottom: 10px;
-  position: fixed; /* фиксированное положение */
   right: 0;
-  width: 100%;
+
+  display: flex;
+  justify-content: space-around;  
+  align-items: flex-end;          
+
+  height: 60px;              
+  padding: 5px 0;
+
+  background-color: #f7f7f7;
+  border-top: 1px solid #b2b2b4;
   z-index: 1050;
 }
 
-.add {
-  background-color: #ff2a6d;
-  border-radius: 100%;
-  margin-bottom: 5px;
-  margin-top: -5px;
-  width: 50px;
-}
+.blockItem {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: flex-end;
 
-.plusIcon {
-  color: white;
-  margin-left: 5px;
-  margin-top: 5px;
+  flex: 1;
+  font-size: 10px;
+  font-weight: 500;
+  color: #a4a4a6;
 }
 
 .icon1 {
   color: #959595;
-  margin-top: 5px;
+  width: 30px;
+  height: 30px;
 }
 
-.blockItem {
-  color: #a4a4a6;
-  font-size: 10px;
-  font-weight: 500;
-  margin-left: 10px;
-  margin-right: 10px;
-  text-align: center;
+.textUnderIcon {
+  margin-top: 2px;  
+}
+
+.add {
+  position: relative;
+  top: -10px;             
+  background-color: #ff2a6d;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.plusIcon {
+  color: #fff;
+  width: 32px;
+  height: 32px;
 }
 </style>

@@ -116,12 +116,13 @@ console.log(loginStore.getStoreWeights)
 .mainBlockLineChart {
   background-color: #007aff;
   border-radius: 15px;
-  height: 120px;
+  padding: 16px;
   margin-bottom: 20px;
-  padding: 10px 20px 20px;
+  min-height: 120px; 
 }
 
 .lineChart {
-  height: 120px;
+  width: 100%;
+  height: 100%; 
 }
 </style>

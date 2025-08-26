@@ -102,6 +102,9 @@ function blurEdit() {
   .leftbar {
     display: none;
   }
+    .all {
+    padding: 10px;
+  }
 }
 
 @media (width >= 1000px) {
@@ -110,4 +113,5 @@ function blurEdit() {
     display: none;
   }
 }
+
 </style>
