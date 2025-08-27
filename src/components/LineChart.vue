@@ -118,11 +118,12 @@ console.log(loginStore.getStoreWeights)
   border-radius: 15px;
   padding: 16px;
   margin-bottom: 20px;
-  min-height: 120px; 
+  max-height: 200px;
+  height: 100%;
 }
 
 .lineChart {
   width: 100%;
-  height: 100%; 
+  height: 100%;
 }
 </style>
