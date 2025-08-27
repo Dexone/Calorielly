@@ -6,6 +6,9 @@ import vue from 'eslint-plugin-vue'
 import vueParser from 'vue-eslint-parser'
 
 export default [
+  { ignores: ['node_modules', 'dist', '**/*.d.ts'] },
+
+  // .vue
   {
     files: ['**/*.vue'],
     languageOptions: {
@@ -14,6 +17,7 @@ export default [
         parser: tsParser,
         ecmaVersion: 2022,
         sourceType: 'module',
+        extraFileExtensions: ['.vue'],
       },
     },
     plugins: {
@@ -27,66 +31,41 @@ export default [
       'import/order': [
         'error',
         {
-          groups: [
-            ['builtin', 'external'],
-            'internal',
-            ['parent', 'sibling', 'index'],
-          ],
+          groups: [['builtin', 'external'], 'internal', ['parent', 'sibling', 'index']],
           'newlines-between': 'always',
           alphabetize: { order: 'asc', caseInsensitive: true },
         },
       ],
-      'vue/component-tags-order': [
-        'error',
-        {
-          order: ['template', 'script', 'style'],
-        },
-      ],
-      'vue/order-in-components': [
-        'error',
-        {
-          order: [
-            'name',
-            'components',
-            'props',
-            'data',
-            'computed',
-            'methods',
-            'watch',
-            'template',
-          ],
-        },
-      ],
+      'vue/component-tags-order': ['error', { order: ['template', 'script', 'style'] }],
+      'vue/order-in-components': ['error', {
+        order: ['name','components','props','data','computed','methods','watch','template'],
+      }],
     },
   },
+
+  // .ts/.js
   {
-    files: ['**/*.ts', '**/*.js'],
+    files: ['**/*.{ts,js}'],
     languageOptions: {
       parser: tsParser,
       ecmaVersion: 2022,
       sourceType: 'module',
     },
-    plugins: {
-      vue,
-      '@typescript-eslint': tseslint,
-      import: importPlugin,
-    },
+    plugins: { vue, '@typescript-eslint': tseslint, import: importPlugin },
     rules: {
       ...tseslint.configs.recommended.rules,
       ...vue.configs['vue3-recommended'].rules,
       'import/order': [
         'error',
         {
-          groups: [
-            ['builtin', 'external'],
-            'internal',
-            ['parent', 'sibling', 'index'],
-          ],
+          groups: [['builtin', 'external'], 'internal', ['parent', 'sibling', 'index']],
           'newlines-between': 'always',
           alphabetize: { order: 'asc', caseInsensitive: true },
         },
       ],
     },
   },
+
+  // в самом конце — отключить конфликты с Prettier
   prettier,
 ]

@@ -1,13 +1,15 @@
 {
+  "customSyntax": "postcss-html",
   "extends": ["stylelint-config-standard-scss"],
-  "plugins": ["stylelint-order"],
+  "plugins": ["stylelint-order", "stylelint-scss"],
+  "rules": {
+    "order/properties-alphabetical-order": true,
+    "no-descending-specificity": null
+  },
   "overrides": [
     {
-      "files": ["**/*.vue"],
-      "customSyntax": "postcss-html"
+      "files": ["**/*.scss"],
+      "customSyntax": "postcss-scss"
     }
-  ],
-  "rules": {
-    "order/properties-alphabetical-order": true
-  }
+  ]
 }

@@ -137,57 +137,58 @@ defineProps({
 .blockTarget {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 5px 0 #dedee0;
-  display: inline-grid;
-  grid-template-columns: 32px 1fr; 
+  box-shadow: 0 4px 5px 0 #dedee0; 
   column-gap: 8px;
+  display: inline-grid;
+  grid-template-columns: 32px 1fr;
   margin: 10px 10px 12px 0;
-  padding: 8px 14px 10px;
   min-height: 60px;
+  padding: 8px 14px 10px;
 }
 
 
 .image1,
 .image2 {
+  place-self: center center;
   grid-column: 1;
   grid-row: 1 / span 2;
-  align-self: center;
-  justify-self: center;
-  width: 22px;
   height: 22px;
+  width: 22px;
 }
 .image1 { color: #8d44ad; }
 .image2 { color: #2f3945; }
-.image1 path, .image2 path { fill: currentColor; stroke: none; }
+.image1 path, .image2 path { fill: currentcolor; stroke: none; }
 
 
 .headerRow {
-  grid-column: 2;
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 6px;
+  grid-column: 2;
 }
 
 .text1 {
   font-size: 12px;
   font-weight: 600;
 }
+
 .text2 {
-  font-size: 12px;
   color: #8a898e;
+  font-size: 12px;
 }
 
 
 .line {
-  grid-column: 2;
   background-color: #dddddf;
+  border-radius: 2px;
+  grid-column: 2;
   height: 2px;
   margin-top: 4px;
-  border-radius: 2px;
 }
+
 .lineBlue {
   background-color: #007aff;
-  height: 100%;
   border-radius: 2px;
+  height: 100%;
 }
 </style>

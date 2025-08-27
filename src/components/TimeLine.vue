@@ -187,15 +187,15 @@ defineProps({
 }
 
 .circle {
+  align-items: center;
   background-color: #1e9a82;
   border-radius: 100%;
+    display: flex;
   height: 45px;
+  justify-content: center;
   margin-left: -22px;
   margin-top: 20px;
   width: 45px;
-    display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .img1 {

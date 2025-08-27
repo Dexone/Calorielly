@@ -102,6 +102,7 @@ function blurEdit() {
   .leftbar {
     display: none;
   }
+
     .all {
     padding: 10px;
   }

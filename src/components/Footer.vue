@@ -120,40 +120,36 @@ defineProps({
 </script>
 
 <style scoped>
-.mainBlockFooter {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  display: flex;
-  justify-content: space-around;  
-  align-items: flex-end;          
-
-  height: 60px;              
-  padding: 5px 0;
-
+.mainBlockFooter {  
+  align-items: flex-end;
   background-color: #f7f7f7;
   border-top: 1px solid #b2b2b4;
+  bottom: 0;
+  display: flex;          
+  height: 60px;
+  justify-content: space-around;
+  left: 0;              
+  padding: 5px 0;
+  position: fixed;
+  right: 0;
   z-index: 1050;
 }
 
-.blockItem {
-  display: flex;
-  flex-direction: column; 
+.blockItem { 
   align-items: center;
-  justify-content: flex-end;
-
+  color: #a4a4a6;
+  display: flex;
   flex: 1;
+  flex-direction: column;
   font-size: 10px;
   font-weight: 500;
-  color: #a4a4a6;
+  justify-content: flex-end;
 }
 
 .icon1 {
   color: #959595;
-  width: 30px;
   height: 30px;
+  width: 30px;
 }
 
 .textUnderIcon {
@@ -161,24 +157,22 @@ defineProps({
 }
 
 .add {
-  position: relative;
-  top: -10px;             
+  align-items: center;             
   background-color: #ff2a6d;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  flex-shrink: 0;
   cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  height: 50px;
+  justify-content: center;
+  position: relative;
+  top: -10px;
+  width: 50px;
 }
 
 .plusIcon {
   color: #fff;
-  width: 32px;
   height: 32px;
+  width: 32px;
 }
 </style>
