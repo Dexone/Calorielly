@@ -129,6 +129,5 @@ svg {
   color: #007aff;
   float: left;
   margin-right: 10px;
-  margin-top: -3px;
 }
 </style>
