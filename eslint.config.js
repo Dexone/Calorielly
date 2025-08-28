@@ -1,71 +1,50 @@
 import tseslint from '@typescript-eslint/eslint-plugin'
 import tsParser from '@typescript-eslint/parser'
-import prettier from 'eslint-config-prettier'
-import importPlugin from 'eslint-plugin-import'
 import vue from 'eslint-plugin-vue'
 import vueParser from 'vue-eslint-parser'
+import importPlugin from 'eslint-plugin-import'
+import prettier from 'eslint-config-prettier'
 
 export default [
-  { ignores: ['node_modules', 'dist', '**/*.d.ts'] },
+  { ignores: ['node_modules', 'dist'] },
 
-  // .vue
   {
     files: ['**/*.vue'],
     languageOptions: {
       parser: vueParser,
       parserOptions: {
         parser: tsParser,
-        ecmaVersion: 2022,
+        ecmaVersion: 'latest',
         sourceType: 'module',
-        extraFileExtensions: ['.vue'],
       },
     },
-    plugins: {
-      vue,
-      '@typescript-eslint': tseslint,
-      import: importPlugin,
-    },
+    plugins: { vue, '@typescript-eslint': tseslint, import: importPlugin },
     rules: {
-      ...vue.configs['vue3-recommended'].rules,
+      ...vue.configs['flat/recommended'].rules,
       ...tseslint.configs.recommended.rules,
       'import/order': [
         'error',
-        {
-          groups: [['builtin', 'external'], 'internal', ['parent', 'sibling', 'index']],
-          'newlines-between': 'always',
-          alphabetize: { order: 'asc', caseInsensitive: true },
-        },
+        { alphabetize: { order: 'asc' }, 'newlines-between': 'always' },
       ],
-      'vue/component-tags-order': ['error', { order: ['template', 'script', 'style'] }],
-      'vue/order-in-components': ['error', {
-        order: ['name','components','props','data','computed','methods','watch','template'],
-      }],
     },
   },
 
-  // .ts/.js
   {
     files: ['**/*.{ts,js}'],
     languageOptions: {
       parser: tsParser,
-      ecmaVersion: 2022,
+      ecmaVersion: 'latest',
       sourceType: 'module',
     },
-    plugins: { vue, '@typescript-eslint': tseslint, import: importPlugin },
+    plugins: { '@typescript-eslint': tseslint, import: importPlugin },
     rules: {
       ...tseslint.configs.recommended.rules,
-      ...vue.configs['vue3-recommended'].rules,
       'import/order': [
         'error',
-        {
-          groups: [['builtin', 'external'], 'internal', ['parent', 'sibling', 'index']],
-          'newlines-between': 'always',
-          alphabetize: { order: 'asc', caseInsensitive: true },
-        },
+        { alphabetize: { order: 'asc' }, 'newlines-between': 'always' },
       ],
     },
   },
 
-  // в самом конце — отключить конфликты с Prettier
-  prettier,
+  prettier, // отключает конфликтующие правила
 ]

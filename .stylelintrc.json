@@ -4,7 +4,14 @@
   "plugins": ["stylelint-order", "stylelint-scss"],
   "rules": {
     "order/properties-alphabetical-order": true,
-    "no-descending-specificity": null
+    "no-descending-specificity": null,
+
+    "scss/at-rule-no-unknown": true,      
+    "scss/dollar-variable-no-missing-interpolation": true, 
+    "scss/double-slash-comment-whitespace-inside": "always", 
+    "scss/operator-no-unspaced": true,     
+    "scss/percent-placeholder-pattern": "^foo",   
+    "scss/selector-no-redundant-nesting-selector": true 
   },
   "overrides": [
     {

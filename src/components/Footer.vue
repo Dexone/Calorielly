@@ -120,22 +120,22 @@ defineProps({
 </script>
 
 <style scoped>
-.mainBlockFooter {  
+.mainBlockFooter {
   align-items: flex-end;
   background-color: #f7f7f7;
   border-top: 1px solid #b2b2b4;
   bottom: 0;
-  display: flex;          
+  display: flex;
   height: 60px;
   justify-content: space-around;
-  left: 0;              
+  left: 0;
   padding: 5px 0;
   position: fixed;
   right: 0;
   z-index: 1050;
 }
 
-.blockItem { 
+.blockItem {
   align-items: center;
   color: #a4a4a6;
   display: flex;
@@ -153,11 +153,11 @@ defineProps({
 }
 
 .textUnderIcon {
-  margin-top: 2px;  
+  margin-top: 2px;
 }
 
 .add {
-  align-items: center;             
+  align-items: center;
   background-color: #ff2a6d;
   border-radius: 50%;
   cursor: pointer;

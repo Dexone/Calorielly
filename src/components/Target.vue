@@ -34,21 +34,27 @@
           d="M8.597 3.2A1 1 0 0 0 7.04 4.289a3.49 3.49 0 0 1 .057 1.795 3.448 3.448 0 0 1-.84 1.575.999.999 0 0 0-.077.094c-.596.817-3.96 5.6-.941 10.762l.03.049a7.73 7.73 0 0 0 2.917 2.602 7.617 7.617 0 0 0 3.772.829 8.06 8.06 0 0 0 3.986-.975 8.185 8.185 0 0 0 3.04-2.864c1.301-2.2 1.184-4.556.588-6.441-.583-1.848-1.68-3.414-2.607-4.102a1 1 0 0 0-1.594.757c-.067 1.431-.363 2.551-.794 3.431-.222-2.407-1.127-4.196-2.224-5.524-1.147-1.39-2.564-2.3-3.323-2.788a8.487 8.487 0 0 1-.432-.287Z"
         />
       </svg>
-       <div class="headerRow">
-    <span class="text1">Калории</span>
-    <span class="text2">осталось {{ loginStore.limitCcal - loginStore.getSumCcalToday }} ккал</span>
-  </div>
+      <div class="headerRow">
+        <span class="text1">Калории</span>
+        <span class="text2"
+          >осталось
+          {{ loginStore.limitCcal - loginStore.getSumCcalToday }} ккал</span
+        >
+      </div>
 
       <div class="line">
-         <div
-      class="lineBlue"
-      :style="{ width: (loginStore.getSumCcalToday / loginStore.limitCcal) * 100 + '%' }"
-    ></div>
+        <div
+          class="lineBlue"
+          :style="{
+            width:
+              (loginStore.getSumCcalToday / loginStore.limitCcal) * 100 + '%',
+          }"
+        ></div>
       </div>
     </div>
 
-  <div v-if="loginStore.weightList[0].length > 1" class="blockTarget">
- <svg
+    <div v-if="loginStore.weightList[0].length > 1" class="blockTarget">
+      <svg
         class="image2"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
@@ -64,31 +70,35 @@
         />
       </svg>
 
-  <div class="headerRow">
-    <span class="text1">Вес</span>
-    <span class="text2">
-      осталось
-      {{
-        loginStore.weightList[0][1] - loginStore.desiredWeight >= 0
-          ? loginStore.weightList[0][1] - loginStore.desiredWeight
-          : loginStore.desiredWeight - loginStore.weightList[0][1]
-      }} кг
-    </span>
-  </div>
+      <div class="headerRow">
+        <span class="text1">Вес</span>
+        <span class="text2">
+          осталось
+          {{
+            loginStore.weightList[0][1] - loginStore.desiredWeight >= 0
+              ? loginStore.weightList[0][1] - loginStore.desiredWeight
+              : loginStore.desiredWeight - loginStore.weightList[0][1]
+          }}
+          кг
+        </span>
+      </div>
 
-  <div class="line">
-    <div
-      class="lineBlue"
-      :style="{
-        width:
-          loginStore.weightList[0][1] - loginStore.desiredWeight >= 0
-            ? (loginStore.desiredWeight / loginStore.weightList[0][1]) * 100 + '%'
-            : (loginStore.weightList[0][1] / loginStore.desiredWeight) * 100 + '%',
-      }"
-    ></div>
-  </div>
-</div>
-
+      <div class="line">
+        <div
+          class="lineBlue"
+          :style="{
+            width:
+              loginStore.weightList[0][1] - loginStore.desiredWeight >= 0
+                ? (loginStore.desiredWeight / loginStore.weightList[0][1]) *
+                    100 +
+                  '%'
+                : (loginStore.weightList[0][1] / loginStore.desiredWeight) *
+                    100 +
+                  '%',
+          }"
+        ></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -137,7 +147,7 @@ defineProps({
 .blockTarget {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 5px 0 #dedee0; 
+  box-shadow: 0 4px 5px 0 #dedee0;
   column-gap: 8px;
   display: inline-grid;
   grid-template-columns: 32px 1fr;
@@ -146,19 +156,25 @@ defineProps({
   padding: 8px 14px 10px;
 }
 
-
 .image1,
 .image2 {
-  place-self: center center;
   grid-column: 1;
   grid-row: 1 / span 2;
   height: 22px;
+  place-self: center center;
   width: 22px;
 }
-.image1 { color: #8d44ad; }
-.image2 { color: #2f3945; }
-.image1 path, .image2 path { fill: currentcolor; stroke: none; }
-
+.image1 {
+  color: #8d44ad;
+}
+.image2 {
+  color: #2f3945;
+}
+.image1 path,
+.image2 path {
+  fill: currentcolor;
+  stroke: none;
+}
 
 .headerRow {
   align-items: center;
@@ -176,7 +192,6 @@ defineProps({
   color: #8a898e;
   font-size: 12px;
 }
-
 
 .line {
   background-color: #dddddf;

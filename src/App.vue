@@ -27,19 +27,20 @@
 import { useLogin } from '../src/store/Login'
 const loginStore = useLogin()
 import { useComponents } from '../src/store/ComponentsHidden'
+
 const hiddenStore = useComponents()
-import Name from './components/Name.vue'
-import LeftBar from './components/LeftBar.vue'
-import Login from './components/Login.vue'
-import Now from './components/Now.vue'
 import Add from './components/Add.vue'
-import Target from './components/Target.vue'
 import Footer from './components/Footer.vue'
-import Scales from './components/Scales.vue'
-import TimeLine from './components/TimeLine.vue'
+import LeftBar from './components/LeftBar.vue'
 import LineChart from './components/LineChart.vue'
-import Settings from './components/Settings.vue'
+import Login from './components/Login.vue'
+import Name from './components/Name.vue'
+import Now from './components/Now.vue'
 import RegistrationSteps from './components/RegistrationSteps.vue'
+import Scales from './components/Scales.vue'
+import Settings from './components/Settings.vue'
+import Target from './components/Target.vue'
+import TimeLine from './components/TimeLine.vue'
 
 import { ref, watch } from 'vue'
 
@@ -103,7 +104,7 @@ function blurEdit() {
     display: none;
   }
 
-    .all {
+  .all {
     padding: 10px;
   }
 }
@@ -114,5 +115,4 @@ function blurEdit() {
     display: none;
   }
 }
-
 </style>
