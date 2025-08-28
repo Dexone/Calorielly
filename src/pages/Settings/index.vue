@@ -1,5 +1,5 @@
 <template>
-  <div  class="mainBlockSettings">
+  <div class="mainBlockSettings">
     <div class="close" @click="hiddenStore.settings = !hiddenStore.settings">
       <svg
         aria-hidden="true"

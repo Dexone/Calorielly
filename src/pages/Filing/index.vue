@@ -1,5 +1,5 @@
 <template>
-  <div  class="mainBlockLogin">
+  <div class="mainBlockLogin">
     <div v-if="loginStore.limitCcal === 0" class="register">
       <div class="nameLogin">Теперь заполним необходимые данные</div>
       <div>

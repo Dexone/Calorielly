@@ -1,5 +1,5 @@
 <template>
-  <div  class="mainBlockScales">
+  <div class="mainBlockScales">
     <div class="x" @click="hiddenStore.scales = !hiddenStore.scales">
       <svg
         aria-hidden="true"

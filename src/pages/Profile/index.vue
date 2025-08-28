@@ -1,5 +1,5 @@
 <template>
-  <div  class="mainBlockLogin">
+  <div class="mainBlockLogin">
     <div class="x" @click="hiddenStore.login = !hiddenStore.login">
       <svg
         aria-hidden="true"

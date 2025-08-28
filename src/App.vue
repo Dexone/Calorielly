@@ -7,7 +7,7 @@
       <!-- сюда рендерятся страницы -->
       <RouterView />
       <Footer class="footer" />
-        <Add />
+      <Add />
     </div>
   </div>
 
@@ -18,11 +18,13 @@
 <script setup>
 import { watch } from 'vue'
 import { useRouter } from 'vue-router'
+
+import Add from './components/Add.vue'
+
+import Footer from '@/components/Footer.vue'
+import LeftBar from '@/components/LeftBar.vue'
 import { useLogin } from '@/store/Login'
 
-import LeftBar from '@/components/LeftBar.vue'
-import Footer from '@/components/Footer.vue'
-import Add from './components/Add.vue'
 const loginStore = useLogin()
 const router = useRouter()
 watch(loginStore, () => {
@@ -37,8 +39,28 @@ watch(loginStore, () => {
 </script>
 
 <style scoped>
-.all{display:flex;margin:0 auto;max-width:900px;width:100%}
-.main{width:100%}
-@media (width <= 1000px){ .leftbar{display:none} .all{padding:10px} }
-@media (width >= 1000px){ .footer{display:none} }
+.all {
+  display: flex;
+  margin: 0 auto;
+  max-width: 900px;
+  width: 100%;
+}
+.main {
+  width: 100%;
+}
+
+@media (width <= 1000px) {
+  .leftbar {
+    display: none;
+  }
+  .all {
+    padding: 10px;
+  }
+}
+
+@media (width >= 1000px) {
+  .footer {
+    display: none;
+  }
+}
 </style>
