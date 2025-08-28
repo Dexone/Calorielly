@@ -22,6 +22,7 @@ export default [
     rules: {
       ...vue.configs['flat/recommended'].rules,
       ...tseslint.configs.recommended.rules,
+        'import/first': 'error',
       'import/order': [
         'error',
         { alphabetize: { order: 'asc' }, 'newlines-between': 'always' },
@@ -39,9 +40,18 @@ export default [
     plugins: { '@typescript-eslint': tseslint, import: importPlugin },
     rules: {
       ...tseslint.configs.recommended.rules,
+        'import/first': 'error',
       'import/order': [
         'error',
-        { alphabetize: { order: 'asc' }, 'newlines-between': 'always' },
+        {
+          groups: [
+            ['builtin', 'external'], // стандартные модули и npm-пакеты
+            'internal', // абсолютные импорты внутри проекта
+            ['parent', 'sibling', 'index'], // относительные импорты
+          ],
+          'newlines-between': 'always',
+          alphabetize: { order: 'asc', caseInsensitive: true },
+        },
       ],
     },
   },

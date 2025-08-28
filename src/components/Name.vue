@@ -32,13 +32,14 @@
 </template>
 
 <script setup>
-import { useLogin } from '../store/Login'
-const loginStore = useLogin()
+import { ref } from 'vue'
 
 import { useComponents } from '../store/ComponentsHidden'
+import { useLogin } from '../store/Login'
+
+const loginStore = useLogin()
 
 const hiddenStore = useComponents()
-import { ref } from 'vue'
 
 defineProps({
   msg: String,

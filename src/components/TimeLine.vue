@@ -89,11 +89,12 @@
 </template>
 
 <script setup>
+import { ref, watch } from 'vue'
+
 import { useLogin } from '../store/Login'
 
 const loginStore = useLogin()
 const a = 1
-import { ref, watch } from 'vue'
 
 const daySelector = ref(0)
 

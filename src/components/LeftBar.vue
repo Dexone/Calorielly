@@ -92,10 +92,11 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
 import { useComponents } from '../store/ComponentsHidden'
 
 const hiddenStore = useComponents()
-import { ref } from 'vue'
 
 defineProps({
   msg: String,

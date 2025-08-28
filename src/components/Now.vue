@@ -28,12 +28,13 @@
 </template>
 
 <script setup>
+import { ref, watch } from 'vue'
+
+import { useComponents } from '../store/ComponentsHidden'
 import { useLogin } from '../store/Login'
 const loginStore = useLogin()
-import { useComponents } from '../store/ComponentsHidden'
 
 const hiddenStore = useComponents()
-import { ref, watch } from 'vue'
 
 const backTime = ref(0)
 const upTime = ref(0)

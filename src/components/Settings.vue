@@ -49,10 +49,10 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useComponents } from '../store/ComponentsHidden'
-const hiddenStore = useComponents()
 
+import { useComponents } from '../store/ComponentsHidden'
 import { useLogin } from '../store/Login'
+const hiddenStore = useComponents()
 const loginStore = useLogin()
 
 const weight = ref('')

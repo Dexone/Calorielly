@@ -60,9 +60,8 @@
 import { ref } from 'vue'
 
 import { useComponents } from '../store/ComponentsHidden'
-const hiddenStore = useComponents()
-
 import { useLogin } from '../store/Login'
+const hiddenStore = useComponents()
 const loginStore = useLogin()
 
 const ccalValue = ref('')

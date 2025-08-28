@@ -24,11 +24,11 @@
 </template>
 
 <script setup>
-import { useLogin } from '../src/store/Login'
-const loginStore = useLogin()
-import { useComponents } from '../src/store/ComponentsHidden'
+import { ref, watch } from 'vue'
 
-const hiddenStore = useComponents()
+import { useComponents } from '../src/store/ComponentsHidden'
+import { useLogin } from '../src/store/Login'
+
 import Add from './components/Add.vue'
 import Footer from './components/Footer.vue'
 import LeftBar from './components/LeftBar.vue'
@@ -42,7 +42,9 @@ import Settings from './components/Settings.vue'
 import Target from './components/Target.vue'
 import TimeLine from './components/TimeLine.vue'
 
-import { ref, watch } from 'vue'
+const loginStore = useLogin()
+
+const hiddenStore = useComponents()
 
 loginStore.getInfo()
 

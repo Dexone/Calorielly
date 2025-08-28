@@ -103,12 +103,13 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
+import { useComponents } from '../store/ComponentsHidden'
 import { useLogin } from '../store/Login'
 const loginStore = useLogin()
-import { useComponents } from '../store/ComponentsHidden'
 
 const hiddenStore = useComponents()
-import { ref } from 'vue'
 
 defineProps({
   msg: String,
