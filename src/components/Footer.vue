@@ -109,8 +109,8 @@
 <script setup>
 import { ref } from 'vue'
 
-import { useComponents } from '../store/ComponentsHidden'
-import { useLogin } from '../store/Login'
+import { useComponents } from '@/store/ComponentsHidden'
+import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
 
 const hiddenStore = useComponents()

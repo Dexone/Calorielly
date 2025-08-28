@@ -105,8 +105,8 @@
 <script setup>
 import { ref } from 'vue'
 
-import { useComponents } from '../store/ComponentsHidden'
-import { useLogin } from '../store/Login'
+import { useComponents } from '@/store/ComponentsHidden'
+import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
 
 const hiddenStore = useComponents()
@@ -165,12 +165,15 @@ defineProps({
   place-self: center center;
   width: 22px;
 }
+
 .image1 {
   color: #8d44ad;
 }
+
 .image2 {
   color: #2f3945;
 }
+
 .image1 path,
 .image2 path {
   fill: currentcolor;

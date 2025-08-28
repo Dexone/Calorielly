@@ -1,120 +1,44 @@
+<!-- App.vue -->
 <template>
-  <div class="main"></div>
-
-  <div class="all" :class="{ active: blur }">
-    <div class="leftbar">
-      <LeftBar />
-    </div>
+  <div class="all">
+    <div class="leftbar"><LeftBar /></div>
 
     <div class="main">
-      <Name />
-      <Now />
-      <Target />
-      <LineChart />
-      <TimeLine />
-
+      <!-- сюда рендерятся страницы -->
+      <RouterView />
       <Footer class="footer" />
+        <Add />
     </div>
   </div>
-  <Scales />
-  <Login />
-  <Add />
-  <Settings />
-  <RegistrationSteps />
+
+  <!-- модальные роуты (если надо поверх страниц) -->
+  <RouterView name="modal" />
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { watch } from 'vue'
+import { useRouter } from 'vue-router'
+import { useLogin } from '@/store/Login'
 
-import { useComponents } from '../src/store/ComponentsHidden'
-import { useLogin } from '../src/store/Login'
-
+import LeftBar from '@/components/LeftBar.vue'
+import Footer from '@/components/Footer.vue'
 import Add from './components/Add.vue'
-import Footer from './components/Footer.vue'
-import LeftBar from './components/LeftBar.vue'
-import LineChart from './components/LineChart.vue'
-import Login from './components/Login.vue'
-import Name from './components/Name.vue'
-import Now from './components/Now.vue'
-import RegistrationSteps from './components/RegistrationSteps.vue'
-import Scales from './components/Scales.vue'
-import Settings from './components/Settings.vue'
-import Target from './components/Target.vue'
-import TimeLine from './components/TimeLine.vue'
-
 const loginStore = useLogin()
-
-const hiddenStore = useComponents()
-
-loginStore.getInfo()
-
-const blur = ref(false)
-watch(hiddenStore, () => {
-  blurEdit()
-})
-
+const router = useRouter()
 watch(loginStore, () => {
   if (
     loginStore.limitCcal === 0 ||
     loginStore.desiredWeight === 0 ||
     loginStore.weightList.length === 1
   ) {
-    hiddenStore.login = false
-    hiddenStore.registrationSteps = true
-    blur.value = true
-  } else {
-    hiddenStore.registrationSteps = false
+    router.push('/filing')
   }
 })
-
-function blurEdit() {
-  if (
-    hiddenStore.login === true ||
-    hiddenStore.add === true ||
-    hiddenStore.scales === true ||
-    hiddenStore.settings === true ||
-    hiddenStore.registrationSteps === true
-  ) {
-    blur.value = true
-  } else {
-    blur.value = false
-  }
-}
 </script>
 
 <style scoped>
-.active {
-  filter: blur(12px);
-}
-
-.all {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 900px;
-  position: relative;
-  width: 100%;
-}
-
-.main {
-  width: 100%;
-}
-
-@media (width <= 1000px) {
-  /* mobile: width < 1000px */
-  .leftbar {
-    display: none;
-  }
-
-  .all {
-    padding: 10px;
-  }
-}
-
-@media (width >= 1000px) {
-  /* mobile: width < 1000px */
-  .footer {
-    display: none;
-  }
-}
+.all{display:flex;margin:0 auto;max-width:900px;width:100%}
+.main{width:100%}
+@media (width <= 1000px){ .leftbar{display:none} .all{padding:10px} }
+@media (width >= 1000px){ .footer{display:none} }
 </style>

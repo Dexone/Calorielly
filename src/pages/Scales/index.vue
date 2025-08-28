@@ -1,6 +1,6 @@
 <template>
-  <div v-if="hiddenStore.settings" class="mainBlockSettings">
-    <div class="close" @click="hiddenStore.settings = !hiddenStore.settings">
+  <div  class="mainBlockScales">
+    <div class="x" @click="hiddenStore.scales = !hiddenStore.scales">
       <svg
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
@@ -20,27 +20,26 @@
     </div>
 
     <div class="login">
-      <div class="nameLogin">Желаемый вес</div>
-      <div><input v-model="weight" type="number" placeholder="Вес кг" /></div>
+      <div class="nameLogin">Калькулятор граммов</div>
       <div>
-        <button
-          class="buttonGo"
-          @click="(loginStore.editDesiredWeight(weight), (weight = ''))"
-        >
-          Изменить
-        </button>
+        <input
+          v-model="stoGR"
+          type="number"
+          placeholder="Ккал/100гр"
+          @input="chetGR()"
+        />
       </div>
-    </div>
-
-    <div class="login">
-      <div class="nameLogin">Лимит калорий</div>
-      <div><input v-model="ccal" type="number" placeholder="Ккал" /></div>
       <div>
-        <button
-          class="buttonGo"
-          @click="(loginStore.editLimitCcal(ccal), (ccal = ''))"
-        >
-          Изменить
+        <input
+          v-model="ccalGR"
+          type="number"
+          placeholder="Нужно калорий"
+          @input="chetGR()"
+        />
+      </div>
+      <div>
+        <button class="buttonGo" disabled>
+          {{ itogGR }} грамм ({{ Math.floor(stoGR * (itogGR / 100)) }} ккал)
         </button>
       </div>
     </div>
@@ -50,13 +49,17 @@
 <script setup>
 import { ref } from 'vue'
 
-import { useComponents } from '../store/ComponentsHidden'
-import { useLogin } from '../store/Login'
+import { useComponents } from '@/store/ComponentsHidden'
+import { useLogin } from '@/store/Login'
 const hiddenStore = useComponents()
 const loginStore = useLogin()
 
-const weight = ref('')
-const ccal = ref('')
+let stoGR = ref('')
+let ccalGR = ref('')
+let itogGR = ref(0)
+function chetGR() {
+  itogGR.value = Math.floor(ccalGR.value / (stoGR.value / 100))
+}
 
 defineProps({
   msg: String,
@@ -65,7 +68,7 @@ const regOrLogin = ref('register')
 </script>
 
 <style scoped>
-.mainBlockSettings {
+.mainBlockScales {
   background-color: white;
   border-radius: 5px;
   left: 0;
@@ -79,13 +82,13 @@ const regOrLogin = ref('register')
   z-index: 1050;
 }
 
-.close {
+.x {
   color: #666;
   float: right;
   margin: 10px;
 }
 
-.close:hover {
+.x:hover {
   color: #9b9b9b;
   cursor: pointer;
   transition: 0.3s;
@@ -121,21 +124,14 @@ input {
 }
 
 .buttonGo {
-  background-color: #007aff;
+  background-color: #f3f2f8;
   border: none;
   border-radius: 7px;
-  color: white;
+  color: #74408b;
   font-size: 15px;
   font-weight: 500;
   height: 40px;
   margin-top: 20px;
-  transition: 0.3s;
   width: 100%;
-}
-
-.buttonGo:hover {
-  background-color: #439eff;
-  cursor: pointer;
-  transition: 0.3s;
 }
 </style>

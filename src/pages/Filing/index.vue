@@ -1,5 +1,5 @@
 <template>
-  <div v-if="hiddenStore.registrationSteps === true" class="mainBlockLogin">
+  <div  class="mainBlockLogin">
     <div v-if="loginStore.limitCcal === 0" class="register">
       <div class="nameLogin">Теперь заполним необходимые данные</div>
       <div>
@@ -50,8 +50,8 @@
 <script setup>
 import { ref } from 'vue'
 
-import { useComponents } from '../store/ComponentsHidden'
-import { useLogin } from '../store/Login'
+import { useComponents } from '@/store/ComponentsHidden'
+import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
 const hiddenStore = useComponents()
 
@@ -73,7 +73,7 @@ const regOrLogin = ref('register')
   margin-left: auto;
   margin-right: auto;
   max-width: 500px;
-  position: fixed; /* фиксированное положение */
+  position: fixed;
   right: 0;
   top: 0;
   width: 100%;

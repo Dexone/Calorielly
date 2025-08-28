@@ -1,6 +1,6 @@
 <template>
-  <div v-if="hiddenStore.scales" class="mainBlockScales">
-    <div class="x" @click="hiddenStore.scales = !hiddenStore.scales">
+  <div  class="mainBlockSettings">
+    <div class="close" @click="hiddenStore.settings = !hiddenStore.settings">
       <svg
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
@@ -20,26 +20,27 @@
     </div>
 
     <div class="login">
-      <div class="nameLogin">Калькулятор граммов</div>
+      <div class="nameLogin">Желаемый вес</div>
+      <div><input v-model="weight" type="number" placeholder="Вес кг" /></div>
       <div>
-        <input
-          v-model="stoGR"
-          type="number"
-          placeholder="Ккал/100гр"
-          @input="chetGR()"
-        />
+        <button
+          class="buttonGo"
+          @click="(loginStore.editDesiredWeight(weight), (weight = ''))"
+        >
+          Изменить
+        </button>
       </div>
+    </div>
+
+    <div class="login">
+      <div class="nameLogin">Лимит калорий</div>
+      <div><input v-model="ccal" type="number" placeholder="Ккал" /></div>
       <div>
-        <input
-          v-model="ccalGR"
-          type="number"
-          placeholder="Нужно калорий"
-          @input="chetGR()"
-        />
-      </div>
-      <div>
-        <button class="buttonGo" disabled>
-          {{ itogGR }} грамм ({{ Math.floor(stoGR * (itogGR / 100)) }} ккал)
+        <button
+          class="buttonGo"
+          @click="(loginStore.editLimitCcal(ccal), (ccal = ''))"
+        >
+          Изменить
         </button>
       </div>
     </div>
@@ -49,17 +50,13 @@
 <script setup>
 import { ref } from 'vue'
 
-import { useComponents } from '../store/ComponentsHidden'
-import { useLogin } from '../store/Login'
+import { useComponents } from '@/store/ComponentsHidden'
+import { useLogin } from '@/store/Login'
 const hiddenStore = useComponents()
 const loginStore = useLogin()
 
-let stoGR = ref('')
-let ccalGR = ref('')
-let itogGR = ref(0)
-function chetGR() {
-  itogGR.value = Math.floor(ccalGR.value / (stoGR.value / 100))
-}
+const weight = ref('')
+const ccal = ref('')
 
 defineProps({
   msg: String,
@@ -68,7 +65,7 @@ const regOrLogin = ref('register')
 </script>
 
 <style scoped>
-.mainBlockScales {
+.mainBlockSettings {
   background-color: white;
   border-radius: 5px;
   left: 0;
@@ -82,13 +79,13 @@ const regOrLogin = ref('register')
   z-index: 1050;
 }
 
-.x {
+.close {
   color: #666;
   float: right;
   margin: 10px;
 }
 
-.x:hover {
+.close:hover {
   color: #9b9b9b;
   cursor: pointer;
   transition: 0.3s;
@@ -124,14 +121,21 @@ input {
 }
 
 .buttonGo {
-  background-color: #f3f2f8;
+  background-color: #007aff;
   border: none;
   border-radius: 7px;
-  color: #74408b;
+  color: white;
   font-size: 15px;
   font-weight: 500;
   height: 40px;
   margin-top: 20px;
+  transition: 0.3s;
   width: 100%;
+}
+
+.buttonGo:hover {
+  background-color: #439eff;
+  cursor: pointer;
+  transition: 0.3s;
 }
 </style>

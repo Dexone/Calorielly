@@ -22,7 +22,7 @@ export default [
     rules: {
       ...vue.configs['flat/recommended'].rules,
       ...tseslint.configs.recommended.rules,
-        'import/first': 'error',
+      'import/first': 'error',
       'import/order': [
         'error',
         { alphabetize: { order: 'asc' }, 'newlines-between': 'always' },
@@ -40,7 +40,7 @@ export default [
     plugins: { '@typescript-eslint': tseslint, import: importPlugin },
     rules: {
       ...tseslint.configs.recommended.rules,
-        'import/first': 'error',
+      'import/first': 'error',
       'import/order': [
         'error',
         {

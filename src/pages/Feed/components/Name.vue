@@ -3,7 +3,8 @@
     {{
       loginStore.login[0].toUpperCase() +
       loginStore.login.slice(1, loginStore.login.length)
-    }}<a @click="hiddenStore.showSettings()"
+    }}
+    <RouterLink to="/settings"><a 
       ><svg
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
@@ -28,14 +29,15 @@
         />
       </svg>
     </a>
+    </RouterLink>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 
-import { useComponents } from '../store/ComponentsHidden'
-import { useLogin } from '../store/Login'
+import { useComponents } from '@/store/ComponentsHidden'
+import { useLogin } from '@/store/Login'
 
 const loginStore = useLogin()
 

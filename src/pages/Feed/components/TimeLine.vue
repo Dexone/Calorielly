@@ -91,7 +91,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 
-import { useLogin } from '../store/Login'
+import { useLogin } from '@/store/Login'
 
 const loginStore = useLogin()
 const a = 1
