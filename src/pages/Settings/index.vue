@@ -72,7 +72,6 @@ const regOrLogin = ref('register')
   margin-left: auto;
   margin-right: auto;
   max-width: 400px;
-  position: fixed; /* фиксированное положение */
   right: 0;
   top: 0;
   width: 100%;
