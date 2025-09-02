@@ -1,10 +1,13 @@
 <!-- App.vue -->
 <template>
+               <Header />
   <div class="all">
+    
     <div class="leftbar"><LeftBar /></div>
 
     <div class="main">
       <!-- сюда рендерятся страницы -->
+
       <RouterView />
       <Footer class="footer" />
       <Add />
@@ -20,7 +23,7 @@ import { watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 import Add from './components/Add.vue'
-
+import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import LeftBar from '@/components/LeftBar.vue'
 import { useLogin } from '@/store/Login'

@@ -35,10 +35,9 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script setup lang='ts'>
 
-import { useComponents } from '@/store/ComponentsHidden'
+import { useComponents } from '@/store/ComponentsHidden.js'
 
 const hiddenStore = useComponents()
 
