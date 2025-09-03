@@ -148,10 +148,10 @@ defineProps({
 .blockTarget {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 5px 0 #dedee0;
+  box-shadow: 0 6px 5px 0 #dedee0;
   column-gap: 8px;
   display: inline-grid;
-  grid-template-columns: 32px 1fr;
+  grid-template-columns: 22px 1fr;
   margin: 10px 10px 12px 0;
   min-height: 60px;
   padding: 8px 14px 10px;
