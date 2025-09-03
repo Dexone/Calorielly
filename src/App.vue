@@ -1,8 +1,7 @@
 <!-- App.vue -->
 <template>
-               <Header />
+  <Header />
   <div class="all">
-    
     <div class="leftbar"><LeftBar /></div>
 
     <div class="main">
@@ -23,8 +22,9 @@ import { watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 import Add from './components/Add.vue'
-import Header from '@/components/Header.vue'
+
 import Footer from '@/components/Footer.vue'
+import Header from '@/components/Header.vue'
 import LeftBar from '@/components/LeftBar.vue'
 import { useLogin } from '@/store/Login'
 
@@ -45,11 +45,11 @@ watch(loginStore, () => {
 .all {
   display: flex;
   margin: 0 auto;
+  margin-top: 70px;
   max-width: 900px;
   width: 100%;
-  margin-top: 70px;
-
 }
+
 .main {
   width: 100%;
 }
@@ -58,9 +58,10 @@ watch(loginStore, () => {
   .leftbar {
     display: none;
   }
+
   .all {
     padding: 10px;
-      padding-bottom: 60px;
+    padding-bottom: 60px;
   }
 }
 

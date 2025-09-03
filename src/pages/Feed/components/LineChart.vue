@@ -120,12 +120,11 @@ console.log(loginStore.getStoreWeights)
   margin-bottom: 20px;
   max-height: 200px;
   padding: 16px;
-
 }
 
 .lineChart {
   height: 100%;
-  width: 100%;
   max-height: 170px;
+  width: 100%;
 }
 </style>

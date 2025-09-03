@@ -29,6 +29,4 @@ const loginStore = useLogin()
 const hiddenStore = useComponents()
 
 loginStore.getInfo()
-
-
 </script>

@@ -52,8 +52,8 @@ defineProps({
 
 <style scoped lang="scss">
 .mainBlockFooter {
-
-
+  background-color: #fff;
+  border-top: 0.5px solid #d9d9d9;
   bottom: 0;
   display: flex;
   height: 48px;
@@ -64,13 +64,10 @@ defineProps({
   right: 0;
   z-index: 1050;
 
-  background-color: #fff;
-
-  border-top: 0.5px solid #d9d9d9;
-
-    & :deep(a) { //ибо routerLink после рендера будет <a>
+    & :deep(a) { // ибо routerLink после рендера будет <a>
     text-decoration: none;
   }
+
   .router-link-active {
     .blockItem {
       color: #007aff;
@@ -88,6 +85,7 @@ defineProps({
   flex-direction: column;
   font-size: 10px;
   font-weight: 500;
+
   .icon1 {
   color: #959595;
   height: 28px;
