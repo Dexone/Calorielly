@@ -47,7 +47,8 @@ watch(loginStore, () => {
   margin: 0 auto;
   max-width: 900px;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 70px;
+
 }
 .main {
   width: 100%;
@@ -59,6 +60,7 @@ watch(loginStore, () => {
   }
   .all {
     padding: 10px;
+      padding-bottom: 60px;
   }
 }
 

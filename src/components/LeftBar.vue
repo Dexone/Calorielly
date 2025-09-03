@@ -56,7 +56,18 @@ defineProps({
   text-decoration: none;
 border: 0.5px solid #d9d9d9;
 
+  &:hover {
+    background-color: rgb(242, 242, 242);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
 
+   & :deep(a) { //ибо routerLink после рендера будет <a>
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+  }
   .router-link-active {
     .section {
       background-color: rgb(242, 242, 242);
@@ -72,12 +83,7 @@ border: 0.5px solid #d9d9d9;
     text-decoration: none;
     transition: 0.3s;
 
-  &:hover {
-    background-color: rgb(242, 242, 242);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
+
   }
 
 
@@ -90,10 +96,6 @@ border: 0.5px solid #d9d9d9;
     margin-top: -5px;
   }
 
-  & :deep(a) {
-    text-decoration: none;
-    color: black;
-    font-size: 15px;
-  }
+ 
 }
 </style>

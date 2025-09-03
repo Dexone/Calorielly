@@ -32,11 +32,12 @@ const pathScheme: Record<string, string> = {
     background: #fff;
     margin-left: auto;
     margin-right: auto;
-    padding: 10px 0;
-
+    padding: 5px 0;
+box-shadow: 0 1px 10px rgba(139, 139, 139, 0.1);
     width: 100%;
     z-index: 1000;
-
+position: fixed;
+top: 0;
     .container {
         align-items: center;
         display: flex;
