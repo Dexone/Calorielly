@@ -1,38 +1,32 @@
 <template>
   <div class="mainBlockScales">
-
-
-
     <div class="title">Калькулятор граммов</div>
 
-
     <div class="nameInput">Калорийность продукта</div>
-    <input v-model.number="stoGR" type="number" placeholder="Ккал/100гр" @input="chetGR()" />
+    <input
+      v-model.number="stoGR"
+      type="number"
+      placeholder="Ккал/100гр"
+      @input="chetGR()"
+    />
 
     <div class="nameInput">Желаемая калорийность</div>
-    <input v-model.number="ccalGR" type="number" placeholder="Нужно калорий" @input="chetGR()" />
-
-
+    <input
+      v-model.number="ccalGR"
+      type="number"
+      placeholder="Нужно калорий"
+      @input="chetGR()"
+    />
 
     <button class="buttonGo" disabled>
       {{ itogGR }} грамм
       <p>Положите на весы</p>
     </button>
-
-
-
   </div>
-
-
-
-
-
-
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-
 
 let stoGR = ref<number | null>(null)
 let ccalGR = ref<number | null>(null)
@@ -52,20 +46,20 @@ defineProps({
 
 <style scoped lang="scss">
 .mainBlockScales {
-  border-radius: 8px;
-  padding: 20px 22px;
   background-color: #fff;
   border: 0.5px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 20px 22px;
 
   .title {
-    font-weight: 600;
     font-size: 17px;
+    font-weight: 600;
   }
 
   .nameInput {
-    font-weight: 500;
+    color: rgb(88 99 111);
     font-size: 15px;
-    color: rgb(88, 99, 111);
+    font-weight: 500;
     margin-top: 18px;
   }
 
@@ -76,12 +70,12 @@ defineProps({
     border-radius: 7px;
     border-width: 1px;
     display: block;
+    font-size: 15px;
+    font-weight: 500;
     height: 40px;
     margin-top: 4px;
     padding-left: 7px;
     width: 100%;
-    font-size: 15px;
-    font-weight: 500;
 
     &::placeholder {
       font-size: 14px;
@@ -89,29 +83,22 @@ defineProps({
     }
   }
 
-
-
   .buttonGo {
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(245 245 245);
     border: none;
     border-radius: 7px;
-    color: #000000;
-
-
-    margin-top: 20px;
-    width: 100%;
-    font-weight: 600;
+    color: #000;
     font-size: 17px;
+    font-weight: 600;
+    margin-top: 20px;
     padding: 8px 0;
+    width: 100%;
 
     p {
-      font-weight: 500;
+      color: rgb(88 99 111);
       font-size: 14px;
-      color: rgb(88, 99, 111);
+      font-weight: 500;
     }
   }
-
-
-
 }
 </style>
