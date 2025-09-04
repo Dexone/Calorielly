@@ -1,140 +1,111 @@
 <template>
   <div class="mainBlockSettings">
-    <div class="close" @click="hiddenStore.settings = !hiddenStore.settings">
-      <svg
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        width="22"
-        height="22"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M6 18 17.94 6M18 18 6.06 6"
-        />
-      </svg>
+
+    <div class="title">Калькулятор граммов</div>
+
+    <div class="nameInput">Желаемый вес</div>
+    <div><input v-model="weight" type="number" placeholder="Вес кг" /></div>
+    <div>
+      <button class="buttonGo" @click="(loginStore.editDesiredWeight(weight), (weight = ''))">
+        Изменить
+      </button>
     </div>
 
-    <div class="login">
-      <div class="nameLogin">Желаемый вес</div>
-      <div><input v-model="weight" type="number" placeholder="Вес кг" /></div>
-      <div>
-        <button
-          class="buttonGo"
-          @click="(loginStore.editDesiredWeight(weight), (weight = ''))"
-        >
-          Изменить
-        </button>
-      </div>
-    </div>
 
-    <div class="login">
-      <div class="nameLogin">Лимит калорий</div>
-      <div><input v-model="ccal" type="number" placeholder="Ккал" /></div>
-      <div>
-        <button
-          class="buttonGo"
-          @click="(loginStore.editLimitCcal(ccal), (ccal = ''))"
-        >
-          Изменить
-        </button>
-      </div>
-    </div>
+
+    <div class="nameInput">Лимит калорий</div>
+    <div><input v-model="ccal" type="number" placeholder="Ккал" /></div>
+
+      <button class="buttonGo" @click="(loginStore.editLimitCcal(ccal), (ccal = ''))">
+        Изменить
+      </button>
+
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 
-import { useComponents } from '@/store/ComponentsHidden'
+
 import { useLogin } from '@/store/Login'
-const hiddenStore = useComponents()
+
 const loginStore = useLogin()
 
-const weight = ref('')
-const ccal = ref('')
+const weight = ref<number | null >(null)
+const ccal = ref<number | null>(null)
 
 defineProps({
   msg: String,
 })
-const regOrLogin = ref('register')
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .mainBlockSettings {
-  background-color: white;
-  border-radius: 5px;
-  left: 0;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 400px;
-  right: 0;
-  top: 0;
-  width: 100%;
-  z-index: 1050;
-}
+  background-color: #fff;
+  border: 0.5px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 20px 22px;
 
-.close {
-  color: #666;
-  float: right;
-  margin: 10px;
-}
+  .title {
+    font-size: 17px;
+    font-weight: 600;
+  }
 
-.close:hover {
-  color: #9b9b9b;
-  cursor: pointer;
-  transition: 0.3s;
-}
+  .nameInput {
+    color: rgb(88 99 111);
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 18px;
+  }
 
-.nameLogin {
-  margin-bottom: 10px;
-}
+  input {
+    background-color: #f2f2f2;
+    border: solid;
+    border-color: #c7c7c7;
+    border-radius: 7px;
+    border-width: 1px;
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    height: 40px;
+    margin-top: 4px;
+    padding-left: 7px;
+    width: 100%;
 
-.login {
-  margin: 30px;
-}
+    &::placeholder {
+      font-size: 15px;
+      font-weight: 600;
+    }
 
-.register {
-  margin: 30px;
-}
+    &:focus {
+  border: 1px solid #007aff;
+  outline: none;
+  
+    }
+  }
 
-input {
-  background-color: #f9fafb;
-  border: solid;
-  border-color: #c7c7c7;
-  border-radius: 7px;
-  border-width: 1px;
-  display: block;
-  height: 40px;
-  margin-top: 20px;
-  padding-left: 7px;
-  width: 100%;
-}
 
-::placeholder {
-  font-size: 14px;
-}
 
-.buttonGo {
-  background-color: #007aff;
-  border: none;
-  border-radius: 7px;
-  color: white;
-  font-size: 15px;
-  font-weight: 500;
-  height: 40px;
-  margin-top: 20px;
-  transition: 0.3s;
-  width: 100%;
-}
+  .buttonGo {
+    background-color: #007aff;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    height: 40px;
+    margin-top: 20px;
+    transition: 0.3s;
+    width: 100%;
+      &:hover {
+    background-color: #439eff;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  }
 
-.buttonGo:hover {
-  background-color: #439eff;
-  cursor: pointer;
-  transition: 0.3s;
+
+
+
 }
 </style>

@@ -68,7 +68,6 @@ border: 0.5px solid #d9d9d9;
 
   .section {
     padding: 14px;
-    padding-bottom: 8px;
     text-decoration: none;
     transition: 0.3s;
 

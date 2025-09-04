@@ -64,22 +64,22 @@ defineProps({
   }
 
   input {
-    background-color: #f9fafb;
+    background-color: #f2f2f2;
     border: solid;
     border-color: #c7c7c7;
     border-radius: 7px;
     border-width: 1px;
     display: block;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 600;
     height: 40px;
     margin-top: 4px;
     padding-left: 7px;
     width: 100%;
 
     &::placeholder {
-      font-size: 14px;
-      font-weight: 400;
+      font-size: 15px;
+      font-weight: 600;
     }
   }
 
