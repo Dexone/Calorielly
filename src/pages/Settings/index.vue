@@ -1,37 +1,38 @@
 <template>
   <div class="mainBlockSettings">
-
     <div class="title">Калькулятор граммов</div>
 
     <div class="nameInput">Желаемый вес</div>
     <div><input v-model="weight" type="number" placeholder="Вес кг" /></div>
     <div>
-      <button class="buttonGo" @click="(loginStore.editDesiredWeight(weight), (weight = ''))">
+      <button
+        class="buttonGo"
+        @click="(loginStore.editDesiredWeight(weight), (weight = ''))"
+      >
         Изменить
       </button>
     </div>
 
-
-
     <div class="nameInput">Лимит калорий</div>
     <div><input v-model="ccal" type="number" placeholder="Ккал" /></div>
 
-      <button class="buttonGo" @click="(loginStore.editLimitCcal(ccal), (ccal = ''))">
-        Изменить
-      </button>
-
+    <button
+      class="buttonGo"
+      @click="(loginStore.editLimitCcal(ccal), (ccal = ''))"
+    >
+      Изменить
+    </button>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 
-
 import { useLogin } from '@/store/Login'
 
 const loginStore = useLogin()
 
-const weight = ref<number | null >(null)
+const weight = ref<number | null>(null)
 const ccal = ref<number | null>(null)
 
 defineProps({
@@ -78,13 +79,10 @@ defineProps({
     }
 
     &:focus {
-  border: 1px solid #007aff;
-  outline: none;
-  
+      border: 1px solid #007aff;
+      outline: none;
     }
   }
-
-
 
   .buttonGo {
     background-color: #007aff;
@@ -97,15 +95,12 @@ defineProps({
     margin-top: 20px;
     transition: 0.3s;
     width: 100%;
-      &:hover {
-    background-color: #439eff;
-    cursor: pointer;
-    transition: 0.3s;
+
+    &:hover {
+      background-color: #439eff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
   }
-  }
-
-
-
-
 }
 </style>
