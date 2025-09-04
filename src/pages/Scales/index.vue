@@ -1,137 +1,117 @@
 <template>
   <div class="mainBlockScales">
-    <div class="x" @click="hiddenStore.scales = !hiddenStore.scales">
-      <svg
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        width="22"
-        height="22"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M6 18 17.94 6M18 18 6.06 6"
-        />
-      </svg>
-    </div>
 
-    <div class="login">
-      <div class="nameLogin">Калькулятор граммов</div>
-      <div>
-        <input
-          v-model="stoGR"
-          type="number"
-          placeholder="Ккал/100гр"
-          @input="chetGR()"
-        />
-      </div>
-      <div>
-        <input
-          v-model="ccalGR"
-          type="number"
-          placeholder="Нужно калорий"
-          @input="chetGR()"
-        />
-      </div>
-      <div>
-        <button class="buttonGo" disabled>
-          {{ itogGR }} грамм ({{ Math.floor(stoGR * (itogGR / 100)) }} ккал)
-        </button>
-      </div>
-    </div>
+
+
+    <div class="title">Калькулятор граммов</div>
+
+
+    <div class="nameInput">Калорийность продукта</div>
+    <input v-model.number="stoGR" type="number" placeholder="Ккал/100гр" @input="chetGR()" />
+
+    <div class="nameInput">Желаемая калорийность</div>
+    <input v-model.number="ccalGR" type="number" placeholder="Нужно калорий" @input="chetGR()" />
+
+
+
+    <button class="buttonGo" disabled>
+      {{ itogGR }} грамм
+      <p>Положите на весы</p>
+    </button>
+
+
+
   </div>
+
+
+
+
+
+
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 
-import { useComponents } from '@/store/ComponentsHidden'
-import { useLogin } from '@/store/Login'
-const hiddenStore = useComponents()
-const loginStore = useLogin()
 
-let stoGR = ref('')
-let ccalGR = ref('')
-let itogGR = ref(0)
+let stoGR = ref<number | null>(null)
+let ccalGR = ref<number | null>(null)
+let itogGR = ref<number>(0)
 function chetGR() {
-  itogGR.value = Math.floor(ccalGR.value / (stoGR.value / 100))
+  if (stoGR.value && stoGR.value > 0 && ccalGR.value) {
+    itogGR.value = Math.floor(ccalGR.value / (stoGR.value / 100))
+  } else {
+    itogGR.value = 0
+  }
 }
 
 defineProps({
   msg: String,
 })
-const regOrLogin = ref('register')
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .mainBlockScales {
-  background-color: white;
-  border-radius: 5px;
-  left: 0;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 400px;
-  position: fixed; /* фиксированное положение */
-  right: 0;
-  top: 0;
-  width: 100%;
-  z-index: 1050;
-}
+  border-radius: 8px;
+  padding: 20px 22px;
+  background-color: #fff;
+  border: 0.5px solid #d9d9d9;
 
-.x {
-  color: #666;
-  float: right;
-  margin: 10px;
-}
+  .title {
+    font-weight: 600;
+    font-size: 17px;
+  }
 
-.x:hover {
-  color: #9b9b9b;
-  cursor: pointer;
-  transition: 0.3s;
-}
+  .nameInput {
+    font-weight: 500;
+    font-size: 15px;
+    color: rgb(88, 99, 111);
+    margin-top: 18px;
+  }
 
-.nameLogin {
-  margin-bottom: 10px;
-}
+  input {
+    background-color: #f9fafb;
+    border: solid;
+    border-color: #c7c7c7;
+    border-radius: 7px;
+    border-width: 1px;
+    display: block;
+    height: 40px;
+    margin-top: 4px;
+    padding-left: 7px;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 500;
 
-.login {
-  margin: 30px;
-}
+    &::placeholder {
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
 
-.register {
-  margin: 30px;
-}
 
-input {
-  background-color: #f9fafb;
-  border: solid;
-  border-color: #c7c7c7;
-  border-radius: 7px;
-  border-width: 1px;
-  display: block;
-  height: 40px;
-  margin-top: 20px;
-  padding-left: 7px;
-  width: 100%;
-}
 
-::placeholder {
-  font-size: 14px;
-}
+  .buttonGo {
+    background-color: rgb(245, 245, 245);
+    border: none;
+    border-radius: 7px;
+    color: #000000;
 
-.buttonGo {
-  background-color: #f3f2f8;
-  border: none;
-  border-radius: 7px;
-  color: #74408b;
-  font-size: 15px;
-  font-weight: 500;
-  height: 40px;
-  margin-top: 20px;
-  width: 100%;
+
+    margin-top: 20px;
+    width: 100%;
+    font-weight: 600;
+    font-size: 17px;
+    padding: 8px 0;
+
+    p {
+      font-weight: 500;
+      font-size: 14px;
+      color: rgb(88, 99, 111);
+    }
+  }
+
+
+
 }
 </style>

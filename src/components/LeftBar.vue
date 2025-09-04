@@ -48,55 +48,50 @@ defineProps({
 
 <style scoped lang="scss">
 .mainLeftBar {
-  background-color: #fff;
-border: 0.5px solid #d9d9d9;
   border-radius: 8px;
   margin-right: 20px;
-  padding: 8px;
-  text-decoration: none;
+  padding: 8px 8px;
   width: 320px;
+  background-color: #fff;
+  text-decoration: none;
+border: 0.5px solid #d9d9d9;
 
-  &:hover {
-    background-color: rgb(242 242 242);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-   & :deep(a) { // ибо routerLink после рендера будет <a>
-    color: black;
-    font-size: 15px;
-    text-decoration: none;
-  }
 
   .router-link-active {
     .section {
-      background-color: rgb(242 242 242);
-        border-radius: 8px;
+      background-color: rgb(242, 242, 242);
       cursor: pointer;
       transition: 0.3s;
+        border-radius: 8px;
     }
   }
 
   .section {
-    padding: 14px;
     padding-bottom: 8px;
+    padding: 14px 14px;
     text-decoration: none;
     transition: 0.3s;
 
-
+  &:hover {
+    background-color: rgb(242, 242, 242);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
   }
-
-
+  }
 
   img {
+    stroke: #007aff;
     float: left;
     margin-right: 10px;
-    margin-top: -5px;
-    stroke: #007aff;
     width: 32px;
+    margin-top: -5px;
   }
 
- 
+  & :deep(a) {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+  }
 }
 </style>
