@@ -7,7 +7,7 @@
     <div>
       <button
         class="buttonGo"
-        @click="(loginStore.editDesiredWeight(weight), (weight = ''))"
+        @click="(loginStore.editDesiredWeight(weight), (weight = null))"
       >
         Изменить
       </button>
@@ -18,7 +18,7 @@
 
     <button
       class="buttonGo"
-      @click="(loginStore.editLimitCcal(ccal), (ccal = ''))"
+      @click="(loginStore.editLimitCcal(ccal), (ccal = null))"
     >
       Изменить
     </button>
@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-
+// @ts-ignore
 import { useLogin } from '@/store/Login'
 
 const loginStore = useLogin()
