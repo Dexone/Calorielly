@@ -1,26 +1,25 @@
 <template>
   <div class="mainBlockLogin">
     <div v-if="loginStore.id === 1">
-
-
-
-      <div v-if="regOrLogin === 'enter'" >
+      <div v-if="regOrLogin === 'enter'">
         <div class="title">Вход</div>
-            <div class="nameInput">Логин</div>
+        <div class="nameInput">Логин</div>
         <input v-model="enterLogin" placeholder="Введите логин" />
-   
-              <div class="nameInput">Пароль</div>
-          <input v-model="enterPassword" type="password" placeholder="Введите пароль" />
-      
-  
-          <button
-            class="buttonGo"
-            @click="loginStore.enter(enterLogin, enterPassword)"
-          >
-            Войти
-          </button>
-      
-        
+
+        <div class="nameInput">Пароль</div>
+        <input
+          v-model="enterPassword"
+          type="password"
+          placeholder="Введите пароль"
+        />
+
+        <button
+          class="buttonGo"
+          @click="loginStore.enter(enterLogin, enterPassword)"
+        >
+          Войти
+        </button>
+
         <div class="regLogin">
           Не зарегистрированы?
           <a class="buttonRegLogin" @click="regOrLogin = 'register'"
@@ -29,25 +28,25 @@
         </div>
       </div>
 
-
-
-
-      <div v-if="regOrLogin === 'register'" >
+      <div v-if="regOrLogin === 'register'">
         <div class="title">Регистрация</div>
-                    <div class="nameInput">Логин</div>
+        <div class="nameInput">Логин</div>
         <input v-model="regLogin" placeholder="Введите логин" />
-                    <div class="nameInput">Пароль</div>
-        
-          <input v-model="regPassword" type="password" placeholder="Введите пароль" />
-        
-        
-          <button
-            class="buttonGo"
-            @click="loginStore.registration(regLogin, regPassword)"
-          >
-            Создать аккаунт
-          </button>
- 
+        <div class="nameInput">Пароль</div>
+
+        <input
+          v-model="regPassword"
+          type="password"
+          placeholder="Введите пароль"
+        />
+
+        <button
+          class="buttonGo"
+          @click="loginStore.registration(regLogin, regPassword)"
+        >
+          Создать аккаунт
+        </button>
+
         <div class="regLogin">
           Уже есть аккаунт?
           <a class="buttonRegLogin" @click="regOrLogin = 'enter'">Войти</a>
@@ -55,15 +54,9 @@
       </div>
     </div>
 
-
-
-
     <div v-if="loginStore.id > 1">
       <AccountInfo />
     </div>
-
-
-
   </div>
 </template>
 
@@ -71,8 +64,9 @@
 import { ref } from 'vue'
 
 // @ts-ignore
-import { useLogin } from '@/store/Login'
 import AccountInfo from './components/AccountInfo.vue'
+
+import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
 
 const regLogin = ref('')
@@ -99,13 +93,14 @@ const regOrLogin = ref('register')
     font-weight: 600;
   }
 
-    .nameInput {
+  .nameInput {
     color: rgb(88 99 111);
     font-size: 15px;
     font-weight: 500;
     margin-top: 18px;
   }
-    input {
+
+  input {
     background-color: #f2f2f2;
     border: solid;
     border-color: #c7c7c7;
@@ -123,10 +118,9 @@ const regOrLogin = ref('register')
       font-size: 15px;
       font-weight: 600;
     }
-}
+  }
 
-
-.buttonGo {
+  .buttonGo {
     background-color: #007aff;
     border: none;
     border-radius: 7px;
@@ -143,34 +137,22 @@ const regOrLogin = ref('register')
       cursor: pointer;
       transition: 0.3s;
     }
-}
+  }
 
+  .regLogin {
+    color: #6c727f;
+    margin-top: 15px;
 
-.regLogin {
-  color: #6c727f;
-  margin-top: 15px;
-  .buttonRegLogin {
-  color: #007aff;
-  transition: 0.3s;
-  &:hover{
-      color: #439eff;
-  cursor: pointer;
-  transition: 0.3s;
+    .buttonRegLogin {
+      color: #007aff;
+      transition: 0.3s;
+
+      &:hover {
+        color: #439eff;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+    }
   }
 }
-}
-
-
-
-
-
-
-
-
-
-}
-
-
-
-
 </style>
