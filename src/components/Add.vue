@@ -1,58 +1,40 @@
 <template>
   <div v-if="hiddenStore.add" class="mainBlockAdd">
     <div class="x" @click="hiddenStore.add = !hiddenStore.add">
-      <svg
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        width="22"
-        height="22"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M6 18 17.94 6M18 18 6.06 6"
-        />
+      <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M6 18 17.94 6M18 18 6.06 6" />
       </svg>
     </div>
 
     <div class="login">
       <div class="nameLogin">Добавить прием пищи</div>
-      <div>
-        <input v-model="ccalValue" type="number" placeholder="Калорийность" />
-      </div>
-      <div><input v-model="ccalName" placeholder="Описание" /></div>
-      <div>
-        <button
-          class="buttonGo"
-          @click="
-            (loginStore.addCcal(ccalValue, ccalName),
-            (ccalValue = ''),
-            (ccalName = ''))
-          "
-        >
-          Добавить
-        </button>
-      </div>
+
+      <input v-model="ccalValue" type="number" placeholder="Калорийность" />
+
+      <input v-model="ccalName" placeholder="Описание" />
+
+      <button class="buttonGo" @click="
+      (loginStore.addCcal(ccalValue, ccalName),
+        (ccalValue = ''),
+        (ccalName = ''))
+        ">
+        Добавить
+      </button>
+
     </div>
 
     <div class="login">
       <div class="nameLogin">Обновить вес</div>
-      <div>
-        <input v-model="weightValue" type="number" placeholder="Вес кг" />
-      </div>
-      <div>
-        <button
-          class="buttonGo"
-          @click="(loginStore.addWeight(weightValue), (weightValue = ''))"
-        >
-          Обновить
-        </button>
-      </div>
+
+      <input v-model="weightValue" type="number" placeholder="Вес кг" />
+
+
+      <button class="buttonGo" @click="(loginStore.addWeight(weightValue), (weightValue = ''))">
+        Обновить
+      </button>
     </div>
+
   </div>
 </template>
 
@@ -75,19 +57,22 @@ defineProps({
 const regOrLogin = ref('register')
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .mainBlockAdd {
-  background-color: white;
-  border-radius: 5px;
   left: 0;
   margin-left: auto;
   margin-right: auto;
   max-width: 400px;
-  position: fixed; /* фиксированное положение */
+  position: fixed;
+  /* фиксированное положение */
   right: 0;
   top: 0;
   width: 100%;
   z-index: 1050;
+  background-color: #fff;
+  border: 0.5px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 20px 22px;
 }
 
 .x {
@@ -95,14 +80,16 @@ const regOrLogin = ref('register')
   float: right;
   margin: 10px;
   transition: 0.3s;
+
+  &:hover {
+    border-radius: 5px;
+    color: #9b9b9b;
+    cursor: pointer;
+    transition: 0.3s;
+  }
 }
 
-.x:hover {
-  border-radius: 5px;
-  color: #9b9b9b;
-  cursor: pointer;
-  transition: 0.3s;
-}
+
 
 .nameLogin {
   margin-bottom: 10px;
