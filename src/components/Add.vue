@@ -1,6 +1,6 @@
 <template>
-  <div v-if="hiddenStore.add" class="mainBlockAdd">
-    <div class="x" @click="hiddenStore.add = !hiddenStore.add">
+  <div  class="mainBlockAdd">
+    <div class="x" @click="$emit('close')">
       <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M6 18 17.94 6M18 18 6.06 6" />
@@ -41,11 +41,9 @@
 <script setup>
 import { ref } from 'vue'
 
-import { useComponents } from '@/store/ComponentsHidden'
 import { useLogin } from '@/store/Login'
-const hiddenStore = useComponents()
 const loginStore = useLogin()
-
+const emit = defineEmits(['close'])
 const ccalValue = ref('')
 const ccalName = ref('')
 

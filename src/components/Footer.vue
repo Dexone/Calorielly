@@ -15,7 +15,7 @@
     </RouterLink>
 
     <a>
-      <div class="blockItem" @click="hiddenStore.showAdd()">
+      <div class="blockItem" @click="$emit('open')">
         <img class="icon1" src="@/assets/Footer/add.svg"></img>
         <div class="textUnderIcon">Добавить</div>
       </div>
@@ -24,7 +24,7 @@
     <RouterLink to="/settings">
       <div class="blockItem">
         <img class="icon1" src="@/assets/Footer/settings.svg"></img>
-        <div class="textUnderIcon">Настройки</div>
+        <div class="textUnderIcon">Цели</div>
       </div>
     </RouterLink>
     <RouterLink to="/profile">
@@ -39,11 +39,9 @@
 <script setup>
 import { ref } from 'vue'
 
-import { useComponents } from '@/store/ComponentsHidden'
 import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
-
-const hiddenStore = useComponents()
+const emit = defineEmits(['open'])
 
 defineProps({
   msg: String,

@@ -30,11 +30,9 @@
 <script setup>
 import { ref, watch } from 'vue'
 
-import { useComponents } from '@/store/ComponentsHidden'
 import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
 
-const hiddenStore = useComponents()
 
 const backTime = ref(0)
 const upTime = ref(0)

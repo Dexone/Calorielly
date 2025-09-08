@@ -9,9 +9,7 @@ import Chart from 'chart.js/auto'
 import { computed, watch, ref, reactive } from 'vue'
 import { LineChart } from 'vue-chart-3'
 
-import { useComponents } from '@/store/ComponentsHidden'
 import { useLogin } from '@/store/Login'
-const hiddenStore = useComponents()
 const loginStore = useLogin()
 
 defineProps({

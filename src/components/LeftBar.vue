@@ -15,21 +15,21 @@
         <span>Весы</span>
       </div>
     </RouterLink>
-    <div class="section" @click="hiddenStore.showAdd()">
+    <div class="section" @click="$emit('open')">
       <img src="@/assets/LeftBar/add.svg"></img>
-      Добавить
+      Добавить значение
     </div>
     <RouterLink to="/settings">
       <div class="section">
         <img src="@/assets/LeftBar/settings.svg"></img>
 
-        <span>Настройки</span>
+        <span>Цели</span>
       </div>
     </RouterLink>
     <RouterLink to="/profile">
       <div class="section">
         <img src="@/assets/LeftBar/auth.svg"></img>
-        <span>Авторизация</span>
+        <span>Аккаунт</span>
       </div>
     </RouterLink>
   </div>
@@ -37,10 +37,8 @@
 
 <script setup lang='ts'>
 
-import { useComponents } from '@/store/ComponentsHidden.js'
 
-const hiddenStore = useComponents()
-
+const emit = defineEmits(['open'])
 defineProps({
   msg: String,
 })

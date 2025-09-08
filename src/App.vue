@@ -1,24 +1,21 @@
-<!-- App.vue -->
 <template>
   <Header />
   <div class="all">
-    <div class="leftbar"><LeftBar /></div>
+    <div class="leftbar"><LeftBar @open = "showAdd = true" /></div>
 
     <div class="main">
-      <!-- сюда рендерятся страницы -->
 
       <RouterView />
-      <Footer class="footer" />
-      <Add />
+      <Footer class="footer" @open="showAdd = true" />
+      <Add v-if="showAdd" @close = "showAdd = false" />
     </div>
   </div>
 
-  <!-- модальные роуты (если надо поверх страниц) -->
   <RouterView name="modal" />
 </template>
 
 <script setup>
-import { watch } from 'vue'
+import { watch, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 import Add from './components/Add.vue'
@@ -27,7 +24,7 @@ import Footer from '@/components/Footer.vue'
 import Header from '@/components/Header.vue'
 import LeftBar from '@/components/LeftBar.vue'
 import { useLogin } from '@/store/Login'
-
+const showAdd = ref(false)
 const loginStore = useLogin()
 const router = useRouter()
 watch(loginStore, () => {

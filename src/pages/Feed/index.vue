@@ -21,12 +21,10 @@ import Now from './components/Now.vue'
 import Target from './components/Target.vue'
 import TimeLine from './components/TimeLine.vue'
 
-import { useComponents } from '@/store/ComponentsHidden'
 import { useLogin } from '@/store/Login'
 
 const loginStore = useLogin()
 
-const hiddenStore = useComponents()
 
 loginStore.getInfo()
 </script>
