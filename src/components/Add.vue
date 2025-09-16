@@ -8,25 +8,37 @@
     <div class="login">
       <div class="nameLogin">Добавить прием пищи</div>
 
-      <UiInput placeholder="Калорийность" v-model.number="ccalValue" type="number" />
+      <UiInput
+        placeholder="Калорийность"
+        v-model.number="ccalValue"
+        type="number"
+      />
 
       <UiInput placeholder="Описание" v-model.trim="ccalName" type="string" />
 
-
-      <UiButton @click="
-      (loginStore.addCcal(ccalValue, ccalName),
-        (ccalValue = ''),
-        (ccalName = ''))
-        " text="Добавить" />
+      <UiButton
+        @click="
+          (loginStore.addCcal(ccalValue, ccalName),
+          (ccalValue = ''),
+          (ccalName = ''))
+        "
+        text="Добавить"
+      />
     </div>
 
     <div class="login">
       <div class="nameLogin">Обновить вес</div>
 
-      <UiInput placeholder="Вес кг" v-model.number="weightValue" type="number" />
+      <UiInput
+        placeholder="Вес кг"
+        v-model.number="weightValue"
+        type="number"
+      />
 
-
-      <UiButton @click="(loginStore.addWeight(weightValue), (weightValue = ''))" text="Обновить" />
+      <UiButton
+        @click="(loginStore.addWeight(weightValue), (weightValue = ''))"
+        text="Обновить"
+      />
     </div>
   </div>
 </template>
@@ -34,8 +46,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import UiInput from '@/components/ui/UiInput.vue'
 import UiButton from '@/components/ui/UiButton.vue'
+import UiInput from '@/components/ui/UiInput.vue'
 // @ts-ignore
 import { useLogin } from '@/store/Login'
 const loginStore = useLogin()

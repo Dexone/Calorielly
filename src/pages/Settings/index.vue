@@ -7,9 +7,10 @@
       <UiInput placeholder="Вес кг" v-model.number="weight" type="number" />
     </div>
     <div>
-
-
-              <UiButton @click="(loginStore.editDesiredWeight(weight), (weight = null))" text="Изменить" />
+      <UiButton
+        @click="(loginStore.editDesiredWeight(weight), (weight = null))"
+        text="Изменить"
+      />
     </div>
 
     <div class="nameInput">Лимит калорий</div>
@@ -17,18 +18,18 @@
       <UiInput placeholder="Ккал" v-model.number="ccal" type="number" />
     </div>
 
-
-
-      <UiButton @click="(loginStore.editLimitCcal(ccal), (ccal = null))" text="Изменить" />
+    <UiButton
+      @click="(loginStore.editLimitCcal(ccal), (ccal = null))"
+      text="Изменить"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 
-
-import UiInput from '@/components/ui/UiInput.vue'
 import UiButton from '@/components/ui/UiButton.vue'
+import UiInput from '@/components/ui/UiInput.vue'
 // @ts-ignore
 import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
@@ -59,6 +60,5 @@ defineProps({
     font-weight: 500;
     margin-top: 18px;
   }
-
 }
 </style>

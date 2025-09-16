@@ -11,6 +11,7 @@
     "lint": "eslint \"src/**/*.{js,ts,vue}\" --fix",
     "format": "prettier .  --write",
     "stylelint": "stylelint \"src/**/*.{vue,scss,css}\" --fix",
+    "clean": "npm run lint; npm run stylelint; npm run format",
     "typecheck": "vue-tsc -b"
   },
   "dependencies": {
