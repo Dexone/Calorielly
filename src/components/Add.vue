@@ -8,39 +8,25 @@
     <div class="login">
       <div class="nameLogin">Добавить прием пищи</div>
 
-      <UiInput
-        placeholder="Калорийность"
-        v-model.number="ccalValue"
-        type="number"
-      />
+      <UiInput placeholder="Калорийность" v-model.number="ccalValue" type="number" />
 
       <UiInput placeholder="Описание" v-model.trim="ccalName" type="string" />
-      <button
-        class="buttonGo"
-        @click="
-          (loginStore.addCcal(ccalValue, ccalName),
-          (ccalValue = ''),
-          (ccalName = ''))
-        "
-      >
-        Добавить
-      </button>
+
+
+      <UiButton @click="
+      (loginStore.addCcal(ccalValue, ccalName),
+        (ccalValue = ''),
+        (ccalName = ''))
+        " text="Добавить" />
     </div>
 
     <div class="login">
       <div class="nameLogin">Обновить вес</div>
 
-      <UiInput
-        placeholder="Вес кг"
-        v-model.number="weightValue"
-        type="number"
-      />
-      <button
-        class="buttonGo"
-        @click="(loginStore.addWeight(weightValue), (weightValue = ''))"
-      >
-        Обновить
-      </button>
+      <UiInput placeholder="Вес кг" v-model.number="weightValue" type="number" />
+
+
+      <UiButton @click="(loginStore.addWeight(weightValue), (weightValue = ''))" text="Обновить" />
     </div>
   </div>
 </template>
@@ -49,6 +35,8 @@
 import { ref } from 'vue'
 
 import UiInput from '@/components/ui/UiInput.vue'
+import UiButton from '@/components/ui/UiButton.vue'
+// @ts-ignore
 import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
 const emit = defineEmits(['close'])
@@ -114,24 +102,5 @@ defineProps({
 
 input {
   margin-top: 20px;
-}
-
-.buttonGo {
-  background-color: #007aff;
-  border: none;
-  border-radius: 7px;
-  color: white;
-  font-size: 15px;
-  font-weight: 500;
-  height: 40px;
-  margin-top: 20px;
-  transition: 0.3s;
-  width: 100%;
-}
-
-.buttonGo:hover {
-  background-color: #439eff;
-  cursor: pointer;
-  transition: 0.3s;
 }
 </style>

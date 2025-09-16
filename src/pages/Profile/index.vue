@@ -4,55 +4,29 @@
       <div v-if="regOrLogin === 'enter'">
         <div class="title">Вход</div>
         <div class="nameInput">Логин</div>
-        <UiInput
-          placeholder="Введите логин"
-          v-model.trim="enterLogin"
-          type="string"
-        />
+        <UiInput placeholder="Введите логин" v-model.trim="enterLogin" type="string" />
 
         <div class="nameInput">Пароль</div>
-        <UiInput
-          placeholder="Введите пароль"
-          v-model.trim="enterPassword"
-          type="password"
-        />
+        <UiInput placeholder="Введите пароль" v-model.trim="enterPassword" type="password" />
 
-        <button
-          class="buttonGo"
-          @click="loginStore.enter(enterLogin, enterPassword)"
-        >
-          Войти
-        </button>
+
+                <UiButton @click="loginStore.enter(enterLogin, enterPassword)" text="Войти" />
 
         <div class="regLogin">
           Не зарегистрированы?
-          <a class="buttonRegLogin" @click="regOrLogin = 'register'"
-            >Создать аккаунт</a
-          >
+          <a class="buttonRegLogin" @click="regOrLogin = 'register'">Создать аккаунт</a>
         </div>
       </div>
-
       <div v-if="regOrLogin === 'register'">
         <div class="title">Регистрация</div>
         <div class="nameInput">Логин</div>
-        <UiInput
-          placeholder="Введите логин"
-          v-model.trim="regLogin"
-          type="string"
-        />
+        <UiInput placeholder="Введите логин" v-model.trim="regLogin" type="string" />
         <div class="nameInput">Пароль</div>
 
-        <UiInput
-          placeholder="Введите пароль"
-          v-model.trim="regPassword"
-          type="password"
-        />
-        <button
-          class="buttonGo"
-          @click="loginStore.registration(regLogin, regPassword)"
-        >
-          Создать аккаунт
-        </button>
+        <UiInput placeholder="Введите пароль" v-model.trim="regPassword" type="password" />
+
+
+        <UiButton @click="loginStore.registration(regLogin, regPassword)" text="Создать аккаунт" />
 
         <div class="regLogin">
           Уже есть аккаунт?
@@ -73,6 +47,7 @@ import { ref } from 'vue'
 import AccountInfo from './components/AccountInfo.vue'
 
 import UiInput from '@/components/ui/UiInput.vue'
+import UiButton from '@/components/ui/UiButton.vue'
 // @ts-ignore
 
 import { useLogin } from '@/store/Login'
@@ -109,24 +84,8 @@ const regOrLogin = ref('register')
     margin-top: 18px;
   }
 
-  .buttonGo {
-    background-color: #007aff;
-    border: none;
-    border-radius: 7px;
-    color: white;
-    font-size: 15px;
-    font-weight: 600;
-    height: 40px;
-    margin-top: 20px;
-    transition: 0.3s;
-    width: 100%;
-
-    &:hover {
-      background-color: #439eff;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-  }
+ 
+  
 
   .regLogin {
     color: #6c727f;

@@ -5,7 +5,7 @@
   <div class="txt">Лимит калорий: {{ loginStore.limitCcal }} ккал</div>
   <div class="txt">Желаемый вес: {{ loginStore.desiredWeight }} кг</div>
 
-  <button class="buttonGo" @click="loginStore.exit()">Выход</button>
+          <UiButton @click="loginStore.exit()" text="Выход" />
 
   <div class="regLogin">
     Хотите прекратить использование?
@@ -19,7 +19,7 @@
 // @ts-ignore
 import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
-
+import UiButton from '@/components/ui/UiButton.vue'
 defineProps({
   msg: String,
 })
@@ -35,24 +35,7 @@ defineProps({
   margin-top: 10px;
 }
 
-.buttonGo {
-  background-color: #007aff;
-  border: none;
-  border-radius: 7px;
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
-  height: 40px;
-  margin-top: 20px;
-  transition: 0.3s;
-  width: 100%;
 
-  &:hover {
-    background-color: #439eff;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-}
 
 .regLogin {
   color: #6c727f;
