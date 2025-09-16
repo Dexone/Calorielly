@@ -3,23 +3,23 @@
     <div class="title">Калькулятор граммов</div>
 
     <div class="nameInput">Желаемый вес</div>
-    <div><input v-model="weight" type="number" placeholder="Вес кг" /></div>
     <div>
-      <button
-        class="buttonGo"
-        @click="(loginStore.editDesiredWeight(weight), (weight = null))"
-      >
+      <UiInput placeholder="Вес кг" v-model.number="weight" type="number" />
+
+    </div>
+    <div>
+      <button class="buttonGo" @click="(loginStore.editDesiredWeight(weight), (weight = null))">
         Изменить
       </button>
     </div>
 
     <div class="nameInput">Лимит калорий</div>
-    <div><input v-model="ccal" type="number" placeholder="Ккал" /></div>
+    <div>
+    
+          <UiInput placeholder="Ккал" v-model.number="ccal" type="number" />
+    </div>
 
-    <button
-      class="buttonGo"
-      @click="(loginStore.editLimitCcal(ccal), (ccal = null))"
-    >
+    <button class="buttonGo" @click="(loginStore.editLimitCcal(ccal), (ccal = null))">
       Изменить
     </button>
   </div>
@@ -30,7 +30,7 @@ import { ref } from 'vue'
 
 // @ts-ignore
 import { useLogin } from '@/store/Login'
-
+import UiInput from '@/components/ui/UiInput.vue'
 const loginStore = useLogin()
 
 const weight = ref<number | null>(null)
@@ -60,30 +60,6 @@ defineProps({
     margin-top: 18px;
   }
 
-  input {
-    background-color: #f2f2f2;
-    border: solid;
-    border-color: #c7c7c7;
-    border-radius: 7px;
-    border-width: 1px;
-    display: block;
-    font-size: 15px;
-    font-weight: 600;
-    height: 40px;
-    margin-top: 4px;
-    padding-left: 7px;
-    width: 100%;
-
-    &::placeholder {
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    &:focus {
-      border: 1px solid #007aff;
-      outline: none;
-    }
-  }
 
   .buttonGo {
     background-color: #007aff;

@@ -1,19 +1,18 @@
 <template>
-  <div  class="mainBlockAdd">
-    <div class="x" @click="$emit('close')">
-      <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M6 18 17.94 6M18 18 6.06 6" />
-      </svg>
+  <div class="overlay">
+  </div>
+  <div class="mainBlockAdd">
+    <div class="close" @click="$emit('close')">
+      <img src="@/assets/Add/close.svg">
     </div>
 
     <div class="login">
       <div class="nameLogin">Добавить прием пищи</div>
 
-      <input v-model="ccalValue" type="number" placeholder="Калорийность" />
 
-      <input v-model="ccalName" placeholder="Описание" />
+          <UiInput placeholder="Калорийность" v-model.number="ccalValue" type="number" />
 
+       <UiInput placeholder="Описание" v-model.trim="ccalName" type="string" />
       <button class="buttonGo" @click="
       (loginStore.addCcal(ccalValue, ccalName),
         (ccalValue = ''),
@@ -27,20 +26,21 @@
     <div class="login">
       <div class="nameLogin">Обновить вес</div>
 
-      <input v-model="weightValue" type="number" placeholder="Вес кг" />
 
 
+    <UiInput placeholder="Вес кг" v-model.number="weightValue" type="number" />
       <button class="buttonGo" @click="(loginStore.addWeight(weightValue), (weightValue = ''))">
         Обновить
       </button>
     </div>
 
   </div>
+
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
-
+import UiInput from '@/components/ui/UiInput.vue'
 import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
 const emit = defineEmits(['close'])
@@ -52,31 +52,40 @@ const weightValue = ref('')
 defineProps({
   msg: String,
 })
-const regOrLogin = ref('register')
 </script>
 
 <style scoped lang="scss">
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1100;
+  top: 0;
+  bottom: 0;
+}
+
 .mainBlockAdd {
   left: 0;
   margin-left: auto;
   margin-right: auto;
   max-width: 400px;
   position: fixed;
-  /* фиксированное положение */
   right: 0;
   top: 0;
   width: 100%;
-  z-index: 1050;
-  background-color: #fff;
+  z-index: 3301;
+  background-color: rgba(255, 255, 255, 1);
   border: 0.5px solid #d9d9d9;
   border-radius: 8px;
   padding: 20px 22px;
 }
 
-.x {
+.close {
   color: #666;
   float: right;
-  margin: 10px;
+  margin-right: -50px;
   transition: 0.3s;
 
   &:hover {
@@ -89,9 +98,6 @@ const regOrLogin = ref('register')
 
 
 
-.nameLogin {
-  margin-bottom: 10px;
-}
 
 .login {
   margin: 30px;
@@ -102,21 +108,11 @@ const regOrLogin = ref('register')
 }
 
 input {
-  background-color: #f9fafb;
-  border: solid;
-  border-color: #c7c7c7;
-  border-radius: 7px;
-  border-width: 1px;
-  display: block;
-  height: 40px;
+
   margin-top: 20px;
-  padding-left: 7px;
-  width: 100%;
+
 }
 
-::placeholder {
-  font-size: 14px;
-}
 
 .buttonGo {
   background-color: #007aff;

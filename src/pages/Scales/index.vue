@@ -3,19 +3,23 @@
     <div class="title">Калькулятор граммов</div>
 
     <div class="nameInput">Калорийность продукта</div>
-    <input
-      v-model.number="stoGR"
-      type="number"
-      placeholder="Ккал/100гр"
-      @input="chetGR()"
+
+    <UiInput
+    placeholder="Ккал/100гр"
+    v-model.number = "stoGR"
+    @update:modelValue = "chetGR()"
+    type="number"
     />
+    
 
     <div class="nameInput">Желаемая калорийность</div>
-    <input
-      v-model.number="ccalGR"
-      type="number"
-      placeholder="Нужно калорий"
-      @input="chetGR()"
+
+    
+        <UiInput
+    placeholder="Нужно калорий"
+    v-model.number = "ccalGR"
+    @update:modelValue = "chetGR()"
+    type="number"
     />
 
     <button class="buttonGo" disabled>
@@ -27,6 +31,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import UiInput from '@/components/ui/UiInput.vue'
 
 let stoGR = ref<number | null>(null)
 let ccalGR = ref<number | null>(null)
@@ -61,27 +66,10 @@ defineProps({
     font-size: 15px;
     font-weight: 500;
     margin-top: 18px;
+    margin-bottom: 4px;
   }
 
-  input {
-    background-color: #f2f2f2;
-    border: solid;
-    border-color: #c7c7c7;
-    border-radius: 7px;
-    border-width: 1px;
-    display: block;
-    font-size: 15px;
-    font-weight: 600;
-    height: 40px;
-    margin-top: 4px;
-    padding-left: 7px;
-    width: 100%;
 
-    &::placeholder {
-      font-size: 15px;
-      font-weight: 600;
-    }
-  }
 
   .buttonGo {
     background-color: rgb(245 245 245);

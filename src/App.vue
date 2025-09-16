@@ -1,13 +1,17 @@
 <template>
+  <Add v-if="showAdd" @close="showAdd = false" />
   <Header />
+
   <div class="all">
-    <div class="leftbar"><LeftBar @open = "showAdd = true" /></div>
+    <div class="leftbar">
+      <LeftBar @open="showAdd = true" />
+    </div>
 
     <div class="main">
 
       <RouterView />
       <Footer class="footer" @open="showAdd = true" />
-      <Add v-if="showAdd" @close = "showAdd = false" />
+
     </div>
   </div>
 
@@ -51,7 +55,7 @@ watch(loginStore, () => {
   width: 100%;
 }
 
-@media (width <= 1000px) {
+@media (width <=1000px) {
   .leftbar {
     display: none;
   }
@@ -62,7 +66,7 @@ watch(loginStore, () => {
   }
 }
 
-@media (width >= 1000px) {
+@media (width >=1000px) {
   .footer {
     display: none;
   }

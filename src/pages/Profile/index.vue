@@ -4,46 +4,30 @@
       <div v-if="regOrLogin === 'enter'">
         <div class="title">Вход</div>
         <div class="nameInput">Логин</div>
-        <input v-model="enterLogin" placeholder="Введите логин" />
+        <UiInput placeholder="Введите логин" v-model.trim="enterLogin" type="string" />
 
         <div class="nameInput">Пароль</div>
-        <input
-          v-model="enterPassword"
-          type="password"
-          placeholder="Введите пароль"
-        />
+        <UiInput placeholder="Введите пароль" v-model.trim="enterPassword" type="password" />
 
-        <button
-          class="buttonGo"
-          @click="loginStore.enter(enterLogin, enterPassword)"
-        >
+
+        <button class="buttonGo" @click="loginStore.enter(enterLogin, enterPassword)">
           Войти
         </button>
 
         <div class="regLogin">
           Не зарегистрированы?
-          <a class="buttonRegLogin" @click="regOrLogin = 'register'"
-            >Создать аккаунт</a
-          >
+          <a class="buttonRegLogin" @click="regOrLogin = 'register'">Создать аккаунт</a>
         </div>
       </div>
 
       <div v-if="regOrLogin === 'register'">
         <div class="title">Регистрация</div>
         <div class="nameInput">Логин</div>
-        <input v-model="regLogin" placeholder="Введите логин" />
+        <UiInput placeholder="Введите логин" v-model.trim="regLogin" type="string" />
         <div class="nameInput">Пароль</div>
 
-        <input
-          v-model="regPassword"
-          type="password"
-          placeholder="Введите пароль"
-        />
-
-        <button
-          class="buttonGo"
-          @click="loginStore.registration(regLogin, regPassword)"
-        >
+        <UiInput placeholder="Введите пароль" v-model.trim="regPassword" type="password" />
+        <button class="buttonGo" @click="loginStore.registration(regLogin, regPassword)">
           Создать аккаунт
         </button>
 
@@ -62,7 +46,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-
+import UiInput from '@/components/ui/UiInput.vue'
 // @ts-ignore
 import AccountInfo from './components/AccountInfo.vue'
 
@@ -100,25 +84,7 @@ const regOrLogin = ref('register')
     margin-top: 18px;
   }
 
-  input {
-    background-color: #f2f2f2;
-    border: solid;
-    border-color: #c7c7c7;
-    border-radius: 7px;
-    border-width: 1px;
-    display: block;
-    font-size: 15px;
-    font-weight: 600;
-    height: 40px;
-    margin-top: 4px;
-    padding-left: 7px;
-    width: 100%;
 
-    &::placeholder {
-      font-size: 15px;
-      font-weight: 600;
-    }
-  }
 
   .buttonGo {
     background-color: #007aff;
