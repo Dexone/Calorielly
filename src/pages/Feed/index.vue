@@ -25,6 +25,5 @@ import { useLogin } from '@/store/Login'
 
 const loginStore = useLogin()
 
-
 loginStore.getInfo()
 </script>

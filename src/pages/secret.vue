@@ -11,16 +11,19 @@ const targetTimes = ['6:50', '12:50', '18:50']
 const display = ref('—:—:—')
 let timerId
 
-function pad(n) { return String(n).padStart(2, '0') }
+function pad(n) {
+  return String(n).padStart(2, '0')
+}
 
 function getNextTargetTime(now = new Date()) {
-  const y = now.getFullYear(), m = now.getMonth(), d = now.getDate()
-  const today = targetTimes
-    .map(t => {
-      const [h, min] = t.split(':').map(Number)
-      return new Date(y, m, d, h, min, 0, 0)
-    })
-  const next = today.find(dt => dt > now)
+  const y = now.getFullYear(),
+    m = now.getMonth(),
+    d = now.getDate()
+  const today = targetTimes.map((t) => {
+    const [h, min] = t.split(':').map(Number)
+    return new Date(y, m, d, h, min, 0, 0)
+  })
+  const next = today.find((dt) => dt > now)
   if (next) return next
   const [h0, m0] = targetTimes[0].split(':').map(Number)
   return new Date(y, m, d + 1, h0, m0, 0, 0)
@@ -52,11 +55,15 @@ onUnmounted(() => {
   border-radius: 8px;
   padding: 20px 22px;
 }
+
 .timer {
   font-size: 6vw;
   font-weight: bold;
 }
-@media (max-width: 480px) {
-  .timer { font-size: 10vw; }
+
+@media (width <= 480px) {
+  .timer {
+    font-size: 10vw;
+  }
 }
 </style>

@@ -33,7 +33,6 @@ import { ref, watch } from 'vue'
 import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
 
-
 const backTime = ref(0)
 const upTime = ref(0)
 setInterval(() => updateTime(), 60000) //обновлено ... мин назад

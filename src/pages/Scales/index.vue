@@ -5,21 +5,19 @@
     <div class="nameInput">Калорийность продукта</div>
 
     <UiInput
-    placeholder="Ккал/100гр"
-    v-model.number = "stoGR"
-    @update:modelValue = "chetGR()"
-    type="number"
+      placeholder="Ккал/100гр"
+      v-model.number="stoGR"
+      @update:modelValue="chetGR()"
+      type="number"
     />
-    
 
     <div class="nameInput">Желаемая калорийность</div>
 
-    
-        <UiInput
-    placeholder="Нужно калорий"
-    v-model.number = "ccalGR"
-    @update:modelValue = "chetGR()"
-    type="number"
+    <UiInput
+      placeholder="Нужно калорий"
+      v-model.number="ccalGR"
+      @update:modelValue="chetGR()"
+      type="number"
     />
 
     <button class="buttonGo" disabled>
@@ -31,6 +29,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+
 import UiInput from '@/components/ui/UiInput.vue'
 
 let stoGR = ref<number | null>(null)
@@ -65,11 +64,9 @@ defineProps({
     color: rgb(88 99 111);
     font-size: 15px;
     font-weight: 500;
-    margin-top: 18px;
     margin-bottom: 4px;
+    margin-top: 18px;
   }
-
-
 
   .buttonGo {
     background-color: rgb(245 245 245);

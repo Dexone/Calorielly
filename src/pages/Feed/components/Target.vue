@@ -105,10 +105,8 @@
 <script setup>
 import { ref } from 'vue'
 
-
 import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
-
 
 defineProps({
   msg: String,

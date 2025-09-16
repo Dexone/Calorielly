@@ -1,43 +1,38 @@
 <template>
   <div class="mainBlockLogin">
     <div class="title">Теперь заполним необходимые данные</div>
-    <div v-if="loginStore.limitCcal === 0" >
+    <div v-if="loginStore.limitCcal === 0">
+      <div class="nameInput">Суточный лимит калорий</div>
+      <input v-model="limCcal" placeholder="Введите лимит" />
 
-       <div class="nameInput">Суточный лимит калорий</div>
-        <input v-model="limCcal" placeholder="Введите лимит" />
-      
-      
-        <button class="buttonGo" @click="loginStore.editLimitCcal(limCcal)">
-          Далее
-        </button>
-      </div>
-    
-
-    <div v-if="loginStore.desiredWeight === 0 && loginStore.limitCcal !== 0" >
-
-       <div class="nameInput">Желаемый вес</div>
-     <input v-model="desWeight" placeholder="Введите вес" />
-      
-        <button class="buttonGo" @click="loginStore.editDesiredWeight(desWeight)">
-          Далее
-        </button>
-     
-    
+      <button class="buttonGo" @click="loginStore.editLimitCcal(limCcal)">
+        Далее
+      </button>
     </div>
 
-    <div v-if="
-      loginStore.weightList.length === 1 &&
-      loginStore.limitCcal !== 0 &&
-      loginStore.desiredWeight !== 0
-    " >
-       <div class="nameInput">Текущий вес</div>
+    <div v-if="loginStore.desiredWeight === 0 && loginStore.limitCcal !== 0">
+      <div class="nameInput">Желаемый вес</div>
+      <input v-model="desWeight" placeholder="Введите вес" />
+
+      <button class="buttonGo" @click="loginStore.editDesiredWeight(desWeight)">
+        Далее
+      </button>
+    </div>
+
+    <div
+      v-if="
+        loginStore.weightList.length === 1 &&
+        loginStore.limitCcal !== 0 &&
+        loginStore.desiredWeight !== 0
+      "
+    >
+      <div class="nameInput">Текущий вес</div>
       <input v-model="weightNow" placeholder="Введите вес" />
-    
-        <button class="buttonGo" @click="loginStore.addWeight(weightNow)">
-          Далее
-        </button>
-      </div>
-  
+
+      <button class="buttonGo" @click="loginStore.addWeight(weightNow)">
+        Далее
+      </button>
+    </div>
   </div>
 </template>
 
@@ -68,14 +63,15 @@ const regOrLogin = ref('register')
     font-size: 17px;
     font-weight: 600;
   }
-    .nameInput {
+
+  .nameInput {
     color: rgb(88 99 111);
     font-size: 15px;
     font-weight: 500;
     margin-top: 18px;
   }
 
-    input {
+  input {
     background-color: #f2f2f2;
     border: solid;
     border-color: #c7c7c7;
@@ -99,10 +95,8 @@ const regOrLogin = ref('register')
       outline: none;
     }
   }
-  
 
-
-    .buttonGo {
+  .buttonGo {
     background-color: #007aff;
     border: none;
     border-radius: 7px;
@@ -121,8 +115,4 @@ const regOrLogin = ref('register')
     }
   }
 }
-
-
-
-
 </style>

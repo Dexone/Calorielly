@@ -8,10 +8,8 @@
     </div>
 
     <div class="main">
-
       <RouterView />
       <Footer class="footer" @open="showAdd = true" />
-
     </div>
   </div>
 

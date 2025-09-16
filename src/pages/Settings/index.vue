@@ -5,21 +5,25 @@
     <div class="nameInput">Желаемый вес</div>
     <div>
       <UiInput placeholder="Вес кг" v-model.number="weight" type="number" />
-
     </div>
     <div>
-      <button class="buttonGo" @click="(loginStore.editDesiredWeight(weight), (weight = null))">
+      <button
+        class="buttonGo"
+        @click="(loginStore.editDesiredWeight(weight), (weight = null))"
+      >
         Изменить
       </button>
     </div>
 
     <div class="nameInput">Лимит калорий</div>
     <div>
-    
-          <UiInput placeholder="Ккал" v-model.number="ccal" type="number" />
+      <UiInput placeholder="Ккал" v-model.number="ccal" type="number" />
     </div>
 
-    <button class="buttonGo" @click="(loginStore.editLimitCcal(ccal), (ccal = null))">
+    <button
+      class="buttonGo"
+      @click="(loginStore.editLimitCcal(ccal), (ccal = null))"
+    >
       Изменить
     </button>
   </div>
@@ -29,8 +33,8 @@
 import { ref } from 'vue'
 
 // @ts-ignore
-import { useLogin } from '@/store/Login'
 import UiInput from '@/components/ui/UiInput.vue'
+import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
 
 const weight = ref<number | null>(null)
@@ -59,7 +63,6 @@ defineProps({
     font-weight: 500;
     margin-top: 18px;
   }
-
 
   .buttonGo {
     background-color: #007aff;

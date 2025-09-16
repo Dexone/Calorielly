@@ -1,45 +1,53 @@
 <template>
-  <div class="overlay">
-  </div>
+  <div class="overlay"></div>
   <div class="mainBlockAdd">
     <div class="close" @click="$emit('close')">
-      <img src="@/assets/Add/close.svg">
+      <img src="@/assets/Add/close.svg" />
     </div>
 
     <div class="login">
       <div class="nameLogin">Добавить прием пищи</div>
 
+      <UiInput
+        placeholder="Калорийность"
+        v-model.number="ccalValue"
+        type="number"
+      />
 
-          <UiInput placeholder="Калорийность" v-model.number="ccalValue" type="number" />
-
-       <UiInput placeholder="Описание" v-model.trim="ccalName" type="string" />
-      <button class="buttonGo" @click="
-      (loginStore.addCcal(ccalValue, ccalName),
-        (ccalValue = ''),
-        (ccalName = ''))
-        ">
+      <UiInput placeholder="Описание" v-model.trim="ccalName" type="string" />
+      <button
+        class="buttonGo"
+        @click="
+          (loginStore.addCcal(ccalValue, ccalName),
+          (ccalValue = ''),
+          (ccalName = ''))
+        "
+      >
         Добавить
       </button>
-
     </div>
 
     <div class="login">
       <div class="nameLogin">Обновить вес</div>
 
-
-
-    <UiInput placeholder="Вес кг" v-model.number="weightValue" type="number" />
-      <button class="buttonGo" @click="(loginStore.addWeight(weightValue), (weightValue = ''))">
+      <UiInput
+        placeholder="Вес кг"
+        v-model.number="weightValue"
+        type="number"
+      />
+      <button
+        class="buttonGo"
+        @click="(loginStore.addWeight(weightValue), (weightValue = ''))"
+      >
         Обновить
       </button>
     </div>
-
   </div>
-
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+
 import UiInput from '@/components/ui/UiInput.vue'
 import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
@@ -56,30 +64,30 @@ defineProps({
 
 <style scoped lang="scss">
 .overlay {
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0.5;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: 1100;
-  top: 0;
+  background-color: rgb(0 0 0 / 50%);
   bottom: 0;
+  height: 100%;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1100;
 }
 
 .mainBlockAdd {
+  background-color: rgb(255 255 255 / 100%);
+  border: 0.5px solid #d9d9d9;
+  border-radius: 8px;
   left: 0;
   margin-left: auto;
   margin-right: auto;
   max-width: 400px;
+  padding: 20px 22px;
   position: fixed;
   right: 0;
   top: 0;
   width: 100%;
   z-index: 3301;
-  background-color: rgba(255, 255, 255, 1);
-  border: 0.5px solid #d9d9d9;
-  border-radius: 8px;
-  padding: 20px 22px;
 }
 
 .close {
@@ -96,9 +104,6 @@ defineProps({
   }
 }
 
-
-
-
 .login {
   margin: 30px;
 }
@@ -108,11 +113,8 @@ defineProps({
 }
 
 input {
-
   margin-top: 20px;
-
 }
-
 
 .buttonGo {
   background-color: #007aff;

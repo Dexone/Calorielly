@@ -41,7 +41,6 @@ import { useLogin } from '@/store/Login'
 
 const loginStore = useLogin()
 
-
 defineProps({
   msg: String,
 })
