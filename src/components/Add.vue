@@ -1,44 +1,33 @@
 <template>
   <div class="overlay"></div>
+
+
   <div class="mainBlockAdd">
     <div class="close" @click="$emit('close')">
-      <img src="@/assets/Add/close.svg" />
+      <img class="img-white" src="@/assets/Add/close.svg" />
+      <img class="img-gray" src="@/assets/Add/close-gray.svg" />
     </div>
 
     <div class="login">
-      <div class="nameLogin">Добавить прием пищи</div>
+      <div class="title">Добавить прием пищи</div>
+      <div class="nameInput">Калорийность</div>
+      <UiInput placeholder="Введите количество калорий" v-model.number="ccalValue" type="number" />
+      <div class="nameInput">Название</div>
+      <UiInput placeholder="Введите название продукта" v-model.trim="ccalName" type="string" />
 
-      <UiInput
-        placeholder="Калорийность"
-        v-model.number="ccalValue"
-        type="number"
-      />
-
-      <UiInput placeholder="Описание" v-model.trim="ccalName" type="string" />
-
-      <UiButton
-        @click="
-          (loginStore.addCcal(ccalValue, ccalName),
-          (ccalValue = ''),
-          (ccalName = ''))
-        "
-        text="Добавить"
-      />
+      <UiButton @click="
+      (loginStore.addCcal(ccalValue, ccalName),
+        (ccalValue = ''),
+        (ccalName = ''))
+        " text="Добавить" />
     </div>
 
     <div class="login">
-      <div class="nameLogin">Обновить вес</div>
+      <div class="title">Обновить вес</div>
+      <div class="nameInput">Текущий вес</div>
+      <UiInput placeholder="Введите свой вес" v-model.number="weightValue" type="number" />
 
-      <UiInput
-        placeholder="Вес кг"
-        v-model.number="weightValue"
-        type="number"
-      />
-
-      <UiButton
-        @click="(loginStore.addWeight(weightValue), (weightValue = ''))"
-        text="Обновить"
-      />
+      <UiButton @click="(loginStore.addWeight(weightValue), (weightValue = ''))" text="Обновить" />
     </div>
   </div>
 </template>
@@ -64,7 +53,7 @@ defineProps({
 
 <style scoped lang="scss">
 .overlay {
-  background-color: rgb(0 0 0 / 50%);
+  background-color: rgb(0 0 0 / 60%);
   bottom: 0;
   height: 100%;
   opacity: 0.5;
@@ -77,42 +66,76 @@ defineProps({
 .mainBlockAdd {
   background-color: rgb(255 255 255 / 100%);
   border: 0.5px solid #d9d9d9;
-  border-radius: 8px;
-  left: 0;
-  margin-left: auto;
-  margin-right: auto;
+  border-radius: 16px;
   max-width: 400px;
-  padding: 20px 22px;
+  padding: 0px 36px 36px 36px;
   position: fixed;
+  bottom: 20%;
+  left: 0;
   right: 0;
-  top: 0;
+  margin: 0 auto;
+  height: max-content;
   width: 100%;
   z-index: 3301;
-}
 
-.close {
-  color: #666;
-  float: right;
-  margin-right: -50px;
-  transition: 0.3s;
+  @media (width <=1000px) {
 
-  &:hover {
-    border-radius: 5px;
-    color: #9b9b9b;
-    cursor: pointer;
-    transition: 0.3s;
+    bottom: 1%;
+    width: 95%;
   }
-}
 
-.login {
-  margin: 30px;
-}
 
-.register {
-  margin: 30px;
-}
+  .close {
+    color: #666;
+    float: right;
+    margin-right: -80px;
+    margin-top: 14px;
+    transition: 0.3s;
+    background-color: rgb(0 0 0 / 40%);
+    border-radius: 100%;
+    padding: 4px;
 
-input {
-  margin-top: 20px;
+    &:hover {
+      background-color: rgb(0 0 0 / 50%);
+      color: #9b9b9b;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    @media (width <=1000px) {
+      margin-right: -20px;
+      background: none;
+
+      .img-white {
+        display: none;
+      }
+    }
+
+    @media (width >1000px) {
+      .img-gray {
+        display: none;
+      }
+    }
+  }
+
+  .login {
+
+    .title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-top: 18px;
+    }
+
+    .nameInput {
+      color: rgb(88 99 111);
+      font-size: 15px;
+      font-weight: 500;
+      margin-top: 18px;
+    }
+  }
+
+
+
+
 }
 </style>

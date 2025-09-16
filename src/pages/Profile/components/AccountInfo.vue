@@ -16,8 +16,8 @@
 </template>
 
 <script setup lang="ts">
-// @ts-ignore
 import UiButton from '@/components/ui/UiButton.vue'
+// @ts-ignore
 import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
 defineProps({

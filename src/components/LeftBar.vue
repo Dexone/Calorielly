@@ -48,7 +48,7 @@ defineProps({
 .mainLeftBar {
   background-color: #fff;
 border: 0.5px solid #d9d9d9;
-  border-radius: 8px;
+  border-radius: 16px;
   margin-right: 20px;
   padding: 8px;
   text-decoration: none;
@@ -58,7 +58,7 @@ border: 0.5px solid #d9d9d9;
   .router-link-active {
     .section {
       background-color: rgb(242 242 242);
-        border-radius: 8px;
+  border-radius: 12px;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -71,7 +71,7 @@ border: 0.5px solid #d9d9d9;
 
   &:hover {
     background-color: rgb(242 242 242);
-    border-radius: 8px;
+  border-radius: 12px;
     cursor: pointer;
     transition: 0.3s;
   }

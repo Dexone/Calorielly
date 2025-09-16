@@ -56,7 +56,7 @@ defineProps({
 <style scoped>
 .blockNow {
   background-color: white;
-  border-radius: 8px;
+  border-radius: 16px;
   box-shadow: 0 4px 5px 0 #dedee0;
   margin-bottom: 20px;
   margin-top: 10px;

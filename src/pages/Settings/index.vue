@@ -46,7 +46,7 @@ defineProps({
 .mainBlockSettings {
   background-color: #fff;
   border: 0.5px solid #d9d9d9;
-  border-radius: 8px;
+  border-radius: 16px;
   padding: 20px 22px;
 
   .title {

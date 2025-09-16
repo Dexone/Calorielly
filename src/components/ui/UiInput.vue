@@ -38,7 +38,7 @@ function onInput(e: Event) {
   background-color: #f2f2f2;
   border: solid;
   border-color: #c7c7c7;
-  border-radius: 7px;
+  border-radius: 8px;
   border-width: 1px;
   font-size: 15px;
   font-weight: 600;

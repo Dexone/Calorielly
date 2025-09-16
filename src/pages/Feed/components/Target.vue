@@ -144,7 +144,7 @@ defineProps({
 
 .blockTarget {
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 16px;
   box-shadow: 0 6px 5px 0 #dedee0;
   column-gap: 8px;
   display: inline-grid;

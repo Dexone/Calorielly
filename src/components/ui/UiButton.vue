@@ -12,7 +12,7 @@ defineProps({ text: { type: String } })
 .ui-button {
   background-color: #007aff;
   border: none;
-  border-radius: 7px;
+  border-radius: 8px;
   color: white;
   font-size: 15px;
   font-weight: 600;
