@@ -62,7 +62,7 @@ defineProps({
   right: 0;
   z-index: 1050;
 
-    & :deep(a) { // ибо routerLink после рендера будет <a>
+    & :deep(a) { // ибо routerLink после рендера будет <a> 
     text-decoration: none;
   }
 
