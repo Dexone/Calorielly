@@ -1,5 +1,6 @@
 <template>
-  <div class="mainLeftBar">
+  <UiBlock class="ui-block">
+    <!-- <div class="mainLeftBar"> -->
     <RouterLink to="/feed">
       <div class="section">
 
@@ -32,11 +33,12 @@
         <span>Аккаунт</span>
       </div>
     </RouterLink>
-  </div>
+    <!-- </div> -->
+  </UiBlock>
 </template>
 
 <script setup lang='ts'>
-
+import UiBlock from '@/components/ui/UiBlock.vue';
 
 const emit = defineEmits(['open'])
 defineProps({
@@ -45,20 +47,18 @@ defineProps({
 </script>
 
 <style scoped lang="scss">
-.mainLeftBar {
-  background-color: #fff;
-border: 0.5px solid #d9d9d9;
-  border-radius: 16px;
+.ui-block {
+
+
   margin-right: 20px;
   padding: 8px;
   text-decoration: none;
   width: 320px;
 
-
   .router-link-active {
     .section {
       background-color: rgb(242 242 242);
-  border-radius: 12px;
+      border-radius: 12px;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -69,25 +69,27 @@ border: 0.5px solid #d9d9d9;
     text-decoration: none;
     transition: 0.3s;
 
-  &:hover {
-    background-color: rgb(242 242 242);
-  border-radius: 12px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
+    &:hover {
+      background-color: rgb(242 242 242);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
   }
 
   img {
     float: left;
     margin-right: 10px;
     margin-top: -5px;
-    stroke: #007aff;
+    stroke: #2688EB;
     width: 32px;
   }
+
 
   & :deep(a) {
     color: black;
     font-size: 15px;
+    font-weight: 500;
     text-decoration: none;
   }
 }

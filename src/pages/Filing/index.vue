@@ -91,13 +91,13 @@ const regOrLogin = ref('register')
     }
 
     &:focus {
-      border: 1px solid #007aff;
+      border: 1px solid #2688EB;
       outline: none;
     }
   }
 
   .buttonGo {
-    background-color: #007aff;
+    background-color: #2688EB;
     border: none;
     border-radius: 7px;
     color: white;

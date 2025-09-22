@@ -10,7 +10,7 @@ defineProps({ text: { type: String } })
 
 <style scoped lang="scss">
 .ui-button {
-  background-color: #007aff;
+  background-color: #2688EB;
   border: none;
   border-radius: 8px;
   color: white;

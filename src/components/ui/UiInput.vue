@@ -52,7 +52,7 @@ function onInput(e: Event) {
   }
 
   &:focus {
-    border: 1px solid #007aff;
+    border: 1px solid #2688EB;
     outline: none;
   }
 }

@@ -1,0 +1,28 @@
+@import './variables';
+
+
+.t-title {
+    font-size: $size-title;
+    font-weight: $weight-title;
+    color: $color-title;
+
+
+}
+
+.t-main {
+    font-size: $size-main;
+    font-weight: $weight-main;
+    color: $color-main;
+
+
+}
+
+.t-comment {
+    font-size: $size-comment;
+    font-weight: $weight-comment;
+    color: $color-comment;
+
+    @media (width <=1000px) {
+        font-size: $size-title - 4px;
+    }
+}

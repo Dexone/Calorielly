@@ -3,8 +3,8 @@
 
   <div class="all" :class="{ active: blur }">
     <div class="main">
-      <Name />
-      <Now />
+      <!-- <Name /> -->
+      <Now @click="$emit('open')" />
       <Target />
       <LineChart />
       <TimeLine />
@@ -24,6 +24,6 @@ import TimeLine from './components/TimeLine.vue'
 import { useLogin } from '@/store/Login'
 
 const loginStore = useLogin()
-
+const emit = defineEmits(['open'])
 loginStore.getInfo()
 </script>

@@ -8,7 +8,10 @@
     </div>
 
     <div class="main">
-      <RouterView />
+      <RouterView v-slot="{ Component }">
+
+        <component :is="Component" @open="showAdd = true" />
+      </RouterView>
       <Footer class="footer" @open="showAdd = true" />
     </div>
   </div>
@@ -20,11 +23,11 @@
 import { watch, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-import Add from './components/Add.vue'
+import Add from './components/modals/Add.vue'
 
-import Footer from '@/components/Footer.vue'
-import Header from '@/components/Header.vue'
-import LeftBar from '@/components/LeftBar.vue'
+import Footer from '@/components/blocks/Footer.vue'
+import Header from '@/components/blocks/Header.vue'
+import LeftBar from '@/components/blocks/LeftBar.vue'
 import { useLogin } from '@/store/Login'
 const showAdd = ref(false)
 const loginStore = useLogin()
@@ -59,7 +62,7 @@ watch(loginStore, () => {
   }
 
   .all {
-    padding: 10px;
+    padding: 10px 6px;
     padding-bottom: 60px;
   }
 }

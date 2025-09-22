@@ -57,7 +57,7 @@ defineProps({
   height: 48px;
   justify-content: space-around;
   left: 0;
-  padding: 1px 0;
+  padding: 2px 0;
   position: fixed;
   right: 0;
   z-index: 1050;
@@ -68,7 +68,7 @@ defineProps({
 
   .router-link-active {
     .blockItem {
-      color: #007aff;
+      color: #2688EB;
       filter: invert(52%) sepia(93%) saturate(4900%) hue-rotate(203deg) brightness(99%) contrast(101%);
     }
   }
