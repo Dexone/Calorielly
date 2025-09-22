@@ -111,7 +111,7 @@ const regOrLogin = ref('register')
     margin-top: 15px;
 
     .buttonRegLogin {
-      color: #2688EB;
+      color: #2688eb;
       transition: 0.3s;
 
       &:hover {

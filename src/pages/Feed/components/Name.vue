@@ -55,7 +55,7 @@ defineProps({
 }
 
 a {
-  color: #2688EB;
+  color: #2688eb;
   float: right;
   margin-top: 5px;
   transition: 0.3s;

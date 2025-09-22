@@ -1,13 +1,11 @@
 <template>
   <UiBlock class="ui-block">
-
     <a class="t-title">Калорий сегодня</a>
 
     <div class="content" @click="$emit('open')">
       <div class="leftBlock">
-
         <div class="icon">
-          <img src="@/assets/Feed/fire.svg">
+          <img src="@/assets/Feed/fire.svg" />
         </div>
         <div class="text">
           <p class="t-main">{{ loginStore.getSumCcalToday }} ккал</p>
@@ -15,16 +13,15 @@
         </div>
       </div>
       <div class="rightBlock">
-        <img src="@/assets/Feed/arrow-right.svg">
-
+        <img src="@/assets/Feed/arrow-right.svg" />
       </div>
     </div>
-
   </UiBlock>
 </template>
 
 <script setup>
 import { ref, watch } from 'vue'
+
 import UiBlock from '@/components/ui/UiBlock.vue'
 import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
@@ -51,14 +48,13 @@ defineProps({
   margin-bottom: 20px;
 
   .t-title {
-
+    display: block;
     margin-left: 15px;
     margin-top: 6px;
-    display: block;
 
     @media (width <=1000px) {
       margin-left: 5px;
-    margin-top: 0;
+      margin-top: 0;
     }
   }
 
@@ -66,14 +62,12 @@ defineProps({
     display: flex;
     justify-content: space-between;
     margin-top: 8px;
-    transition: 0.5s;
-
     padding: 8px 10px 8px 15px;
+    transition: 0.5s;
 
     @media (width <=1000px) {
       padding: 5px;
     }
-
 
     &:hover {
       background-color: $palette-bg;
@@ -82,13 +76,13 @@ defineProps({
     }
 
     .leftBlock {
-      display: flex;
       align-items: center;
+      display: flex;
 
       .icon {
         background-color: $palette-bg;
-        padding: 8px;
         border-radius: 100%;
+        padding: 8px;
 
         @media (width <=1000px) {
           padding: 7px;
@@ -111,14 +105,10 @@ defineProps({
           margin-left: 10px;
         }
       }
-
-
-
     }
 
     .rightBlock {
       display: inline-flex;
-
 
       img {
         width: 24px;
@@ -129,6 +119,5 @@ defineProps({
       }
     }
   }
-
 }
 </style>

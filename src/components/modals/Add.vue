@@ -1,7 +1,6 @@
 <template>
   <div class="overlay"></div>
 
-
   <div class="mainBlockAdd">
     <div class="close" @click="$emit('close')">
       <img class="img-white" src="@/assets/Add/close.svg" />
@@ -11,23 +10,41 @@
     <div class="login">
       <div class="title">Добавить прием пищи</div>
       <div class="nameInput">Калорийность</div>
-      <UiInput placeholder="Введите количество калорий" v-model.number="ccalValue" type="number" />
+      <UiInput
+        placeholder="Введите количество калорий"
+        v-model.number="ccalValue"
+        type="number"
+      />
       <div class="nameInput">Название</div>
-      <UiInput placeholder="Введите название продукта" v-model.trim="ccalName" type="string" />
+      <UiInput
+        placeholder="Введите название продукта"
+        v-model.trim="ccalName"
+        type="string"
+      />
 
-      <UiButton @click="
-      (loginStore.addCcal(ccalValue, ccalName),
-        (ccalValue = ''),
-        (ccalName = ''))
-        " text="Добавить" />
+      <UiButton
+        @click="
+          (loginStore.addCcal(ccalValue, ccalName),
+          (ccalValue = ''),
+          (ccalName = ''))
+        "
+        text="Добавить"
+      />
     </div>
 
     <div class="login">
       <div class="title">Обновить вес</div>
       <div class="nameInput">Текущий вес</div>
-      <UiInput placeholder="Введите свой вес" v-model.number="weightValue" type="number" />
+      <UiInput
+        placeholder="Введите свой вес"
+        v-model.number="weightValue"
+        type="number"
+      />
 
-      <UiButton @click="(loginStore.addWeight(weightValue), (weightValue = ''))" text="Обновить" />
+      <UiButton
+        @click="(loginStore.addWeight(weightValue), (weightValue = ''))"
+        text="Обновить"
+      />
     </div>
   </div>
 </template>
@@ -67,33 +84,31 @@ defineProps({
   background-color: rgb(255 255 255 / 100%);
   border: 0.5px solid #d9d9d9;
   border-radius: 16px;
-  max-width: 400px;
-  padding: 0px 36px 36px 36px;
-  position: fixed;
   bottom: 20%;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
   height: max-content;
+  left: 0;
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 0 36px 36px;
+  position: fixed;
+  right: 0;
   width: 100%;
   z-index: 3301;
 
   @media (width <=1000px) {
-
     bottom: 1%;
     width: 95%;
   }
 
-
   .close {
+    background-color: rgb(0 0 0 / 40%);
+    border-radius: 100%;
     color: #666;
     float: right;
     margin-right: -80px;
     margin-top: 14px;
-    transition: 0.3s;
-    background-color: rgb(0 0 0 / 40%);
-    border-radius: 100%;
     padding: 4px;
+    transition: 0.3s;
 
     &:hover {
       background-color: rgb(0 0 0 / 50%);
@@ -103,8 +118,8 @@ defineProps({
     }
 
     @media (width <=1000px) {
-      margin-right: -20px;
       background: none;
+      margin-right: -20px;
 
       .img-white {
         display: none;
@@ -119,7 +134,6 @@ defineProps({
   }
 
   .login {
-
     .title {
       font-size: 17px;
       font-weight: 600;
@@ -133,9 +147,5 @@ defineProps({
       margin-top: 18px;
     }
   }
-
-
-
-
 }
 </style>

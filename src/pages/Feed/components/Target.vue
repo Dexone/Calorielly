@@ -130,7 +130,7 @@ defineProps({
 }
 
 .imageMain {
-  color: #2688EB;
+  color: #2688eb;
   float: right;
   transition: 0.3s;
 }
@@ -203,7 +203,7 @@ defineProps({
 }
 
 .lineBlue {
-  background-color: #2688EB;
+  background-color: #2688eb;
   border-radius: 2px;
   height: 100%;
 }

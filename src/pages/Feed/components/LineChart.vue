@@ -112,7 +112,7 @@ console.log(loginStore.getStoreWeights)
 
 <style scope>
 .mainBlockLineChart {
-  background-color: #2688EB;
+  background-color: #2688eb;
   border-radius: 15px;
   height: 100%;
   margin-bottom: 20px;

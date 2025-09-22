@@ -48,8 +48,6 @@ defineProps({
 
 <style scoped lang="scss">
 .ui-block {
-
-
   margin-right: 20px;
   padding: 8px;
   text-decoration: none;

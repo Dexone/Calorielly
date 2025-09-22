@@ -9,7 +9,6 @@
 
     <div class="main">
       <RouterView v-slot="{ Component }">
-
         <component :is="Component" @open="showAdd = true" />
       </RouterView>
       <Footer class="footer" @open="showAdd = true" />
