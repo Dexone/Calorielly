@@ -4,6 +4,9 @@
   color: $color-title;
   font-size: $size-title;
   font-weight: $weight-title;
+    @media (width <=1000px) {
+    font-size: $size-title - 1px;
+  }
 }
 
 .t-main {
@@ -18,6 +21,6 @@
   font-weight: $weight-comment;
 
   @media (width <=1000px) {
-    font-size: $size-title - 4px;
+    font-size: $size-comment - 2px;
   }
 }

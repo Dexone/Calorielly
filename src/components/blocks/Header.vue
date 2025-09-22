@@ -79,8 +79,8 @@ const pathScheme: Record<string, string> = {
 
       .avatar {
         border-radius: 100%;
-        height: 44px;
-        width: 44px;
+        height: 36px;
+        width: 36px;
       }
 
       .arrow {

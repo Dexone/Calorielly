@@ -3,7 +3,7 @@
 
   <div class="all" :class="{ active: blur }">
     <div class="main">
-      <!-- <Name /> -->
+      <Name />
       <Now @click="$emit('open')" />
       <Target />
       <LineChart />

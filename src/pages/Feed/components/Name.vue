@@ -1,70 +1,110 @@
+
+
+
+
+
+
 <template>
-  <div class="blockName">
-    {{
+  <UiBlock class="ui-block">
+
+
+    <div class="content" @click="router.push('/profile')">
+      <div class="leftBlock">
+        <div class="icon">
+        <img src="@/assets/default_avatar.png" />
+        </div>
+        <div class="text">
+          <p class="t-title">    {{
       loginStore.login[0].toUpperCase() +
       loginStore.login.slice(1, loginStore.login.length)
-    }}
-    <RouterLink to="/settings"
-      ><a
-        ><svg
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          width="22"
-          height="22"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M21 13v-2a1 1 0 0 0-1-1h-.757l-.707-1.707.535-.536a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0l-.536.535L14 4.757V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v.757l-1.707.707-.536-.535a1 1 0 0 0-1.414 0L4.929 6.343a1 1 0 0 0 0 1.414l.536.536L4.757 10H4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h.757l.707 1.707-.535.536a1 1 0 0 0 0 1.414l1.414 1.414a1 1 0 0 0 1.414 0l.536-.535 1.707.707V20a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-.757l1.707-.708.536.536a1 1 0 0 0 1.414 0l1.414-1.414a1 1 0 0 0 0-1.414l-.535-.536.707-1.707H20a1 1 0 0 0 1-1Z"
-          />
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
-          />
-        </svg>
-      </a>
-    </RouterLink>
-  </div>
+    }}</p>
+          <p class="t-comment">ID: {{loginStore.id}}</p>
+        </div>
+      </div>
+      <div class="rightBlock">
+        <img src="@/assets/Feed/arrow-right.svg" />
+      </div>
+    </div>
+  </UiBlock>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-
+import { ref, watch } from 'vue'
+import { useRouter } from 'vue-router'
+import UiBlock from '@/components/ui/UiBlock.vue'
 import { useLogin } from '@/store/Login'
-
 const loginStore = useLogin()
+const router = useRouter()
 
 defineProps({
   msg: String,
 })
 </script>
 
-<style scoped>
-.blockName {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  width: 100%;
-}
+<style scoped lang="scss">
+.ui-block {
+  margin-bottom: 6px;
 
-a {
-  color: #2688eb;
-  float: right;
-  margin-top: 5px;
-  transition: 0.3s;
-}
 
-a:hover {
-  border-radius: 5px;
-  color: #439eff;
-  cursor: pointer;
-  transition: 0.3s;
+  .content {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 8px 10px 8px 15px;
+    transition: 0.5s;
+      cursor: pointer;
+    @media (width <=1000px) {
+      padding: 5px;
+    }
+
+    &:hover {
+      background-color: $palette-bg;
+      border-radius: 8px;
+      transition: 0.5s;
+    }
+
+    .leftBlock {
+      align-items: center;
+      display: flex;
+
+      .icon {
+
+  
+     
+
+    
+
+        img {
+          width: 48px;
+
+          @media (width <=1000px) {
+            width: 42px;
+          }
+        }
+      }
+
+      .text {
+        display: block;
+        margin-left: 14px;
+
+        @media (width <=1000px) {
+          margin-left: 10px;
+        }
+      }
+    }
+
+    .rightBlock {
+      display: inline-flex;
+
+      img {
+        width: 24px;
+
+        @media (width <=1000px) {
+          width: 20px;
+        }
+      }
+    }
+  }
 }
 </style>
+
