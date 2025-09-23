@@ -45,7 +45,7 @@ defineProps({
 
 <style scoped lang="scss">
 .ui-block {
-  margin-bottom: 20px;
+  margin-bottom: 6px;
 
   .t-title {
     display: block;
