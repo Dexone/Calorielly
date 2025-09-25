@@ -5,7 +5,7 @@
         </div>
 
         <div class="content">
-            <Chart class="chart" />
+            <Chart :data="data" class="chart" />
         </div>
     </UiBlock>
 </template>
@@ -17,33 +17,31 @@ import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
 
 
-import { computed, watch, ref, reactive } from 'vue'
-const info = ref([]) //значения в графике
-const date = ref([]) //даты в графике
+import { watch, ref} from 'vue'
 
+const data = ref([[], []]) //веса[0] и даты [1] в графике
 
 function updateData() {
-  if (loginStore.weightList !== 'loading') {
-    console.log(loginStore.weightList)
-    info.value = loginStore.weightList.reduce(function (accumulator, item) {
-      accumulator.unshift(Number(item[1]))
-      return accumulator
-    }, [])
+    if (loginStore.weightList !== 'loading') {
+        data.value[0] = loginStore.weightList.reduce(function (accumulator, item) {
+            accumulator.unshift(Number(item[1]))
+            return accumulator
+        }, [])
 
-    date.value = loginStore.weightList.reduce(function (accumulator, item) {
-      accumulator.unshift(item[0])
-      return accumulator
-    }, [])
-    if (info.value[0] === 0) {
-      info.value.splice(0, 1)
-      date.value.splice(0, 1)
+        data.value[1] = loginStore.weightList.reduce(function (accumulator, item) {
+            accumulator.unshift(item[0])
+            return accumulator
+        }, [])
+        if (data.value[0][0] === 0) {
+            data.value[0].splice(0, 1)
+            data.value[1].splice(0, 1)
+        }
+
     }
-
-  }
 }
 
 watch(loginStore, () => {
-  updateData()
+    updateData()
 })
 </script>
 
