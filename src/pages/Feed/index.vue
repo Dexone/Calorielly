@@ -6,7 +6,7 @@
       <Name />
       <Now @click="$emit('open')" />
       <Target />
-      <LineChart />
+      <Graph />
       <TimeLine />
     </div>
   </div>
@@ -15,7 +15,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 
-import LineChart from './components/LineChart.vue'
+import Graph from './components/Graph/index.vue'
 import Name from './components/Name.vue'
 import Now from './components/Now.vue'
 import Target from './components/Target.vue'

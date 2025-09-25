@@ -14,7 +14,7 @@
         <div class="description">
           <a class="t-title">Калории</a>
           <a class="t-comment">осталось
-            {{ loginStore.limitCcal - loginStore.getSumCcalToday }} ккал</a>
+            {{ (loginStore.limitCcal - loginStore.getSumCcalToday).toFixed() }} ккал</a>
 
 
           <div class="line">
@@ -35,8 +35,8 @@
           <a class="t-comment">осталось
             {{
               loginStore.weightList[0][1] - loginStore.desiredWeight >= 0
-                ? loginStore.weightList[0][1] - loginStore.desiredWeight
-                : loginStore.desiredWeight - loginStore.weightList[0][1]
+                ? (loginStore.weightList[0][1] - loginStore.desiredWeight).toFixed(2)
+                : (loginStore.desiredWeight - loginStore.weightList[0][1]).toFixed(2)
             }}
             кг
           </a>
@@ -120,7 +120,7 @@ defineProps({
       display: inline-grid;
       grid-template-columns: max-content 1fr;
       margin-right: 8px;
-      padding: 18px;
+      padding: 14px;
       flex: 0 0 auto;
       white-space: normal;
 

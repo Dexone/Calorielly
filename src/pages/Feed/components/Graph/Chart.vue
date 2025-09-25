@@ -1,7 +1,9 @@
 <template>
-  <div class="mainBlockLineChart">
+
+
     <LineChart class="lineChart" :chartData="lineData" :options="options" />
-  </div>
+
+
 </template>
 <script setup>
 import axios from 'axios'
@@ -16,16 +18,14 @@ defineProps({
   msg: String,
 })
 
-const page = ref([true, false, false])
-
+//
 const info = ref([]) //значения в графике
 const date = ref([]) //даты в графике
-const total = ref('загрузка...') //среднее значение
 
-const selectedRange = ref(false)
 
 function updateData() {
   if (loginStore.weightList !== 'loading') {
+    console.log(loginStore.weightList)
     info.value = loginStore.weightList.reduce(function (accumulator, item) {
       accumulator.unshift(Number(item[1]))
       return accumulator
@@ -40,32 +40,38 @@ function updateData() {
       date.value.splice(0, 1)
     }
 
-    total.value =
-      'Текущий вес: ' + Number(info.value[info.value.length - 1]) + ' кг'
   }
 }
 
 watch(loginStore, () => {
   updateData()
 })
+//
+
 
 const options = reactive({
   responsive: true,
+  
   scales: {
     y: {
       grid: {
-        color: 'rgb(255, 255, 255)',
-        borderColor: 'rgb(255, 255, 255)',
-        tickColor: 'rgb(255, 255, 255)',
+        color: '#e9e9ec', //цвета сетки
+        borderColor: '#f2f2f2', //цвета сетки
+        tickColor: '#fff', //цвета сетки
+
       },
       ticks: {
-        color: 'rgb(255, 255, 255)',
+        color: '#58636f', //цвет значений слева
         backdropColor: 'rgb(255, 255, 255)',
+        padding: (0, 0, 0, 0),
+        stepSize: 1,
       },
     },
     x: {
       grid: {
         display: false,
+        drawBorder: false, //откл бордер у нижней линии
+        
       },
       ticks: {
         display: false,
@@ -79,46 +85,32 @@ const options = reactive({
     },
 
     title: {
-      align: 'end',
-      display: true,
-      text: total,
-      color: 'rgb(199, 220, 223)',
-      font: {
-        size: 16,
-        weight: 'bold',
-      },
+ display: false
     },
   },
 })
 
 const lineData = computed(() => ({
-  name: total,
   labels: date.value,
   boxWidth: 0,
   datasets: [
     {
       data: info.value,
       label: 'Вес, кг',
-      borderColor: 'rgb(255, 255, 255)', //цвет линии
+      borderColor: '#2688EB', //цвет линии
       borderWidth: 2, // толщина линии
       backgroundColor: 'rgba(255, 255, 255)', //точки
       color: 'rgba(255, 255, 255)', //точки
       tickColor: 'rgba(255, 255, 255)',
+      tension: 0.4,
     },
   ],
 }))
 console.log(loginStore.getStoreWeights)
 </script>
 
-<style scope>
-.mainBlockLineChart {
-  background-color: #2688eb;
-  border-radius: 15px;
-  height: 100%;
-  margin-bottom: 20px;
-  max-height: 200px;
-  padding: 16px;
-}
+<style scope lang="scss">
+
 
 .lineChart {
   height: 100%;
