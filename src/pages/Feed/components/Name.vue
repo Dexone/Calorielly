@@ -1,24 +1,18 @@
-
-
-
-
-
-
 <template>
   <UiBlock class="ui-block">
-
-
     <div class="content" @click="router.push('/profile')">
       <div class="leftBlock">
         <div class="icon">
-        <img src="@/assets/default_avatar.png" />
+          <img src="@/assets/default_avatar.png" />
         </div>
         <div class="text">
-          <p class="t-title">    {{
-      loginStore.login[0].toUpperCase() +
-      loginStore.login.slice(1, loginStore.login.length)
-    }}</p>
-          <p class="t-comment">ID: {{loginStore.id}}</p>
+          <p class="t-title">
+            {{
+              loginStore.login[0].toUpperCase() +
+              loginStore.login.slice(1, loginStore.login.length)
+            }}
+          </p>
+          <p class="t-comment">ID: {{ loginStore.id }}</p>
         </div>
       </div>
       <div class="rightBlock">
@@ -31,6 +25,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
+
 import UiBlock from '@/components/ui/UiBlock.vue'
 import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
@@ -45,14 +40,13 @@ defineProps({
 .ui-block {
   margin-bottom: 6px;
 
-
   .content {
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
-
     padding: 8px 10px 8px 15px;
     transition: 0.5s;
-      cursor: pointer;
+
     @media (width <=1000px) {
       padding: 5px;
     }
@@ -68,12 +62,6 @@ defineProps({
       display: flex;
 
       .icon {
-
-  
-     
-
-    
-
         img {
           width: 48px;
 
@@ -107,4 +95,3 @@ defineProps({
   }
 }
 </style>
-

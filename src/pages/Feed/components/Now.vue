@@ -59,12 +59,13 @@ defineProps({
   }
 
   .content {
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     margin-top: 8px;
     padding: 8px 10px 8px 15px;
     transition: 0.5s;
-      cursor: pointer;
+
     @media (width <=1000px) {
       padding: 5px;
     }
@@ -73,7 +74,6 @@ defineProps({
       background-color: $palette-bg;
       border-radius: 8px;
       transition: 0.5s;
-
     }
 
     .leftBlock {

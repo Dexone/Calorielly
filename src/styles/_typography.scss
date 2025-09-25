@@ -4,7 +4,8 @@
   color: $color-title;
   font-size: $size-title;
   font-weight: $weight-title;
-    @media (width <=1000px) {
+
+  @media (width <=1000px) {
     font-size: $size-title - 1px;
   }
 }

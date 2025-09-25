@@ -11,8 +11,6 @@ const props = defineProps({
   data: Array,
 })
 
-
-
 const options = reactive({
   responsive: true,
 
@@ -22,7 +20,6 @@ const options = reactive({
         color: '#e9e9ec', //цвета сетки
         borderColor: '#f2f2f2', //цвета сетки
         tickColor: '#fff', //цвета сетки
-
       },
       ticks: {
         color: '#58636f', //цвет значений слева
@@ -35,7 +32,6 @@ const options = reactive({
       grid: {
         display: false,
         drawBorder: false, //откл бордер у нижней линии
-
       },
       ticks: {
         display: false,
@@ -49,7 +45,7 @@ const options = reactive({
     },
 
     title: {
-      display: false
+      display: false,
     },
   },
 })
