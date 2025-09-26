@@ -20,16 +20,17 @@ import { useLogin } from '@/store/Login'
 
 const loginStore = useLogin()
 
-const data = ref([[], []]) //веса[0] и даты [1] в графике
+const data = ref<[number[], string[]]>([[], []]) //веса[0] и даты [1] в графике
 
 function updateData() {
   if (loginStore.weightList !== 'loading') {
-    data.value[0] = loginStore.weightList.reduce(function (accumulator, item) {
+    const list = loginStore.weightList as [string, string | number][]
+    data.value[0] = list.reduce<number[]>((accumulator, item) => {
       accumulator.unshift(Number(item[1]))
       return accumulator
     }, [])
 
-    data.value[1] = loginStore.weightList.reduce(function (accumulator, item) {
+    data.value[1] = list.reduce<string[]>((accumulator, item) => {
       accumulator.unshift(item[0])
       return accumulator
     }, [])

@@ -13,9 +13,7 @@
           <a class="t-title">Калории</a>
           <a class="t-comment"
             >осталось
-            {{
-              (loginStore.limitCcal - loginStore.getSumCcalToday).toFixed()
-            }}
+            {{ (loginStore.limitCcal - loginStore.getSumCcalToday).toFixed() }}
             ккал</a
           >
 
