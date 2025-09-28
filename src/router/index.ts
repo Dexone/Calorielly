@@ -4,7 +4,8 @@ import Feed from '@/pages/Feed/index.vue'
 import Filing from '@/pages/Filing/index.vue'
 import Profile from '@/pages/Profile/index.vue'
 import Scales from '@/pages/Scales/index.vue'
-import secret from '@/pages/secret.vue'
+import timer from '@/pages/secret/timer.vue'
+import game from '@/pages/secret/game.vue'
 import Settings from '@/pages/Settings/index.vue'
 
 const routes = [
@@ -14,7 +15,8 @@ const routes = [
   { path: '/profile', component: Profile },
   { path: '/filing', component: Filing },
   { path: '/Scales', component: Scales },
-  { path: '/secret', component: secret },
+  { path: '/timer', component: timer },
+    { path: '/game', component: game },
 ]
 
 const router = createRouter({
