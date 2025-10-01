@@ -1,0 +1,56 @@
+/* оверлей плавное появление */
+.overlay-fade-enter-active,
+.overlay-fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.overlay-fade-enter-from,
+.overlay-fade-leave-to {
+  opacity: 0;
+}
+
+.overlay-fade-enter-to,
+.overlay-fade-leave-from {
+  opacity: 1;
+}
+
+/* для модалок: десктоп - плавное появление, моб - выезжает снизу */
+.modal-anim-enter-active,
+.modal-anim-leave-active {
+  transition:
+    transform 0.3s ease-out,
+    opacity 0.3s ease-out;
+  will-change: transform, opacity;
+}
+
+@media (width < 1000px) {
+  .modal-anim-enter-from,
+  .modal-anim-leave-to {
+    opacity: 0.001;
+    transform: translateY(100%);
+  }
+
+  .modal-anim-enter-to,
+  .modal-anim-leave-from {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@media (width >= 1000px) {
+  .modal-anim-enter-active,
+  .modal-anim-leave-active {
+    transition: opacity 0.25s ease;
+    will-change: opacity;
+  }
+
+  .modal-anim-enter-from,
+  .modal-anim-leave-to {
+    opacity: 0;
+  }
+
+  .modal-anim-enter-to,
+  .modal-anim-leave-from {
+    opacity: 1;
+  }
+}

@@ -1,19 +1,28 @@
 <template>
-  <Add v-if="showAdd" @close="showAdd = false" />
-  <Header />
+  <Add :open="showAdd" @close="showAdd = false" />
 
-  <div class="all">
-    <div class="leftbar">
-      <LeftBar @open="showAdd = true" />
-    </div>
+  <RouterView v-slot="{ Component, route }">
+    <!-- компоненты без хедера и меню -->
+    <template v-if="route.meta.blank">
+      <component :is="Component" @open="showAdd = true" />
+    </template>
+    <!-- компоненты с хедером и меню -->
+    <template v-else>
+      <Header />
 
-    <div class="main">
-      <RouterView v-slot="{ Component }">
-        <component :is="Component" @open="showAdd = true" />
-      </RouterView>
-      <Footer class="footer" @open="showAdd = true" />
-    </div>
-  </div>
+      <div class="all">
+        <div class="leftbar">
+          <LeftBar @open="showAdd = true" />
+        </div>
+
+        <div class="main">
+          <component :is="Component" @open="showAdd = true" />
+
+          <Footer class="footer" @open="showAdd = true" />
+        </div>
+      </div>
+    </template>
+  </RouterView>
 
   <RouterView name="modal" />
 </template>

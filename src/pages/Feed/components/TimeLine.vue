@@ -1,55 +1,80 @@
 <template>
-
-
-
   <UiBlock class="ui-block">
     <div class="header">
       <a class="t-title">Калорий сегодня</a>
       <div class="daySelector">
-        <a class="selectorBack" @click="
-          () => {
-            if (loginStore.eatingList.length > daySelector + 1) {
-              daySelector++
+        <a
+          class="selectorBack"
+          @click="
+            () => {
+              if (loginStore.eatingList.length > daySelector + 1) {
+                daySelector++
+              }
             }
-          }
-        ">
-          <img class="back" src="@/assets/Feed/arrow-right.svg"></a>
+          "
+        >
+          <img class="back" src="@/assets/Feed/arrow-right.svg"
+        /></a>
         <a class="t-title">{{ loginStore.eatingList[daySelector][0] }}</a>
 
-         <a v-if="daySelector !==0" class="selectorForward" @click="
-          () => {
-            if (daySelector > 0) {
-              daySelector--
+        <a
+          v-if="daySelector !== 0"
+          class="selectorForward"
+          @click="
+            () => {
+              if (daySelector > 0) {
+                daySelector--
+              }
             }
-          }
-        ">
-          <img class="back" src="@/assets/Feed/arrow-right.svg"></a>
+          "
+        >
+          <img class="back" src="@/assets/Feed/arrow-right.svg"
+        /></a>
       </div>
     </div>
-    <div v-for="(_, index) in loginStore.eatingList[daySelector][1]" class="content" @click="$emit('open')">
+    <div
+      v-for="(_, index) in loginStore.eatingList[daySelector][1]"
+      class="content"
+      @click="$emit('open')"
+    >
       <div class="leftBlock">
         <div class="icon">
           <img src="@/assets/Feed/pizza.svg" />
         </div>
         <div class="text">
-          <p class="t-main"> {{
-            loginStore.eatingList[daySelector][3][
-            loginStore.eatingList[daySelector][3].length - 1 - index
-            ]
-          }} <a>{{
-              loginStore.eatingList[daySelector][2][
-              loginStore.eatingList[daySelector][2].length - 1 - index
+          <p class="t-main">
+            {{
+              loginStore.eatingList[daySelector][3][
+                loginStore.eatingList[daySelector][3].length - 1 - index
               ]
-            }} ккал</a></p>
-          <p class="t-comment"> {{
-            loginStore.eatingList[daySelector][1][
-            loginStore.eatingList[daySelector][1].length - 1 - index
-            ]
-          }}</p> 
+            }}
+            <a
+              >{{
+                loginStore.eatingList[daySelector][2][
+                  loginStore.eatingList[daySelector][2].length - 1 - index
+                ]
+              }}
+              ккал</a
+            >
+          </p>
+          <p class="t-comment">
+            {{
+              loginStore.eatingList[daySelector][1][
+                loginStore.eatingList[daySelector][1].length - 1 - index
+              ]
+            }}
+          </p>
         </div>
       </div>
-      <div class="rightBlock">
-        <img src="@/assets/Feed/arrow-right.svg" />
+      <div
+        class="rightBlock"
+        @click="
+          loginStore.deleteCcalValue(
+            loginStore.eatingList[daySelector][2].length - 1 - index,
+          )
+        "
+      >
+        <img src="@/assets/close-gray.svg" />
       </div>
     </div>
   </UiBlock>
@@ -57,6 +82,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
+
 import UiBlock from '@/components/ui/UiBlock.vue'
 import { useLogin } from '@/store/Login'
 
@@ -71,7 +97,6 @@ watch(loginStore.eatingList, () => {
 defineProps({
   msg: String,
 })
-// остались крестики на удаление
 </script>
 
 <style scoped lang="scss">
@@ -79,11 +104,11 @@ defineProps({
   margin-bottom: 6px;
 
   .header {
+    display: flex;
+    justify-content: space-between;
     margin-left: 15px;
     margin-top: 8px;
     padding-right: 15px;
-    display: flex;
-    justify-content: space-between;
 
     @media (width <=1000px) {
       margin-left: 5px;
@@ -91,24 +116,24 @@ defineProps({
       padding-right: 5px;
     }
 
-    .t-title {}
+    .t-title {
+    }
 
     .daySelector {
-      display: flex;
       align-items: center;
+      display: flex;
 
       .selectorBack {
         img {
-          
-          transform: rotate(180deg);
-          width: 18px;
-          cursor: pointer;
           background-color: rgb(0 0 0 / 7%);
           border-radius: 100%;
           color: #666;
-          padding: 1px;
-          transition: 0.3s;
+          cursor: pointer;
           margin-right: 8px;
+          padding: 1px;
+          transform: rotate(180deg);
+          transition: 0.3s;
+          width: 18px;
 
           &:hover {
             background-color: rgb(0 0 0 / 14%);
@@ -123,18 +148,19 @@ defineProps({
       }
 
       .t-title {
-        color: $palette-blue
+        color: $palette-blue;
       }
- .selectorForward {
+
+      .selectorForward {
         img {
-          width: 18px;
-          cursor: pointer;
           background-color: rgb(0 0 0 / 7%);
           border-radius: 100%;
           color: #666;
+          cursor: pointer;
+          margin-left: 8px;
           padding: 1px;
           transition: 0.3s;
-          margin-left: 8px;
+          width: 18px;
 
           &:hover {
             background-color: rgb(0 0 0 / 14%);
@@ -147,13 +173,10 @@ defineProps({
           }
         }
       }
-
     }
   }
 
-
   .content {
-
     display: flex;
     justify-content: space-between;
     margin-top: 8px;
@@ -164,14 +187,12 @@ defineProps({
       padding: 5px;
     }
 
-
-
     .leftBlock {
       align-items: center;
       display: flex;
 
       .icon {
-        padding: 8px 8px 8px 0px;
+        padding: 8px 8px 8px 0;
 
         @media (width <=1000px) {
           padding: 7px;
@@ -191,7 +212,7 @@ defineProps({
         margin-left: 14px;
 
         a {
-          color: #58636f
+          color: #58636f;
         }
 
         @media (width <=1000px) {
@@ -201,10 +222,17 @@ defineProps({
     }
 
     .rightBlock {
+      cursor: pointer;
       display: inline-flex;
 
       img {
+        transition: 1s;
         width: 24px;
+
+        &:hover {
+          filter: brightness(1.1);
+          transition: 1s;
+        }
 
         @media (width <=1000px) {
           width: 20px;

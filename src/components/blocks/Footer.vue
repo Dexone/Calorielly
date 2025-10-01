@@ -54,10 +54,10 @@ defineProps({
   border-top: 0.5px solid #d9d9d9;
   bottom: 0;
   display: flex;
-  height: 48px;
+  height: 52px;
   justify-content: space-around;
   left: 0;
-  padding: 2px 0;
+  padding: 4px 0;
   position: fixed;
   right: 0;
   z-index: 1050;

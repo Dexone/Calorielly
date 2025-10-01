@@ -51,19 +51,11 @@ onUnmounted(() => {
 <style scoped>
 .main {
   background-color: #fff;
-  border: 0.5px solid #d9d9d9;
-  border-radius: 8px;
-  padding: 20px 22px;
-}
-
-.timer {
-  font-size: 6vw;
-  font-weight: bold;
-}
-
-@media (width <= 480px) {
-  .timer {
-    font-size: 10vw;
-  }
+  display: grid;
+  font-size: 72px;
+  inset: 0;
+  place-items: center;
+  position: fixed;
+  z-index: 999999;
 }
 </style>

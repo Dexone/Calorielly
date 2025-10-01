@@ -12,7 +12,11 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: '@import "@/styles/variables";',
+        //импортирует автоматически переиспользуемые стили во все компоненты
+        additionalData: `
+        @use "@/styles/variables" as *;
+        @use "@/styles/transitions" as *;
+        `,
       },
     },
   },

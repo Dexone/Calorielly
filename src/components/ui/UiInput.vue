@@ -35,20 +35,22 @@ function onInput(e: Event) {
 </script>
 <style scoped lang="scss">
 .ui-input {
-  background-color: #f2f2f2;
+  background-color: #f6f6f6;
   border: solid;
-  border-color: #c7c7c7;
+  border-color: #d0d0d0;
   border-radius: 8px;
-  border-width: 1px;
-  font-size: 15px;
-  font-weight: 600;
+  border-width: 0.5px;
+  color: #161616;
+  font-size: 16px;
+  font-weight: 500;
   height: 40px;
   padding-left: 7px;
   width: 100%;
 
   &::placeholder {
+    color: #7e7e7e;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   &:focus {

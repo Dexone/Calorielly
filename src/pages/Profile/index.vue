@@ -24,9 +24,7 @@
 
         <div class="regLogin">
           Не зарегистрированы?
-          <a class="buttonRegLogin" @click="regOrLogin = 'register'"
-            >Создать аккаунт</a
-          >
+          <a class="buttonRegLogin" @click="closereg">Создать аккаунт</a>
         </div>
       </div>
       <div v-if="regOrLogin === 'register'">
@@ -81,10 +79,14 @@ const regPassword = ref('')
 const enterLogin = ref('')
 const enterPassword = ref('')
 
+const closereg = () => {
+  alert('Регистрация временно закрыта')
+}
+
 defineProps({
   msg: String,
 })
-const regOrLogin = ref('register')
+const regOrLogin = ref('enter')
 </script>
 
 <style scoped lang="scss">

@@ -1,52 +1,55 @@
 <template>
-  <div class="overlay"></div>
+  <transition name="overlay-fade">
+    <div class="overlay" v-show="open" @click="$emit('close')"></div>
+  </transition>
+  <transition name="modal-anim">
+    <div class="mainBlockAdd" v-show="open">
+      <div class="close" @click="$emit('close')">
+        <img class="img-white" src="@/assets/Add/close.svg" />
+        <img class="img-gray" src="@/assets/close-gray.svg" />
+      </div>
 
-  <div class="mainBlockAdd">
-    <div class="close" @click="$emit('close')">
-      <img class="img-white" src="@/assets/Add/close.svg" />
-      <img class="img-gray" src="@/assets/Add/close-gray.svg" />
+      <div class="login">
+        <div class="title">Добавить прием пищи</div>
+        <div class="nameInput">Калорийность</div>
+        <UiInput
+          placeholder="Введите количество калорий"
+          v-model.number="ccalValue"
+          type="number"
+        />
+        <div class="nameInput">Название</div>
+        <UiInput
+          placeholder="Введите название продукта"
+          v-model.trim="ccalName"
+          type="string"
+        />
+
+        <UiButton
+          @click="
+            (loginStore.addCcal(ccalValue, ccalName),
+            (ccalValue = ''),
+            (ccalName = ''))
+          "
+          text="Добавить"
+        />
+      </div>
+
+      <div class="login">
+        <div class="title">Обновить вес</div>
+        <div class="nameInput">Текущий вес</div>
+        <UiInput
+          placeholder="Введите свой вес"
+          v-model.number="weightValue"
+          type="number"
+        />
+
+        <UiButton
+          @click="(loginStore.addWeight(weightValue), (weightValue = ''))"
+          text="Обновить"
+        />
+      </div>
     </div>
-
-    <div class="login">
-      <div class="title">Добавить прием пищи</div>
-      <div class="nameInput">Калорийность</div>
-      <UiInput
-        placeholder="Введите количество калорий"
-        v-model.number="ccalValue"
-        type="number"
-      />
-      <div class="nameInput">Название</div>
-      <UiInput
-        placeholder="Введите название продукта"
-        v-model.trim="ccalName"
-        type="string"
-      />
-
-      <UiButton
-        @click="
-          (loginStore.addCcal(ccalValue, ccalName),
-          (ccalValue = ''),
-          (ccalName = ''))
-        "
-        text="Добавить"
-      />
-    </div>
-
-    <div class="login">
-      <div class="title">Обновить вес</div>
-      <div class="nameInput">Текущий вес</div>
-      <UiInput
-        placeholder="Введите свой вес"
-        v-model.number="weightValue"
-        type="number"
-      />
-
-      <UiButton
-        @click="(loginStore.addWeight(weightValue), (weightValue = ''))"
-        text="Обновить"
-      />
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script setup lang="ts">
@@ -57,23 +60,19 @@ import UiInput from '@/components/ui/UiInput.vue'
 // @ts-ignore
 import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
+defineProps<{ open: boolean }>()
 const emit = defineEmits(['close'])
 const ccalValue = ref('')
 const ccalName = ref('')
 
 const weightValue = ref('')
-
-defineProps({
-  msg: String,
-})
 </script>
 
 <style scoped lang="scss">
 .overlay {
-  background-color: rgb(0 0 0 / 60%);
+  background-color: rgb(0 0 0 / 50%);
   bottom: 0;
   height: 100%;
-  opacity: 0.5;
   position: fixed;
   top: 0;
   width: 100%;
@@ -84,7 +83,7 @@ defineProps({
   background-color: rgb(255 255 255 / 100%);
   border: 0.5px solid #d9d9d9;
   border-radius: 16px;
-  bottom: 20%;
+  bottom: 35%;
   height: max-content;
   left: 0;
   margin: 0 auto;
@@ -97,7 +96,6 @@ defineProps({
 
   @media (width <=1000px) {
     bottom: 1%;
-    width: 95%;
   }
 
   .close {
