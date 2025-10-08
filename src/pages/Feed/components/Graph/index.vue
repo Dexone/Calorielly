@@ -24,7 +24,11 @@ const data = ref<[number[], string[]]>([[], []]) //веса[0] и даты [1] �
 
 function updateData() {
   if (loginStore.weightList !== 'loading') {
-    const list = loginStore.weightList as [string, string | number][]
+    const list: [string, string | number][] = Array.isArray(
+      loginStore.weightList,
+    )
+      ? loginStore.weightList.map(([x, y]) => [String(x), y])
+      : []
     data.value[0] = list.reduce<number[]>((accumulator, item) => {
       accumulator.unshift(Number(item[1]))
       return accumulator

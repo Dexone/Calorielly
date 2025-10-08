@@ -13,6 +13,7 @@ const weight = ref()
 const weightList = ref<[string, number] | null>(null)
 const emit = defineEmits<{
   (e: 'send-weightList', weightList: [string, number]): void
+  (e: 'change-step', value: string): void
 }>()
 
 function sendWeight() {
@@ -28,6 +29,7 @@ function sendWeight() {
   weightList.value = [dateToday, Number(weight.value)]
 
   emit('send-weightList', weightList.value)
+  emit('change-step', 'reg4')
 }
 </script>
 

@@ -12,8 +12,10 @@ import UiInput from '@/components/ui/UiInput.vue'
 
 const login = ref('+7')
 
-const emit = defineEmits<{ (e: 'send-value', value: [number, string]): void }>()
-
+const emit = defineEmits<{
+  (e: 'send-value', value: [number, string]): void
+  (e: 'change-step', value: string): void
+}>()
 function checkLogin() {
   //проверят доступность логина для регистрации и отправляет его в payload с уникальным id
   axios.get(`https://dexone.pw/backend_new/users`).then((res) => {
@@ -27,6 +29,7 @@ function checkLogin() {
       //если логин не найден в бд - отправка id и логина в payload
       emit('send-value', [lastId + 1, login.value])
     }
+    emit('change-step', 'reg2')
   })
 }
 </script>

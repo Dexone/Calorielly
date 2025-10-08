@@ -24,14 +24,7 @@
           type="string"
         />
 
-        <UiButton
-          @click="
-            (loginStore.addCcal(ccalValue, ccalName),
-            (ccalValue = ''),
-            (ccalName = ''))
-          "
-          text="Добавить"
-        />
+        <UiButton @click="addCcal()" text="Добавить" />
       </div>
 
       <div class="login">
@@ -43,16 +36,14 @@
           type="number"
         />
 
-        <UiButton
-          @click="(loginStore.addWeight(weightValue), (weightValue = ''))"
-          text="Обновить"
-        />
+        <UiButton @click="addWeight()" text="Обновить" />
       </div>
     </div>
   </transition>
 </template>
 
 <script setup lang="ts">
+import axios from 'axios'
 import { ref } from 'vue'
 
 import UiButton from '@/components/ui/UiButton.vue'
@@ -66,6 +57,92 @@ const ccalValue = ref('')
 const ccalName = ref('')
 
 const weightValue = ref('')
+function addWeight() {
+  if (loginStore.id !== 1) {
+    axios
+      .get(`https://dexone.pw/backend_new/data/${loginStore.id}`)
+      .then((res) => {
+        let weightList = res.data.weightList
+
+        let dateToday =
+          new Date().getDate() +
+          '.' +
+          (new Date().getMonth() + 1) +
+          '.' +
+          new Date().getFullYear() //создание нового дня если последний вчерашний
+        weightList = Array.isArray(loginStore.weightList)
+          ? loginStore.weightList
+          : []
+        const firstWeight = weightList
+        if (
+          firstWeight &&
+          firstWeight[0] !== dateToday &&
+          loginStore.id !== 1
+        ) {
+          weightList.unshift([dateToday, 0])
+        }
+
+        weightList[0][1] = Number(weightValue.value)
+        console.log(weightValue.value)
+        axios
+          .patch(`https://dexone.pw/backend_new/data/${loginStore.id}`, {
+            weightList: weightList,
+          })
+          .then(() => {
+            loginStore.getInfo()
+            weightValue.value = ''
+          })
+      })
+  } else {
+    alert('Вам необходимо создать аккаунт')
+  }
+}
+
+function addCcal() {
+  if (loginStore.id !== 1) {
+    axios
+      .get(`https://dexone.pw/backend_new/data/${loginStore.id}`)
+      .then((res) => {
+        let eatingList = res.data.eatingList
+
+        let dateToday =
+          new Date().getDate() +
+          '.' +
+          (new Date().getMonth() + 1) +
+          '.' +
+          new Date().getFullYear() //создание нового дня если последний вчерашний
+        eatingList = Array.isArray(loginStore.eatingList)
+          ? loginStore.eatingList
+          : []
+        const firstEating = eatingList[0]
+        if (
+          firstEating &&
+          firstEating[0] !== dateToday &&
+          loginStore.id !== 1
+        ) {
+          eatingList.unshift([dateToday, [], [], []])
+        }
+
+        eatingList[0][1].push(
+          String(new Date(Date.now())).slice(15).slice(1, 6),
+        )
+        eatingList[0][2].push(ccalValue.value)
+        eatingList[0][3].push(ccalName.value)
+
+        axios
+          .patch(`https://dexone.pw/backend_new/data/${loginStore.id}`, {
+            eatingList: eatingList,
+          })
+          .then(() => {
+            loginStore.getInfo()
+            ccalName.value = ''
+            ccalValue.value = ''
+          })
+      })
+  } else {
+    alert('Вам необходимо создать аккаунт')
+  }
+}
 </script>
 
 <style scoped lang="scss">

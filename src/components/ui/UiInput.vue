@@ -35,7 +35,7 @@ function onInput(e: Event) {
 </script>
 <style scoped lang="scss">
 .ui-input {
-  background-color: #f6f6f6;
+  background-color: $palette-bg;
   border: solid;
   border-color: #d0d0d0;
   border-radius: 8px;

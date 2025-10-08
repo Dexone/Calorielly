@@ -18,12 +18,16 @@ import UiInput from '@/components/ui/UiInput.vue'
 const password1 = ref('')
 const password2 = ref('')
 
-const emit = defineEmits<{ (e: 'send-password', password: string): void }>()
+const emit = defineEmits<{
+  (e: 'send-password', password: string): void
+  (e: 'change-step', value: string): void
+}>()
 
 function checkPassword() {
   //проверяет совпадение паролей и отправляет в payload
   if (password1.value === password2.value) {
     emit('send-password', password1.value)
+    emit('change-step', 'reg3')
   }
 }
 </script>

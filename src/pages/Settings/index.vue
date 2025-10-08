@@ -7,10 +7,7 @@
       <UiInput placeholder="Вес кг" v-model.number="weight" type="number" />
     </div>
     <div>
-      <UiButton
-        @click="(loginStore.editDesiredWeight(weight), (weight = null))"
-        text="Изменить"
-      />
+      <UiButton @click="editDesiredWeight()" text="Изменить" />
     </div>
 
     <div class="nameInput">Лимит калорий</div>
@@ -18,14 +15,12 @@
       <UiInput placeholder="Ккал" v-model.number="ccal" type="number" />
     </div>
 
-    <UiButton
-      @click="(loginStore.editLimitCcal(ccal), (ccal = null))"
-      text="Изменить"
-    />
+    <UiButton @click="editLimitCcal()" text="Изменить" />
   </div>
 </template>
 
 <script setup lang="ts">
+import axios from 'axios'
 import { ref } from 'vue'
 
 import UiButton from '@/components/ui/UiButton.vue'
@@ -40,6 +35,36 @@ const ccal = ref<number | null>(null)
 defineProps({
   msg: String,
 })
+
+function editDesiredWeight() {
+  if (loginStore.id !== 1) {
+    axios
+      .patch(`https://dexone.pw/backend_new/data/${loginStore.id}`, {
+        desiredWeight: Number(weight.value),
+      })
+      .then(() => {
+        loginStore.getInfo()
+        weight.value = null
+      })
+  } else {
+    alert('Вам необходимо создать аккаунт')
+  }
+}
+
+function editLimitCcal() {
+  if (loginStore.id !== 1) {
+    axios
+      .patch(`https://dexone.pw/backend_new/data/${loginStore.id}`, {
+        limitCcal: Number(ccal.value),
+      })
+      .then(() => {
+        loginStore.getInfo()
+        ccal.value = null
+      })
+  } else {
+    alert('Вам необходимо создать аккаунт')
+  }
+}
 </script>
 
 <style scoped lang="scss">

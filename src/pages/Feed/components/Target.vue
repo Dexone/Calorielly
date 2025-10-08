@@ -13,7 +13,7 @@
           <a class="t-title">Калории</a>
           <a class="t-comment"
             >осталось
-            {{ (loginStore.limitCcal - loginStore.getSumCcalToday).toFixed() }}
+            {{ (loginStore.limitCcal - sumCcalToday).toFixed() }}
             ккал</a
           >
 
@@ -72,7 +72,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 import UiBlock from '@/components/ui/UiBlock.vue'
 import { useLogin } from '@/store/Login'
@@ -80,6 +80,16 @@ const loginStore = useLogin()
 
 defineProps({
   msg: String,
+})
+
+const sumCcalToday = computed(() => {
+  if (loginStore.eatingList !== 'loading') {
+    const calories = loginStore.eatingList?.[0]?.[2] ?? []
+    return Array.isArray(calories)
+      ? calories.reduce((acc, n) => acc + Number(n), 0)
+      : 0
+  }
+  return 0
 })
 </script>
 

@@ -7,7 +7,7 @@
           class="selectorBack"
           @click="
             () => {
-              if (loginStore.eatingList.length > daySelector + 1) {
+              if (daysCount > daySelector + 1) {
                 daySelector++
               }
             }
@@ -15,7 +15,7 @@
         >
           <img class="back" src="@/assets/Feed/arrow-right.svg"
         /></a>
-        <a class="t-title">{{ loginStore.eatingList[daySelector][0] }}</a>
+        <a class="t-title">{{ day ? day[0] : '' }}</a>
 
         <a
           v-if="daySelector !== 0"
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div
-      v-for="(_, index) in loginStore.eatingList[daySelector][1]"
+      v-for="(_, index) in day ? day[1] : []"
       class="content"
       @click="$emit('open')"
     >
@@ -43,36 +43,17 @@
         </div>
         <div class="text">
           <p class="t-main">
-            {{
-              loginStore.eatingList[daySelector][3][
-                loginStore.eatingList[daySelector][3].length - 1 - index
-              ]
-            }}
-            <a
-              >{{
-                loginStore.eatingList[daySelector][2][
-                  loginStore.eatingList[daySelector][2].length - 1 - index
-                ]
-              }}
-              ккал</a
-            >
+            {{ day ? day[3][day[3].length - 1 - index] : '' }}
+            <a>{{ day ? day[2][day[2].length - 1 - index] : '' }} ккал</a>
           </p>
           <p class="t-comment">
-            {{
-              loginStore.eatingList[daySelector][1][
-                loginStore.eatingList[daySelector][1].length - 1 - index
-              ]
-            }}
+            {{ day ? day[1][day[1].length - 1 - index] : '' }}
           </p>
         </div>
       </div>
       <div
         class="rightBlock"
-        @click="
-          loginStore.deleteCcalValue(
-            loginStore.eatingList[daySelector][2].length - 1 - index,
-          )
-        "
+        @click="day && deleteCcalValue(day[2].length - 1 - index)"
       >
         <img src="@/assets/close-gray.svg" />
       </div>
@@ -81,7 +62,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import axios from 'axios'
+import { ref, computed } from 'vue'
 
 import UiBlock from '@/components/ui/UiBlock.vue'
 import { useLogin } from '@/store/Login'
@@ -89,14 +71,43 @@ import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
 
 const daySelector = ref(0)
-
-watch(loginStore.eatingList, () => {
-  console.log('test')
-})
+type DayTuple = [string, string[], number[], string[]]
+const eating = computed<DayTuple[]>(() =>
+  Array.isArray(loginStore.eatingList)
+    ? (loginStore.eatingList as unknown as DayTuple[])
+    : [],
+)
+const day = computed<DayTuple | undefined>(
+  () => eating.value[daySelector.value],
+)
+const daysCount = computed(() => eating.value.length)
 
 defineProps({
   msg: String,
 })
+
+function deleteCcalValue(val: number) {
+  if (loginStore.id !== 1) {
+    axios
+      .get(`https://dexone.pw/backend_new/data/${loginStore.id}`)
+      .then((res) => {
+        let eatingList = res.data.eatingList
+
+        eatingList[0][1].splice(val, 1)
+        eatingList[0][2].splice(val, 1)
+        eatingList[0][3].splice(val, 1)
+        axios
+          .patch(`https://dexone.pw/backend_new/data/${loginStore.id}`, {
+            eatingList: eatingList,
+          })
+          .then(() => {
+            loginStore.getInfo()
+          })
+      })
+  } else {
+    alert('Вам необходимо создать аккаунт')
+  }
+}
 </script>
 
 <style scoped lang="scss">

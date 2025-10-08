@@ -40,15 +40,6 @@ import { useLogin } from '@/store/Login'
 const showAdd = ref(false)
 const loginStore = useLogin()
 const router = useRouter()
-watch(loginStore, () => {
-  if (
-    loginStore.limitCcal === 0 ||
-    loginStore.desiredWeight === 0 ||
-    loginStore.weightList.length === 1
-  ) {
-    router.push('/filing')
-  }
-})
 </script>
 
 <style scoped>

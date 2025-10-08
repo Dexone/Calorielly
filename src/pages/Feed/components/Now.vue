@@ -8,7 +8,7 @@
           <img src="@/assets/Feed/fire.svg" />
         </div>
         <div class="text">
-          <p class="t-main">{{ loginStore.getSumCcalToday }} ккал</p>
+          <p class="t-main">{{ sumCcalToday }} ккал</p>
           <p class="t-comment">обновлено {{ backTime }} мин назад</p>
         </div>
       </div>
@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 
 import UiBlock from '@/components/ui/UiBlock.vue'
 import { useLogin } from '@/store/Login'
@@ -40,6 +40,16 @@ watch(loginStore, () => {
 
 defineProps({
   msg: String,
+})
+
+const sumCcalToday = computed(() => {
+  if (loginStore.eatingList !== 'loading') {
+    const calories = loginStore.eatingList?.[0]?.[2] ?? []
+    return Array.isArray(calories)
+      ? calories.reduce((acc, n) => acc + Number(n), 0)
+      : 0
+  }
+  return 0
 })
 </script>
 
