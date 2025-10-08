@@ -2,7 +2,7 @@
   <div class="main">
     <UiBlock class="ui-block">
       <a class="back" v-if="payload?.id" @click="goBack"
-        ><img src="@/assets/auth/back.svg"
+        ><img src="@/assets/Auth/back.svg"
       /></a>
       <img src="@/assets/logo.svg" />
       <p class="t-title-XL">
