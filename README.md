@@ -47,7 +47,7 @@
 
 ## 🚀 Ссылки
 
-Доступно по [этому адресу](https://calorielly.tech).
+Доступно по [этому адресу](https://calorielly.tech).  
 Backend репозиторий: https://github.com/mrtynnvv/api-calorielly  
 Public Swagger: https://dexone.pw/api/docs
 
