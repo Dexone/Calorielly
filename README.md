@@ -73,32 +73,6 @@
 Репозиторий: https://github.com/mrtynnvv/api-calorielly  
 Public Swagger: https://dexone.pw/api/docs
 
-
-
-## 🧱 Структура
-
-- `src/pages` — страницы (Feed, Auth, Profile, Settings, Scales, Other)
-- `src/components` — UI/блоки/модалки
-- `src/store` — Pinia-сторы
-- `src/router` — маршрутизация
-- `src/styles` — общие SCSS (`_variables.scss`, `_transitions.scss`, `main.scss`)
-- `public` — статические ресурсы (favicon и т.п.)
-
-
-## 🤝 Вклад
-
-Любой вклад в проект приветствуется.
-Возникла проблема? Откройте [issue](https://github.com/Dexone/Calorielly/issues/new/choose).  
-Хотите добавить какую-то функцию? PR приветствуются!
-
-## 👤 Об авторе
-
-Не стесняйтесь обращаться ко мне:
-
-<a href="https://t.me/mrtynnvv"><img src="https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white" /></a>
-
-
-
 ## 📝 Licence
 
 Copyright © 2025 [Dima Martynov](https://github.com/dexone).<br />
