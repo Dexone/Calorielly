@@ -19,7 +19,7 @@
   </UiBlock>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, watch, computed } from 'vue'
 
 import UiBlock from '@/components/ui/UiBlock.vue'
@@ -27,7 +27,7 @@ import { useLogin } from '@/store/Login'
 const loginStore = useLogin()
 const emit = defineEmits(['open'])
 
-const backTime = ref(0)
+const backTime = ref('')
 const upTime = ref(0)
 setInterval(() => updateTime(), 60000) //обновлено ... мин назад
 function updateTime() {

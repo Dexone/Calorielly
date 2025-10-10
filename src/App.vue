@@ -27,19 +27,15 @@
   <RouterView name="modal" />
 </template>
 
-<script setup>
-import { watch, ref } from 'vue'
-import { useRouter } from 'vue-router'
+<script setup lang="ts">
+import { ref } from 'vue'
 
 import Add from './components/modals/Add.vue'
 
 import Footer from '@/components/blocks/Footer.vue'
 import Header from '@/components/blocks/Header.vue'
 import LeftBar from '@/components/blocks/LeftBar.vue'
-import { useLogin } from '@/store/Login'
 const showAdd = ref(false)
-const loginStore = useLogin()
-const router = useRouter()
 </script>
 
 <style scoped>

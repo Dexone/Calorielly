@@ -36,11 +36,8 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
 
-import { useLogin } from '@/store/Login'
-const loginStore = useLogin()
 const emit = defineEmits(['open'])
 
 defineProps({

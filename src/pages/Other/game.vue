@@ -68,37 +68,53 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-const props = defineProps({
-  minDelay: { type: Number, default: 1000 },
-  maxDelay: { type: Number, default: 5000 },
-  keyA: { type: String, default: 'a' },
-  keyB: { type: String, default: 'b' },
-  soundSrc: {
-    type: String,
-    default: 'https://actions.google.com/sounds/v1/alarms/beep_short.ogg',
+type Phase = 'idle' | 'waiting' | 'go' | 'done' | 'falseStart'
+type Winner = 'A' | 'B' | null
+
+const props = withDefaults(
+  defineProps<{
+    minDelay?: number
+    maxDelay?: number
+    keyA?: string
+    keyB?: string
+    soundSrc?: string
+  }>(),
+  {
+    minDelay: 1000,
+    maxDelay: 5000,
+    keyA: 'a',
+    keyB: 'b',
+    soundSrc: 'https://actions.google.com/sounds/v1/alarms/beep_short.ogg',
   },
-})
+)
 
-const emit = defineEmits(['round-start', 'signal', 'winner'])
+const emit = defineEmits<{
+  (e: 'round-start'): void
+  (e: 'signal'): void
+  (
+    e: 'winner',
+    payload: { winner: Winner; timeA: number | null; timeB: number | null },
+  ): void
+}>()
 
-const phase = ref('idle')
-const startTime = ref(null)
-const timeA = ref(null)
-const timeB = ref(null)
-const winner = ref(null)
-const falseStarterLabel = ref('')
-const timer = ref(null)
-const beepRef = ref(null)
+const phase = ref<Phase>('idle')
+const startTime = ref<number | null>(null)
+const timeA = ref<number | null>(null)
+const timeB = ref<number | null>(null)
+const winner = ref<Winner>(null)
+const falseStarterLabel = ref<string>('')
+const timer = ref<number | null>(null)
+const beepRef = ref<HTMLAudioElement | null>(null)
 
-function rndDelay() {
+function rndDelay(): number {
   const { minDelay, maxDelay } = props
   return Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay
 }
 
-function startRound() {
+function startRound(): void {
   clearTimer()
   resetTimes()
   winner.value = null
@@ -106,17 +122,17 @@ function startRound() {
   phase.value = 'waiting'
   emit('round-start')
 
-  timer.value = setTimeout(() => {
+  timer.value = window.setTimeout(() => {
     startTime.value = performance.now()
     phase.value = 'go'
     try {
-      beepRef.value?.play?.()
+      beepRef.value?.play()
     } catch {}
     emit('signal')
   }, rndDelay())
 }
 
-function handleKey(e) {
+function handleKey(e: KeyboardEvent): void {
   const k = e.key?.toLowerCase()
   const a = props.keyA.toLowerCase()
   const b = props.keyB.toLowerCase()
@@ -131,7 +147,8 @@ function handleKey(e) {
   if (phase.value !== 'go') return
 
   const now = performance.now()
-  const reaction = Math.round(now - startTime.value)
+  const startedAt = startTime.value ?? now
+  const reaction = Math.round(now - startedAt)
 
   if (k === a && timeA.value == null) timeA.value = reaction
   if (k === b && timeB.value == null) timeB.value = reaction
@@ -141,7 +158,7 @@ function handleKey(e) {
   }
 }
 
-function finishRound() {
+function finishRound(): void {
   if (timeA.value != null && timeB.value != null) {
     if (timeA.value < timeB.value) winner.value = 'A'
     else if (timeB.value < timeA.value) winner.value = 'B'
@@ -157,7 +174,7 @@ function finishRound() {
   })
 }
 
-function resetAll() {
+function resetAll(): void {
   clearTimer()
   resetTimes()
   winner.value = null
@@ -165,28 +182,28 @@ function resetAll() {
   phase.value = 'idle'
 }
 
-function resetTimes() {
+function resetTimes(): void {
   startTime.value = null
   timeA.value = null
   timeB.value = null
 }
 
-function clearTimer() {
-  if (timer.value) {
+function clearTimer(): void {
+  if (timer.value != null) {
     clearTimeout(timer.value)
     timer.value = null
   }
 }
 
-function formatMs(v) {
+function formatMs(v: number | null | undefined): string {
   return v == null ? '—' : `${v} мс`
 }
 
-onMounted(() => {
+onMounted((): void => {
   window.addEventListener('keydown', handleKey)
 })
 
-onBeforeUnmount(() => {
+onBeforeUnmount((): void => {
   window.removeEventListener('keydown', handleKey)
   clearTimer()
 })

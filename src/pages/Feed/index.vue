@@ -1,20 +1,16 @@
 <template>
   <div class="main"></div>
 
-  <div class="all" :class="{ active: blur }">
-    <div class="main">
-      <Name />
-      <Now @click="$emit('open')" />
-      <Target />
-      <Graph />
-      <TimeLine />
-    </div>
+  <div class="main">
+    <Name />
+    <Now @click="$emit('open')" />
+    <Target />
+    <Graph />
+    <TimeLine />
   </div>
 </template>
 
-<script setup>
-import { ref, watch } from 'vue'
-
+<script setup lang="ts">
 import Graph from './components/Graph/index.vue'
 import Name from './components/Name.vue'
 import Now from './components/Now.vue'

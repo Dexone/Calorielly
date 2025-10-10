@@ -5,7 +5,13 @@
     </div>
 
     <div class="content">
-      <UiBlock class="card" v-if="loginStore.eatingList[0].length > 1">
+      <UiBlock
+        class="card"
+        v-if="
+          Array.isArray(loginStore.eatingList) &&
+          (loginStore.eatingList?.[0]?.[2]?.length ?? 0) > 1
+        "
+      >
         <div class="image">
           <img src="@/assets/Feed/cookie.svg" />
         </div>
@@ -13,7 +19,12 @@
           <a class="t-title">Калории</a>
           <a class="t-comment"
             >осталось
-            {{ (loginStore.limitCcal - sumCcalToday).toFixed() }}
+
+            {{
+              typeof loginStore.limitCcal === 'number'
+                ? (loginStore.limitCcal - sumCcalToday).toFixed()
+                : '0'
+            }}
             ккал</a
           >
 
@@ -22,15 +33,24 @@
               class="lineBlue"
               :style="{
                 width:
-                  (loginStore.getSumCcalToday / loginStore.limitCcal) * 100 +
-                  '%',
+                  typeof loginStore.limitCcal === 'number' &&
+                  loginStore.limitCcal > 0
+                    ? (sumCcalToday / loginStore.limitCcal) * 100 + '%'
+                    : '0%',
               }"
             ></div>
           </div>
         </div>
       </UiBlock>
 
-      <UiBlock class="card" v-if="loginStore.weightList[0].length > 1">
+      <UiBlock
+        class="card"
+        v-if="
+          Array.isArray(loginStore.weightList) &&
+          loginStore.weightList.length > 0 &&
+          typeof loginStore.desiredWeight === 'number'
+        "
+      >
         <div class="image">
           <img src="@/assets/Feed/cookie.svg" />
         </div>
@@ -39,13 +59,12 @@
           <a class="t-comment"
             >осталось
             {{
-              loginStore.weightList[0][1] - loginStore.desiredWeight >= 0
-                ? (
-                    loginStore.weightList[0][1] - loginStore.desiredWeight
-                  ).toFixed(2)
-                : (
-                    loginStore.desiredWeight - loginStore.weightList[0][1]
-                  ).toFixed(2)
+              Math.abs(
+                (loginStore.weightList?.[0]?.[1] ?? 0) -
+                  (typeof loginStore.desiredWeight === 'number'
+                    ? loginStore.desiredWeight
+                    : 0),
+              ).toFixed(2)
             }}
             кг
           </a>
@@ -55,13 +74,20 @@
               class="lineBlue"
               :style="{
                 width:
-                  loginStore.weightList[0][1] - loginStore.desiredWeight >= 0
-                    ? (loginStore.desiredWeight / loginStore.weightList[0][1]) *
-                        100 +
-                      '%'
-                    : (loginStore.weightList[0][1] / loginStore.desiredWeight) *
-                        100 +
-                      '%',
+                  (() => {
+                    const w = Number(loginStore.weightList?.[0]?.[1] ?? 0)
+                    const d =
+                      typeof loginStore.desiredWeight === 'number'
+                        ? Number(loginStore.desiredWeight)
+                        : 0
+                    return w - d >= 0
+                      ? w > 0
+                        ? (d / w) * 100
+                        : 0
+                      : d > 0
+                        ? (w / d) * 100
+                        : 0
+                  })() + '%',
               }"
             ></div>
           </div>
@@ -71,8 +97,8 @@
   </UiBlock>
 </template>
 
-<script setup>
-import { ref, computed } from 'vue'
+<script setup lang="ts">
+import { computed } from 'vue'
 
 import UiBlock from '@/components/ui/UiBlock.vue'
 import { useLogin } from '@/store/Login'

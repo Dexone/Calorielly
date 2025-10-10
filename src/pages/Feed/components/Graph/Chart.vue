@@ -1,17 +1,13 @@
 <template>
   <LineChart class="lineChart" :chartData="lineData" :options="options" />
 </template>
-<script setup>
-import axios from 'axios'
-import Chart from 'chart.js/auto'
+<script setup lang="ts">
+import 'chart.js/auto'
+import type { ChartData, ChartOptions } from 'chart.js'
 import { computed, reactive } from 'vue'
 import { LineChart } from 'vue-chart-3'
-
-const props = defineProps({
-  data: Array,
-})
-
-const options = reactive({
+const props = defineProps<{ data: [number[], string[]] }>()
+const options: ChartOptions<'line'> = reactive({
   responsive: true,
 
   scales: {
@@ -24,7 +20,7 @@ const options = reactive({
       ticks: {
         color: '#58636f', //цвет значений слева
         backdropColor: 'rgb(255, 255, 255)',
-        padding: (0, 0, 0, 0),
+        padding: 0,
         stepSize: 1,
       },
     },
@@ -48,9 +44,9 @@ const options = reactive({
       display: false,
     },
   },
-})
+} as ChartOptions<'line'>)
 
-const lineData = computed(() => ({
+const lineData = computed<ChartData<'line'>>(() => ({
   labels: props.data[1],
   boxWidth: 0,
   datasets: [
@@ -68,7 +64,7 @@ const lineData = computed(() => ({
 }))
 </script>
 
-<style scope lang="scss">
+<style scoped lang="scss">
 .lineChart {
   height: 100%;
   max-height: 170px;

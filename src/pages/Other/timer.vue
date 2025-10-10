@@ -4,18 +4,18 @@
   </div>
 </template>
 
-<script setup lang="js">
+<script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 
-const targetTimes = ['6:50', '12:50', '18:50']
-const display = ref('—:—:—')
-let timerId
+const targetTimes: string[] = ['6:50', '12:50', '18:50']
+const display = ref<string>('—:—:—')
+let timerId: number | null = null
 
-function pad(n) {
+function pad(n: number): string {
   return String(n).padStart(2, '0')
 }
 
-function getNextTargetTime(now = new Date()) {
+function getNextTargetTime(now: Date = new Date()): Date {
   const y = now.getFullYear(),
     m = now.getMonth(),
     d = now.getDate()
@@ -25,13 +25,13 @@ function getNextTargetTime(now = new Date()) {
   })
   const next = today.find((dt) => dt > now)
   if (next) return next
-  const [h0, m0] = targetTimes[0].split(':').map(Number)
+  const [h0, m0] = (targetTimes[0] ?? '6:50').split(':').map(Number)
   return new Date(y, m, d + 1, h0, m0, 0, 0)
 }
 
-function tick() {
+function tick(): void {
   const now = new Date()
-  const diff = getNextTargetTime(now) - now
+  const diff = getNextTargetTime(now).getTime() - now.getTime()
   const h = Math.floor(diff / 3600000)
   const m = Math.floor((diff % 3600000) / 60000)
   const s = Math.floor((diff % 60000) / 1000)
@@ -40,11 +40,11 @@ function tick() {
 
 onMounted(() => {
   tick()
-  timerId = setInterval(tick, 1000)
+  timerId = window.setInterval(tick, 1000)
 })
 
 onUnmounted(() => {
-  clearInterval(timerId)
+  if (timerId != null) clearInterval(timerId)
 })
 </script>
 

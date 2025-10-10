@@ -8,8 +8,8 @@
         <div class="text">
           <p class="t-title">
             {{
-              loginStore.login[0].toUpperCase() +
-              loginStore.login.slice(1, loginStore.login.length)
+              (loginStore.login ?? '').charAt(0).toUpperCase() +
+              (loginStore.login ?? '').slice(1)
             }}
           </p>
           <p class="t-comment">ID: {{ loginStore.id }}</p>
@@ -22,8 +22,7 @@
   </UiBlock>
 </template>
 
-<script setup>
-import { ref, watch } from 'vue'
+<script setup lang="ts">
 import { useRouter } from 'vue-router'
 
 import UiBlock from '@/components/ui/UiBlock.vue'
