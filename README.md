@@ -45,32 +45,10 @@
  - Развёртывание backend: Uvicorn workers под PM2 (`ecosystem.config.js`), ресурсо‑лимиты и autorestart
  - Конфигурация: `pydantic-settings` + `.env` (SECRET_KEY, DATABASE_URL, TTL токена)
 
-## 🚀 Использование
+## 🚀 Ссылки
 
 Доступно по [этому адресу](https://calorielly.tech).
-
-## 🧰 Локальная разработка
-
-Требуется Node.js 20+ и npm.
-
-1. Установка зависимостей:
-   - `npm ci`
-2. Запуск dev-сервера:
-   - `npm run dev`
-3. Сборка:
-   - `npm run build`
-4. Превью собранной версии:
-   - `npm run preview`
-
-Качество кода:
-
-- ESLint: `npm run lint`
-- Stylelint: `npm run stylelint`
-- Prettier: `npm run format`
-
-## 🧩 Backend (FastAPI)
-
-Репозиторий: https://github.com/mrtynnvv/api-calorielly  
+Backend репозиторий: https://github.com/mrtynnvv/api-calorielly  
 Public Swagger: https://dexone.pw/api/docs
 
 ## 📝 Licence
