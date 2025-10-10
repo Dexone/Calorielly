@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <i>Веб-приложение <a href="https://calorielly.ru">calorielly.ru</a> </i>
+  <i>Веб-приложение <a href="https://calorielly.tech">calorielly.tech</a> </i>
 </p>
 <h1 align="center">Calorielly</h1>
 <p align="center">Счетчик калорий, дневник питания.</p>
@@ -28,7 +28,7 @@
 
 ## 🚀 Использование
 
-Доступно по [этому адресу](https://calorielly.ru).
+Доступно по [этому адресу](https://calorielly.tech).
 
 ## ❓ Что это за штука?
 
@@ -61,14 +61,43 @@
 - Prettier: `npm run format`
 - Всё сразу: `npm run clean`
 
-Примечание: скрипт `npm run server` использует `json-server` и требует наличия `db.json`. По умолчанию в репозитории он отсутствует.
+## 🧩 Backend (FastAPI)
+
+Репозиторий: https://github.com/mrtynnvv/api-calorielly  
+Public Swagger: https://dexone.pw/api/docs
+
+- Префикс: все маршруты под `/api`
+- Авторизация: OAuth2 Password (Bearer JWT)
+- CORS: `http://localhost:5173`, `https://calorielly.tech`
+- Хранилище: SQLModel + SQLite (dev); планируется миграция на PostgreSQL + Alembic
+
+Эндпоинты (актуальные в репозитории):
+
+- `POST /api/auth/register`
+  - Вход: `{ phone: string, password: string }`
+  - Ответ: `{ access_token: string, token_type: 'bearer' }`
+- `POST /api/auth/login`
+  - Вход: `{ phone: string, password: string }`
+  - Ответ: `{ access_token: string, token_type: 'bearer' }`
+- `GET /api/me`
+  - Заголовок: `Authorization: Bearer <access_token>`
+  - Ответ (пример): `{ id: number, phone: string, is_active: boolean }`
+
+Примечание: схемы могут расширяться (например, лимиты калорий). Всегда сверяйте контракт по Swagger.
+
+Локально:
+
+- FastAPI: `http://localhost:8000` (итоговый базовый URL для фронта — `http://localhost:8000/api/`)
+- Makefile/инструкции смотрите в репозитории backend
 
 ## 🔧 Переменные окружения
 
 Создайте файл `.env` (или `.env.local`) и укажите базовый URL API:
 
 ```
-VITE_API_BASE_URL=https://dexone.pw/backend_new/
+VITE_API_BASE_URL=https://dexone.pw/api/
+; локально: http://localhost:8000/api/
+; при необходимости (легаси): https://dexone.pw/backend_new/
 ```
 
 ## 🧱 Структура
@@ -85,6 +114,22 @@ VITE_API_BASE_URL=https://dexone.pw/backend_new/
 - Guard’ы в роутере, meta `blank` для страниц без шапки/меню.
 - Состояние пользователя частично сохраняется в localStorage.
 - График динамики веса на Chart.js.
+
+## ⚙️ CI/CD
+
+- GitHub Actions: сборка на Node 20 и деплой на GitHub Pages
+- SPA fallback: копирование `dist/index.html` в `dist/404.html` для корректной маршрутизации
+
+## 💡 Инженерные акценты
+
+- Строгая типизация: TypeScript строгий режим в `tsconfig.*` (noUnused, noFallthrough и др.)
+- Единый стиль кода: ESLint flat config (с `@typescript-eslint` и `import`), Prettier, Stylelint для SCSS
+- Архитектура фронтенда: Vue 3 Composition API + Pinia (персист через `pinia-plugin-persistedstate`), типизированные сторы
+- Конфигурация Vite: алиас `@` в `/src`, глобальные SCSS-переменные и переходы, Vite 6
+- Интеграция с Chart.js через `vue-chart-3`: типизированные `ChartOptions`/`ChartData`, реактивные источники
+- Роутинг: четкое разделение layout’ов через `meta.blank`, навигационные гарды на уровне маршрутов
+- Деплой: автоматизированная доставка на GitHub Pages, SPA fallback, кеширование зависимостей
+- Безопасность (backend): OAuth2 Password Flow, JWT (JOSE), хеширование паролей (Passlib), CORS для prod/dev
 
 ## 🤝 Вклад
 
