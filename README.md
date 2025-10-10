@@ -1,10 +1,3 @@
- <!-- <p align="center">
-  <img alt="" src="./public/logo.png">
-</p>  -->
-
- <!-- <p href="https://calorielly.ru/" align="center">
-  <img height="200"  src="./mockups/iphone.png">
-</p>  -->
 
  <p align="center">
 
@@ -21,11 +14,8 @@
 <p align="center">Счетчик калорий, дневник питания.</p>
 
 <p align="center">
-  <a>
-    <img src="https://img.shields.io/github/package-json/dependency-version/prazdevs/potato-timer/vue?color=41B883&logo=vue.js">
-  </a>
-  <a href="https://github.com/prazdevs/potato-timer/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/prazdevs/potato-timer?style=flat" />
+  <a href="https://github.com/Dexone/Calorielly/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/Dexone/Calorielly?style=flat" />
   </a>
 </p>
 
@@ -42,14 +32,59 @@
 
 ## ❓ Что это за штука?
 
-Это приложение — песочница, которую я сделал для использования Vue3 и Vite, наряду с интересными пакетами. Оно включает в себя множество различных вещей, таких как:
+Это приложение — рабочий pet-проект на Vue 3 + Vite с современным стеком:
 
-- Vue 3 c `script setup` синтаксисом.
-- Vite с плагинами (`layouts`, `pages`, `components` ...
-- Хранит состояния в Pinia.
-- Строит графики при помощи Chart.js.
-- Имеет резиновую верстку.
-- Взаимодействует с бекендом на linux server при помощи axios.
+- Vue 3 + TypeScript, Composition API и `script setup`.
+- Vite + `@vitejs/plugin-vue` (без дополнительных авто-лоадеров страниц/лейаутов).
+- Состояние: Pinia + `pinia-plugin-persistedstate` (localStorage для отдельных свойств).
+- Графики: Chart.js через `vue-chart-3`.
+- Стили: SCSS с автоподключением переменных/анимаций из `src/styles`.
+- HTTP: Axios; базовый URL задается переменной окружения.
+
+## 🧰 Локальная разработка
+
+Требуется Node.js 20+ и npm.
+
+1. Установка зависимостей:
+   - `npm ci`
+2. Запуск dev-сервера:
+   - `npm run dev`
+3. Сборка:
+   - `npm run build`
+4. Превью собранной версии:
+   - `npm run preview`
+
+Качество кода:
+
+- ESLint: `npm run lint`
+- Stylelint: `npm run stylelint`
+- Prettier: `npm run format`
+- Всё сразу: `npm run clean`
+
+Примечание: скрипт `npm run server` использует `json-server` и требует наличия `db.json`. По умолчанию в репозитории он отсутствует.
+
+## 🔧 Переменные окружения
+
+Создайте файл `.env` (или `.env.local`) и укажите базовый URL API:
+
+```
+VITE_API_BASE_URL=https://dexone.pw/backend_new/
+```
+
+## 🧱 Структура
+
+- `src/pages` — страницы (Feed, Auth, Profile, Settings, Scales, Other)
+- `src/components` — UI/блоки/модалки
+- `src/store` — Pinia-сторы
+- `src/router` — маршрутизация
+- `src/styles` — общие SCSS (`_variables.scss`, `_transitions.scss`, `main.scss`)
+- `public` — статические ресурсы (favicon и т.п.)
+
+Особенности:
+
+- Guard’ы в роутере, meta `blank` для страниц без шапки/меню.
+- Состояние пользователя частично сохраняется в localStorage.
+- График динамики веса на Chart.js.
 
 ## 🤝 Вклад
 
@@ -63,17 +98,7 @@
 
 <a href="https://t.me/mrtynnvv"><img src="https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white" /></a>
 
-<!-- ## 📸 Скриншоты
 
- <p align="center">
-<a href="https://calorielly.ru/">
-  <img height="300"  src="./mockups/iphone.png"/>
-  </a>
-
-   <a  href="https://calorielly.ru">
-  <img height="300"  src="./mockups/mac.png"/>
-  </a>
-</p> -->
 
 ## 📝 Licence
 
