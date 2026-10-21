@@ -35,7 +35,6 @@
 
 ## 💡 Архитектура и стек
 
-- В процессе разработки принципиально не применялись AI-инструменты
 - Строгая типизация: TypeScript строгий режим в `tsconfig.*` (noUnused, noFallthrough и др.)
 - Единый стиль кода: ESLint flat config (с `@typescript-eslint` и `import`), Prettier, Stylelint для SCSS
 - Архитектура фронтенда: Vue 3 Composition API + Pinia (персист через `pinia-plugin-persistedstate`), типизированные сторы
